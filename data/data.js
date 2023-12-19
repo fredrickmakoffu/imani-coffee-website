@@ -48,3 +48,60 @@ export const awards = [
     url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
   },
 ];
+
+export const events = [
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+  {
+    date: "Nov 11",
+    venue: "Musica",
+    location: "New York, New York",
+    url: "https://www.itsthewestend.com/home#upcoming",
+  },
+];

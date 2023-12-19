@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/components";
+import { Header, Footer } from "@/components";
+import LenisContext from "@/context/LenisContext";
 
 export const metadata: Metadata = {
   title: "itsthewestend",
@@ -13,11 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-bridal-health text-trace-ash">
-        <Header />
-        {children}
-      </body>
-    </html>
+    <LenisContext>
+      <html lang="en">
+        <body className="bg-bridal-health text-trace-ash">
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </LenisContext>
   );
 }

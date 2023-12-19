@@ -1,11 +1,10 @@
-import { Hero, Awards, Footer } from "@/components";
+import { Hero, Awards } from "@/components";
 
 export default function Home() {
   return (
-    <main>
+    <main className="scroll-smooth">
       <Hero />
       <Awards />
-      <Footer />
     </main>
   );
 }

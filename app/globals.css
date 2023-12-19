@@ -8,10 +8,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html,
 body {
   font-family: "helvetica Neue";
-  scroll-behavior: smooth;
 }
 

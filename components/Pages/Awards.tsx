@@ -18,7 +18,7 @@ function AwardCard({ name, year, url }: AwardCardProps) {
         <p className="text-xl">{year}</p>
         <p className="text-xl">{name}</p>
       </div>
-      <HiMiniArrowUpRight size={24} />
+      <HiMiniArrowUpRight color={"#FFFBF6"} size={24} />
     </a>
   );
 }

@@ -15,31 +15,31 @@ function Footer() {
               <ul className="flex flex-col gap-2">
                 <li className="flex gap-2 items-center">
                   <Link href="#home">Home</Link>
-                  <HiMiniArrowRight />
+                  <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
                   <Link href="#about">About</Link>
-                  <HiMiniArrowRight />
+                  <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
                   <Link href="#Music">Music</Link>
-                  <HiMiniArrowRight />
+                  <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
                   <Link href="#sets">Sets</Link>
-                  <HiMiniArrowRight />
+                  <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
                   <Link href="#events">Events</Link>
-                  <HiMiniArrowRight />
+                  <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
                   <Link href="#awards">Awards</Link>
-                  <HiMiniArrowRight />
+                  <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
                   <Link href="#shop">Shop</Link>
-                  <HiMiniArrowRight />
+                  <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
               </ul>
             </nav>
@@ -51,19 +51,19 @@ function Footer() {
                 <a href="https://www.instagram.com/itsthewestend/?">
                   Instagram
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
               <li className="flex gap-2 items-center">
                 <a href="https://www.tiktok.com/@itsthewestend" target="_blank">
                   TikTok
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
               <li className="flex gap-2 items-center">
                 <a href="http://twitter.com/itsthewestend" target="_blank">
                   X
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
               <li className="flex gap-2 items-center">
                 <a
@@ -72,13 +72,13 @@ function Footer() {
                 >
                   Youtube
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
               <li className="flex gap-2 items-center">
                 <a href="http://facebook.com/itsthewestend" target="_blank">
                   Facebook
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
               <li className="flex gap-2 items-center">
                 <a
@@ -87,7 +87,7 @@ function Footer() {
                 >
                   Spotify
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
             </ul>
           </div>
@@ -98,13 +98,13 @@ function Footer() {
                 <a href="https://traceamounts.nyc/" target="_blank">
                   Trace Amounts
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
               <li className="flex gap-2 items-center">
                 <a href="https://kick-bass.com/" target="_blank">
                   Kick & Bass
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
               <li className="flex gap-2 items-center">
                 <a
@@ -113,7 +113,7 @@ function Footer() {
                 >
                   Beatport
                 </a>
-                <HiMiniArrowUpRight />
+                <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>
             </ul>
           </div>

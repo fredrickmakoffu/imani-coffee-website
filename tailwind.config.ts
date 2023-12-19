@@ -11,6 +11,7 @@ const config: Config = {
       "bridal-health": "#FFFBF6",
       "swiss-coffee": "#DAD3CF",
       "cod-gray": "#131313",
+      "trace-ash": "#0F0F0F",
     },
   },
   plugins: [],

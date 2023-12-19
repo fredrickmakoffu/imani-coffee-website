@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-bridal-health text-cod-gray">
+      <body className="bg-bridal-health text-trace-ash">
         <Header />
         {children}
       </body>

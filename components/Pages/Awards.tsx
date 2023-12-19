@@ -9,13 +9,17 @@ type AwardCardProps = {
 
 function AwardCard({ name, year, url }: AwardCardProps) {
   return (
-    <div className="flex w-full py-4 justify-between items-center font-light tracking-wide cursor-pointer border-b-bridal-health border-b-[1px] transition-all duration-500 hover:px-4">
+    <a
+      href={url}
+      target="_blank"
+      className="flex w-full py-4 justify-between items-center font-light tracking-wide cursor-pointer border-b-bridal-health border-b-[1px] transition-all duration-500 hover:px-4"
+    >
       <div className="flex gap-8">
         <p className="text-xl">{year}</p>
         <p className="text-xl">{name}</p>
       </div>
       <HiMiniArrowUpRight size={24} />
-    </div>
+    </a>
   );
 }
 

@@ -3,15 +3,18 @@ import Link from "next/link";
 import menuImg from "@/public/assets/westendMenu.jpg";
 import { HiMiniArrowRight, HiMiniArrowUpRight } from "react-icons/hi2";
 
-function Menu() {
+function Menu({ setMenuToggle }: any) {
   return (
     <section
       id="menu"
-      className="flex flex-col gap-20 bg-trace-ash text-bridal-health px-12 py-8 z-10"
+      className="flex flex-col gap-12 bg-trace-ash text-bridal-health px-12 py-8 z-10 fixed w-full"
     >
       <div className="menu-nav flex justify-between w-full">
         <p className="uppercase tracking-wider">Westend</p>
-        <button className="uppercase cursor-pointer tracking-wider">
+        <button
+          className="uppercase tracking-wider"
+          onClick={() => setMenuToggle(false)}
+        >
           Close
         </button>
       </div>
@@ -25,31 +28,45 @@ function Menu() {
             <nav>
               <ul className="flex flex-col gap-2">
                 <li className="flex gap-2 items-center">
-                  <Link href="#home">Home</Link>
+                  <Link href="/" onClick={() => setMenuToggle(false)}>
+                    Home
+                  </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
-                  <Link href="#about">About</Link>
+                  <Link href="/#about" onClick={() => setMenuToggle(false)}>
+                    About
+                  </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
-                  <Link href="#Music">Music</Link>
+                  <Link href="/#Music" onClick={() => setMenuToggle(false)}>
+                    Music
+                  </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
-                  <Link href="#sets">Sets</Link>
+                  <Link href="/#sets" onClick={() => setMenuToggle(false)}>
+                    Sets
+                  </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
-                  <Link href="#events">Events</Link>
+                  <Link href="/#events" onClick={() => setMenuToggle(false)}>
+                    Events
+                  </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
-                  <Link href="#awards">Awards</Link>
+                  <Link href="/#awards" onClick={() => setMenuToggle(false)}>
+                    Awards
+                  </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
-                  <Link href="#shop">Shop</Link>
+                  <Link href="/#shop" onClick={() => setMenuToggle(false)}>
+                    Shop
+                  </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
               </ul>
@@ -144,7 +161,9 @@ function Menu() {
             >
               Demos
             </a>
-            <Link href="/imprint">Imprint</Link>
+            <Link href="/imprint" onClick={() => setMenuToggle(false)}>
+              Imprint
+            </Link>
           </div>
         </div>
       </div>

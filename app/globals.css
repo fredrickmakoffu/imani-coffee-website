@@ -11,5 +11,9 @@
 html,
 body {
   font-family: "helvetica Neue";
+  overflow-x: hidden;
 }
 
+.event-card:hover .event-img {
+  display: block;
+}

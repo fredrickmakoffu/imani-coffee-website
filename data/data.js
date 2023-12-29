@@ -1,3 +1,9 @@
+export const songs = [
+  { name: "Dirty Blonde", year: 2023, url: "/" },
+  { name: "Dirty Blonde", year: 2023, url: "/" },
+  { name: "Dirty Blonde", year: 2023, url: "/" },
+];
+
 export const sets = [
   {
     name: "Hard Rock",

@@ -8,12 +8,63 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html,
 body {
   font-family: "helvetica Neue";
   overflow-x: hidden;
 }
-
+.mask {
+  overflow: hidden;
+}
 .event-card:hover .event-img {
   display: block;
+}
+
+.album-cover:hover {
+  transform: translateX(-15%);
+}
+.album-cover:hover + .album-cover-round {
+  transform: translateX(15%);
+}
+.spin {
+  animation: spin 20s infinite linear;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* MARQUEE EFFECT */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  gap: 2rem;
+  position: relative;
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 2rem;
+  align-items: center;
+}
+
+@keyframes scrollX {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% -2rem));
+  }
+}
+
+.scrollX {
+  animation: scrollX 10s linear infinite;
 }

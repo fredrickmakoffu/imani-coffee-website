@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.38",
+    "gsap": "^3.12.4",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",

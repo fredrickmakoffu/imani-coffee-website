@@ -1,7 +1,22 @@
 export const songs = [
-  { name: "Dirty Blonde", year: 2023, url: "/" },
-  { name: "Dirty Blonde", year: 2023, url: "/" },
-  { name: "Dirty Blonde", year: 2023, url: "/" },
+  {
+    name: "Dirty Blonde",
+    year: 2023,
+    url: "https://open.spotify.com/track/4xTFiSi0CmH8hrkMeMGca4?si=3c6f5ed14fd3445e",
+    img: "/assets/dirtyBlonde.png",
+  },
+  {
+    name: "Dive In",
+    year: 2023,
+    url: "https://open.spotify.com/track/27sxAuxRyXYwhwjPA5L0af?si=7575c0fbc2c54f15",
+    img: "/assets/diveIn.png",
+  },
+  {
+    name: "Maracuya",
+    year: 2023,
+    url: "https://open.spotify.com/track/3SIGASmke2qRU6oJV3y1iR?si=7295c8eb292847eb",
+    img: "/assets/maracuya.png",
+  },
 ];
 
 export const sets = [
@@ -35,7 +50,7 @@ export const sets = [
     description:
       "It has been a long journey, but we’re finally here. It is an absolute honour for us to present our first ever Selected Session with Gorgon City, as part of this brand new event series bringing together music, culture and creative output in unique locations across the world.",
     video: "/assets/set4.mp4",
-    url: "https://www.youtube.com/watch?v=DGb6ubDUESM&t=148s&pp=ygUHY2xvb25lZQ%3D%3D",
+    url: "https://youtu.be/ncMhjnSjcNM?si=FqG_-59PS1-5oxAk",
   },
 ];
 

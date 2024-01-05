@@ -40,31 +40,23 @@ body {
 }
 
 /* MARQUEE EFFECT */
-.marquee {
-  display: flex;
-  overflow: hidden;
-  gap: 2rem;
+.slider-container {
+  position: absolute;
+}
+
+.slider {
   position: relative;
-}
-
-.marquee-content {
-  flex-shrink: 0;
+  white-space: nowrap;
   display: flex;
-  justify-content: space-around;
-  min-width: 100%;
-  gap: 2rem;
+}
+
+.slider h2 {
+  display: flex;
   align-items: center;
+  gap: 2rem;
 }
 
-@keyframes scrollX {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% -2rem));
-  }
-}
-
-.scrollX {
-  animation: scrollX 10s linear infinite;
+.slider h2:nth-of-type(2) {
+  position: absolute;
+  left: 114%;
 }

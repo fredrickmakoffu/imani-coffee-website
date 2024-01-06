@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer
       id="footer"
-      className="min-h-[100dvh] bg-trace-ash text-bridal-health px-12 pt-[128px] pb-8 flex justify-between flex-col"
+      className="min-h-[100dvh] max-w-full flex flex-col justify-between bg-trace-ash text-bridal-health px-12 pt-28 fixed bottom-0 z-[1]"
     >
       <div className="flex w-full justify-between">
         <div className="flex gap-12">
@@ -48,7 +48,10 @@ function Footer() {
             <p className="text-swiss-coffee">Connect</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">
-                <a href="https://www.instagram.com/itsthewestend/?">
+                <a
+                  href="https://www.instagram.com/itsthewestend/?"
+                  target="_blank"
+                >
                   Instagram
                 </a>
                 <HiMiniArrowUpRight color={"#FFFBF6"} />
@@ -127,7 +130,7 @@ function Footer() {
           Westend
         </label>
         <div className="w-full border border-b-bridal-health"></div>
-        <div className="flex w-full justify-between font-light tracking-wider">
+        <div className="flex w-full justify-between font-light tracking-wider mb-6">
           <p>New York – New York</p>
           <div className="flex gap-16">
             <a href="mailto: itsthewestend@gmail.com">

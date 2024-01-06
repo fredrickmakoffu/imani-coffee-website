@@ -75,7 +75,7 @@ function Events() {
   };
 
   return (
-    <section id="events" className="py-20 px-12 overflow-hidden">
+    <section id="events" className="py-20 px-12 overflow-hidden bg-bridal-health">
       <div className="slider-container">
         <div ref={slider} className="slider">
           <h2 ref={headerText1} className="text-[144px] uppercase ">

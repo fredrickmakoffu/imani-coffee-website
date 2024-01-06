@@ -14,6 +14,12 @@ body {
   font-family: "helvetica Neue";
   overflow-x: hidden;
 }
+
+section {
+  position: relative;
+  z-index: 10;
+}
+
 .mask {
   overflow: hidden;
 }

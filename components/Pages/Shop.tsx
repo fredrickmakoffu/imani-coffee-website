@@ -41,7 +41,7 @@ function Shop() {
   // const [category, setCategory] = useState(second)
 
   return (
-    <section id="shop" className="py-[128px] px-12 min-h-[100dvh]">
+    <section id="shop" className="py-[128px] px-12 min-h-[100dvh] bg-bridal-health mb-[100dvh]">
       <h2 className="text-4xl uppercase">Shop Westend</h2>
       <div className="mt-24 w-full flex justify-between gap-20">
         <div className="flex flex-col gap-36 items-start">

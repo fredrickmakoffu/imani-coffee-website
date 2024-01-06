@@ -82,7 +82,7 @@ function Music() {
   };
 
   return (
-    <section id="music" className="py-20 px-12 ">
+    <section id="music" className="py-20 px-12 bg-bridal-health">
       <div className="slider-container">
         <div ref={slider} className="slider">
           <h2 ref={headerText1} className="text-[144px] uppercase">

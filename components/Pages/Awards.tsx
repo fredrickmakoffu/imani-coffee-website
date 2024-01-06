@@ -27,7 +27,7 @@ function Awards() {
   return (
     <section
       id="awards"
-      className="bg-trace-ash text-bridal-health pt-[128px] px-12 flex flex-col gap-8"
+      className="bg-trace-ash text-bridal-health py-[128px] px-12 flex flex-col gap-8"
     >
       <h3 className="text-4xl uppercase">
         <span>Recognitions</span>

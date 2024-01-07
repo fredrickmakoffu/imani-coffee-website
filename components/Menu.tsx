@@ -1,13 +1,53 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 import menuImg from "@/public/assets/westendMenu.jpg";
 import { HiMiniArrowRight, HiMiniArrowUpRight } from "react-icons/hi2";
 
-function Menu({ setMenuToggle }: any) {
+type MenuProps = {
+  menuToggle: boolean;
+  setMenuToggle: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function Menu({ menuToggle, setMenuToggle }: MenuProps) {
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        menuToggle &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setMenuToggle(false);
+      }
+    };
+
+    const handleScroll = () => {
+      setScrolling(true);
+      setMenuToggle(false);
+    };
+
+    if (menuToggle) {
+      document.addEventListener("mousedown", handleOutsideClick);
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [menuToggle, setMenuToggle]);
   return (
-    <section
+    <div
+      ref={menuRef}
       id="menu"
-      className="flex flex-col gap-12 bg-trace-ash text-bridal-health px-12 py-8 z-10 fixed w-full"
+      className={`flex flex-col gap-12 bg-trace-ash text-bridal-health px-12 py-8 z-20 fixed w-full transition-all duration-700 ${
+        menuToggle ? "menu-open" : "menu-closed"
+      }`}
     >
       <div className="menu-nav flex justify-between w-full">
         <p className="uppercase tracking-wider">Westend</p>
@@ -40,7 +80,7 @@ function Menu({ setMenuToggle }: any) {
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
-                  <Link href="/#Music" onClick={() => setMenuToggle(false)}>
+                  <Link href="/#music" onClick={() => setMenuToggle(false)}>
                     Music
                   </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
@@ -167,7 +207,7 @@ function Menu({ setMenuToggle }: any) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

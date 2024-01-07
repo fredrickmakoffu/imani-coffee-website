@@ -19,6 +19,12 @@ section {
   position: relative;
   z-index: 10;
 }
+.menu-closed {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+.menu-open {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
 
 .mask {
   overflow: hidden;

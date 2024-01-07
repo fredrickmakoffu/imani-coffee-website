@@ -24,7 +24,7 @@ function Sets() {
 
   return (
     <section
-      id="player"
+      id="sets"
       className="h-[100dvh] bg-trace-ash text-bridal-health relative"
     >
       <div className="h-full flex flex-col justify-between w-full p-12 absolute">

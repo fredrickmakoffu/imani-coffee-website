@@ -126,7 +126,7 @@ function Footer() {
         </Link>
       </div>
       <div className="flex flex-col gap-8">
-        <label htmlFor="westend" className="text-[24.5dvw] leading-[80%]">
+        <label htmlFor="westend" className="text-[24.5dvw] leading-[80%] pointer-events-none">
           Westend
         </label>
         <div className="w-full border border-b-bridal-health"></div>

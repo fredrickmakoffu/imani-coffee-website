@@ -1,5 +1,11 @@
 export const songs = [
   {
+    name: "Rhythm Machine",
+    year: 2023,
+    url: "https://open.spotify.com/track/7qhYyXBbL12mPyj93PyUBb?si=58e8d5071f1044ba",
+    img: "/assets/rhythmMachine.png",
+  },
+  {
     name: "Dirty Blonde",
     year: 2023,
     url: "https://open.spotify.com/track/4xTFiSi0CmH8hrkMeMGca4?si=3c6f5ed14fd3445e",
@@ -10,12 +16,6 @@ export const songs = [
     year: 2023,
     url: "https://open.spotify.com/track/27sxAuxRyXYwhwjPA5L0af?si=7575c0fbc2c54f15",
     img: "/assets/diveIn.png",
-  },
-  {
-    name: "Maracuya",
-    year: 2023,
-    url: "https://open.spotify.com/track/3SIGASmke2qRU6oJV3y1iR?si=7295c8eb292847eb",
-    img: "/assets/maracuya.png",
   },
 ];
 

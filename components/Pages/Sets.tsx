@@ -25,9 +25,9 @@ function Sets() {
   return (
     <section
       id="sets"
-      className="h-[100dvh] bg-trace-ash text-bridal-health relative"
+      className="h-[80dvh] lg:h-[100dvh] bg-trace-ash text-bridal-health relative"
     >
-      <div className="h-full flex flex-col justify-between w-full p-12 absolute">
+      <div className="h-full flex flex-col justify-between w-full p-4 lg:p-12 absolute">
         <div className="absolute left-[50%] translate-x-[-50%] flex gap-4 items-center">
           <p className="uppercase text-md tracking-wide">Live</p>
           <Image src={gridIcon} alt="photo_frame" height={20} width={20} />
@@ -42,7 +42,7 @@ function Sets() {
         <div className="flex flex-col">
           <div className="flex justify-between px-12 ">
             <div className="flex flex-col gap-8">
-              <p className="w-[33%]">{sets[currentVideoIndex].description}</p>
+              <p className="hidden lg:flex w-[400px]">{sets[currentVideoIndex].description}</p>
               <a
                 href={sets[currentVideoIndex].url}
                 target="_blank"

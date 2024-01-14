@@ -1,24 +1,20 @@
-"use client";
-
-import React from "react";
-import { useState } from "react";
 import { HiMiniArrowUpRight } from "react-icons/hi2";
 
 function ProductCard({ item }: any) {
   return (
     <a
       href="https://www.itsthewestend.com/"
-      className="flex flex-col p-4 bg-[#FBF5EF] w-[430px] h-[350px] gap-6 cursor-pointer transition-all duration-300 hover:scale-105 rounded-md"
+      className="flex flex-col p-4 bg-[#FBF5EF] w-full lg:w-[430px] lg:h-[350px] gap-6 cursor-pointer transition-all duration-300 hover:scale-105 rounded-md"
     >
       <label
         htmlFor="item_type"
-        className="text-sm uppercase border-b-trace-ash border-b-[1px] pb-2"
+        className="hidden lg:flex text-sm uppercase border-b-trace-ash border-b-[1px] pb-2"
       >
         Project File
       </label>
-      <div className="flex flex-col h-full justify-between">
+      <div className="flex flex-col h-full justify-between gap-8 lg:gap-0">
         <div className="flex flex-col gap-4">
-          <label htmlFor="item_name" className="text-lg uppercase ">
+          <label htmlFor="item_name" className="text-lg uppercase border-b-trace-ash border-b-[1px] pb-2 lg:pb-0 lg:border-b-0 ">
             Tech House Project
           </label>
           <p className="text-sm">
@@ -38,29 +34,17 @@ function ProductCard({ item }: any) {
 }
 
 function Shop() {
-  // const [category, setCategory] = useState(second)
-
   return (
-    <section id="shop" className="py-[128px] px-12 min-h-[100dvh] bg-bridal-health mb-[100dvh]">
-      <h2 className="text-4xl uppercase">Shop Westend</h2>
-      <div className="mt-24 w-full flex justify-between gap-20">
-        <div className="flex flex-col gap-36 items-start">
-          <button className="text-5xl uppercase whitespace-nowrap">
-            Merchendise <span className="text-xl">04</span>
-          </button>
-          <button className="text-5xl uppercase whitespace-nowrap">
-            Project files <span className="text-xl">04</span>
-          </button>
-          <button className="text-5xl uppercase whitespace-nowrap">
-            Other <span className="text-xl">04</span>
-          </button>
-        </div>
-        <div className="flex gap-8 flex-wrap">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
+    <section
+      id="shop"
+      className="px-4 py-16 lg:py-[128px] lg:px-12 min-h-[100dvh] bg-bridal-health mb-[100dvh]"
+    >
+      <h2 className="text-xl lg:text-4xl uppercase">Shop Westend</h2>
+      <div className="flex gap-8 flex-wrap mt-8 lg:mt-16">
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </div>
     </section>
   );

@@ -45,7 +45,7 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
     <div
       ref={menuRef}
       id="menu"
-      className={`flex flex-col gap-12 bg-trace-ash text-bridal-health px-12 py-8 z-20 fixed w-full transition-all duration-700 ${
+      className={`flex flex-col gap-12 bg-trace-ash text-bridal-health p-4 lg:px-12 lg:py-8 z-20 fixed w-full transition-all duration-700 ${
         menuToggle ? "menu-open" : "menu-closed"
       }`}
     >
@@ -58,12 +58,12 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
           Close
         </button>
       </div>
-      <div className="flex w-full justify-between">
-        <div className="w-[500px] h-[400px] rounded-md object-cover object-center overflow-hidden flex items-center justify-center">
+      <div className="flex flex-col-reverse gap-12 lg:gap-0 lg:flex-row w-full justify-between">
+        <div className="w-[90%] h-[200px] lg:w-[500px] lg:h-[400px] rounded-md object-cover object-center overflow-hidden flex items-center justify-center">
           <Image src={menuImg} height={400} width={500} alt="Westend Live" />
         </div>
-        <div className="flex gap-12">
-          <div className="flex flex-col gap-4 text-2xl">
+        <div className="flex justify-between lg:flex-start lg:gap-12">
+          <div className="flex flex-col gap-4 text-base lg:text-2xl">
             <p className="text-swiss-coffee">Sitemap</p>
             <nav>
               <ul className="flex flex-col gap-2">
@@ -112,7 +112,7 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
               </ul>
             </nav>
           </div>
-          <div className="flex flex-col gap-4 text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-2xl">
             <p className="text-swiss-coffee">Connect</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">
@@ -159,7 +159,7 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
               </li>
             </ul>
           </div>
-          <div className="flex flex-col gap-4 text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-2xl">
             <p className="text-swiss-coffee">Platforms</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">
@@ -189,10 +189,13 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
       </div>
       <div className="menu-footer tracking-wider">
         <div className="w-full border border-b-bridal-health"></div>
-        <div className="flex w-full justify-between font-light tracking-wider mt-8">
-          <p>New York – New York</p>
-          <div className="flex gap-16">
-            <a href="mailto: itsthewestend@gmail.com">
+        <div className="flex w-full justify-between font-light tracking-wider mt-6 mb-2 lg:mb-0 lg:mt-8">
+          <p className="hidden lg:flex">New York – New York</p>
+          <div className="flex gap-4 lg:gap-16">
+            <a
+              className="hidden lg:flex"
+              href="mailto: itsthewestend@gmail.com"
+            >
               itsthewestend@gmail.com
             </a>
             <a

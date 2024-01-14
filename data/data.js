@@ -24,7 +24,7 @@ export const sets = [
     name: "Hard Rock",
     location: "San Diego",
     description:
-      "Get ready to be captivated by the latest addition to Selected Sessions: Aaron Hibell. With an infectious energy and a rapidly expanding social media presence, Aaron Hibell masterfully curates a dynamic fusion of House, Trance, and Techno. Immerse yourself in a cinematic journey as he takes center stage in front of the iconic church in Reykjavik, Iceland.",
+      "My two hour DJ set from a lovely summer sunday in sunny San Diego. Starting in the evening sun and finishing with a lively night.",
     video: "/assets/set1.mp4",
     url: "https://www.youtube.com/watch?v=C5w3veGcSIk&t=402s&pp=ygUQd2VzdGVuZCBicm9va2x5bg%3D%3D",
   },
@@ -32,15 +32,15 @@ export const sets = [
     name: "Outside Lands",
     location: "San Francisco",
     description:
-      "We’re delighted to bring you the latest instalment in our on-going Selected Sessions series, courtesy of the one and only Dom Dolla! One of the most industrious artists to emerge onto the international electronic music scene over the past few years, Dom Dolla’s rise to stardom has been nothing short of meteoric.",
+      "Short but sweet set in Golden Gate Park. The crowd had me hyped up.",
     video: "/assets/set2.mp4",
     url: "https://www.youtube.com/watch?v=N1hLMBw_wpI&t=2171s",
   },
   {
     name: "Rayo Verde",
-    location: "Rayo Verde",
+    location: "Costa Rica",
     description:
-      "This Session takes place in the deep south of Iceland, surrounded by hundreds of miles of black sand and mountains. We were hours from civilisation, exposed to the raw elements with nothing but each other and the breathtaking nature that surrounded us.",
+      "I have been coming to this beautiful town on the tip of the Nicoya Peninsula in Costa Rica for 3 years. This year I finally got the chances to film a DJ set from our incredible beachside villa in Playa Hermosa, Santa Teresa. I hope you get to experience some of the magic of this beautiful place.",
     video: "/assets/set3.mp4",
     url: "https://www.youtube.com/watch?v=zX-sD_lnmKg&t=302s",
   },
@@ -48,7 +48,7 @@ export const sets = [
     name: "Superior Ingredients",
     location: "New York",
     description:
-      "It has been a long journey, but we’re finally here. It is an absolute honour for us to present our first ever Selected Session with Gorgon City, as part of this brand new event series bringing together music, culture and creative output in unique locations across the world.",
+      "This is the full live set from my first ever headline in my hometown New York City. It felt like the biggest full circle moment of my career playing too with all my best friends and family surrounding me.",
     video: "/assets/set4.mp4",
     url: "https://youtu.be/ncMhjnSjcNM?si=FqG_-59PS1-5oxAk",
   },
@@ -56,52 +56,37 @@ export const sets = [
 
 export const publications = [
   {
-    name: "How Westend Continues to Evolve",
+    name: "Pushing Beyond Tech House",
     year: 2023,
     url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
   },
   {
-    name: "How Westend Continues to Evolve",
+    name: "Westend Drops Tech House Heater ‘Dive In’",
     year: 2023,
-    url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
+    url: "https://www.forbes.com/sites/lisakocay/2023/09/29/westend-drops-tech-house-heater-dive-in/?sh=51a30e7112e2",
   },
   {
-    name: "How Westend Continues to Evolve",
+    name: "Get To Know Westend In 5 Tracks",
     year: 2023,
-    url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
+    url: "https://grayarea.co/academy/get-to-know-westend-in-5-tracks",
   },
   {
-    name: "How Westend Continues to Evolve",
-    year: 2023,
-    url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
-  },
-  {
-    name: "How Westend Continues to Evolve",
-    year: 2023,
-    url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
+    name: "Get To Know: Westend",
+    year: 2019,
+    url: "https://djmag.com/content/get-know-westend",
   },
 ];
 
 export const awards = [
   {
-    name: "How Westend Continues to Evolve",
+    name: "Beatport Insider 2023",
     year: 2023,
-    url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
+    url: "https://www.beatportal.com/news/beatport-insider-2023-top-selling-tracks-artists-and-labels-of-the-year/",
   },
   {
-    name: "How Westend Continues to Evolve",
-    year: 2023,
-    url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
-  },
-  {
-    name: "How Westend Continues to Evolve",
-    year: 2023,
-    url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
-  },
-  {
-    name: "How Westend Continues to Evolve",
-    year: 2023,
-    url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
+    name: "Beatport Number 1 with “Let Me Take You”",
+    year: 2022,
+    url: "https://www.beatportal.com/news/cid-westend-beatport-number-1-let-me-take-you/",
   },
 ];
 

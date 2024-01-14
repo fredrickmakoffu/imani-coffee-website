@@ -5,11 +5,11 @@ function Footer() {
   return (
     <footer
       id="footer"
-      className="min-h-[100dvh] max-w-full flex flex-col justify-between bg-trace-ash text-bridal-health px-12 pt-28 fixed bottom-0 z-[1]"
+      className="min-h-[100dvh] max-w-full flex flex-col justify-between bg-trace-ash text-bridal-health p-4 lg:px-12 lg:pt-28 fixed bottom-0 z-[1]"
     >
-      <div className="flex w-full justify-between">
+      <div className="flex gap-8 lg:gap-0 flex-col-reverse lg:flex-row w-full justify-between mt-20 lg:mt-0">
         <div className="flex gap-12">
-          <div className="flex flex-col gap-4 text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-2xl">
             <p className="text-swiss-coffee">Sitemap</p>
             <nav>
               <ul className="flex flex-col gap-2">
@@ -44,7 +44,7 @@ function Footer() {
               </ul>
             </nav>
           </div>
-          <div className="flex flex-col gap-4 text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-2xl">
             <p className="text-swiss-coffee">Connect</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">
@@ -94,7 +94,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className="flex flex-col gap-4 text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-2xl">
             <p className="text-swiss-coffee">Platforms</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">
@@ -121,19 +121,25 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <Link href="#home" className="text-2xl">
+        <Link href="#home" className="text-base lg:text-2xl">
           Back To Top
         </Link>
       </div>
       <div className="flex flex-col gap-8">
-        <label htmlFor="westend" className="text-[24.5dvw] leading-[80%] pointer-events-none">
+        <label
+          htmlFor="westend"
+          className="text-[24.5dvw] leading-[80%] pointer-events-none"
+        >
           Westend
         </label>
         <div className="w-full border border-b-bridal-health"></div>
-        <div className="flex w-full justify-between font-light tracking-wider mb-6">
-          <p>New York – New York</p>
-          <div className="flex gap-16">
-            <a href="mailto: itsthewestend@gmail.com">
+        <div className="flex w-full justify-between font-light tracking-wider mb-6 ">
+          <p className="hidden lg:flex">New York – New York</p>
+          <div className="flex gap-4 lg:gap-16">
+            <a
+              className="hidden lg:flex"
+              href="mailto: itsthewestend@gmail.com"
+            >
               itsthewestend@gmail.com
             </a>
             <a

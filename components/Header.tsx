@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <div id="header">
-      <div className="flex justify-between w-full px-12 py-8 fixed top-0 z-20">
+      <div className="flex justify-between w-full p-4 lg:px-12 lg:py-8 fixed top-0 z-20">
         <Link
           href="/"
           className="uppercase text-bridal-health mix-blend-color-burn tracking-wider"

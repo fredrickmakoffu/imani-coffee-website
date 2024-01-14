@@ -57,7 +57,7 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-[100dvh] bg-trace-ash text-bridal-health flex flex-col justify-center px-12 py-40 relative"
+      className="min-h-[100dvh] bg-trace-ash text-bridal-health flex flex-col justify-center px-4 py-32 lg:px-12 lg:py-40 relative"
     >
       <div className="mask">
         <h2 className="text-[8.5dvw] leading-[1] uppercase h21">Concrete</h2>
@@ -65,7 +65,7 @@ function About() {
       <div className="mask">
         <h2 className="text-[8.5dvw] leading-[1] uppercase ml-[18%] h22">
           Foundati<span className="hidden">o</span>
-          <span>
+          <span className="lg:w-[96px] lg:h-[96px]">
             <Image
               src={circleIcon}
               height={96}
@@ -73,29 +73,34 @@ function About() {
               priority
               arria-hidden="true"
               alt="O icon"
-              className="inline -translate-y-3 h22"
+              className="hidden lg:inline -translate-y-3 h22"
             />
+            <span className="inline lg:hidden">O</span>
           </span>
           n
         </h2>
       </div>
-      <div className="ml-[18%] flex gap-8">
-        <div className="w-[1100px] h-[300px] mt-4 overflow-hidden flex justify-center items-center">
+      <div className="mask ml-[45%] lg:hidden flex">
+        <h2 className="text-[8.5dvw] leading-[1] uppercase">For Music</h2>
+      </div>
+      <div className="lg:ml-[18%] flex flex-col lg:flex-row gap-8">
+        <div className="w-full h-[250px] lg:w-[1100px] lg:h-[300px] mt-4 overflow-hidden flex justify-center items-center rounded">
           <Image src={aboutImg} height={300} width={1100} alt="Tyler Morris" />
         </div>
         <div className="flex flex-col gap-8">
-          <div className="mask">
+          <div className="mask hidden lg:flex">
             <h2 className="text-[8.5dvw] leading-[1] uppercase h23">
               For Music
             </h2>
           </div>
           <div className="flex flex-col gap-8 ml-2 ">
-            <p className="text-base w-[70%] bio">
-              Lorem ipsum dolor sit amet consectetur. Mauris arcu magna
-              suspendisse est interdum sed sit vel mi. Nulla tempor scelerisque
-              vel at tristique senectus sit. Lectus condimentum pellentesque
-              elementum odio sit rhoncus ut. Aliquet cras in nulla et integer
-              condimentum malesuada.
+            <p className="text-base w-full lg:w-[70%] bio">
+              New Yorker Westend bursted into the tech house scene in 2016,
+              bringina new era of produers keen on changing the musical
+              landscape of house and techno. Since his debut, each year that
+              passes is a ‘career-defining' one. He makes the most of everything
+              that comes his way, showcasing his versatility and passion in
+              anything he does.
             </p>
             <Link
               href="#music"
@@ -112,7 +117,7 @@ function About() {
         alt="Urchin Icon"
         width={96}
         height={96}
-        className="absolute left-[80%] top-36 spin"
+        className="absolute left-[80%] top-36 spin hidden lg:flex"
       />
 
       <Image
@@ -120,7 +125,7 @@ function About() {
         alt="Tubular Icon"
         width={96}
         height={96}
-        className="absolute left-[5%] bottom-[27%] spin"
+        className="absolute left-[5%] bottom-[27%] spin hidden lg:flex"
       />
 
       <Image
@@ -128,7 +133,7 @@ function About() {
         alt="flower Icon"
         width={96}
         height={96}
-        className="absolute left-[85%] bottom-28 spin"
+        className="absolute left-[85%] bottom-28 spin hidden lg:flex"
       />
     </section>
   );

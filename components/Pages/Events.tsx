@@ -21,17 +21,26 @@ type EventCardProps = {
 
 function EventCard({ date, venue, location, url }: EventCardProps) {
   return (
-    <li className="event-card py-8 border-b-trace-ash border-b-[1px] w-full transition-all duration-300 hover:bg-swiss-coffee hover:px-4 relative">
-      <a href={url} target="_blank" className="flex justify-between">
-        <p className="text-xl uppercase">{date}</p>
-        <p className="text-xl uppercase">{venue}</p>
-        <p className="text-xl uppercase">{location}</p>
-        <div className="event-img absolute w-[380px] h-[420px] object-cover object-center ml-[60%] transition-all duration-300 cursor-pointer hidden ">
-          <Image src={eventImg} alt={venue} fill className=" rounded-md" />
-        </div>
-        <div className="flex gap-2 items-center">
-          <p className="text-xl uppercase">Tickets</p>
-          <HiMiniArrowUpRight color={"#0F0F0F"} size={28} />
+    <li className="event-card py-4 lg:py-8 border-b-trace-ash border-b-[1px] w-full transition-all duration-300 hover:bg-swiss-coffee hover:px-4 relative">
+      <a href={url} target="_blank" className="flex items-center">
+        <p className="text-sm lg:text-xl uppercase w-[20%]">{date}</p>
+        <div className="flex justify-between items-center w-full">
+          <p className="text-sm lg:text-xl uppercase">{venue}</p>
+          <p className="text-sm lg:text-xl uppercase">{location}</p>
+          <div className="event-img absolute w-[340px] h-[380px] object-cover object-center ml-[45%] transition-all duration-300 cursor-pointer hidden z-10">
+            <Image
+              src={eventImg}
+              alt={venue}
+              fill
+              className="hidden lg:flex rounded-md"
+            />
+          </div>
+          <div className="flex gap-2 items-center">
+            <p className="text-sm lg:text-xl uppercase hidden lg:flex">
+              Tickets
+            </p>
+            <HiMiniArrowUpRight color={"#0F0F0F"} size={28} />
+          </div>
         </div>
       </a>
     </li>
@@ -41,60 +50,52 @@ function EventCard({ date, venue, location, url }: EventCardProps) {
 function Events() {
   const headerText1 = useRef(null);
   const headerText2 = useRef(null);
-  const slider = useRef(null);
-  let xPercent = 0;
-  let direction = -1;
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    requestAnimationFrame(animation);
 
-    gsap.to(slider.current, {
+    gsap.to(headerText1.current, {
       scrollTrigger: {
-        trigger: document.documentElement,
-        start: 0,
-        end: window.innerHeight,
+        trigger: headerText1.current,
+        start: "top 70%",
+        end: "top 30%",
         scrub: 0.25,
-        onUpdate: (e) => (direction = e.direction * -1),
       },
-      x: "-=300px",
+      xPercent: 30,
+      yPercent: -30,
+    });
+    gsap.to(headerText2.current, {
+      scrollTrigger: {
+        trigger: headerText2.current,
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 0.25,
+      },
+      xPercent: -30,
+      yPercent: 30,
     });
   }, []);
 
-  const animation = () => {
-    if (xPercent <= -114) {
-      xPercent = 0;
-    }
-    if (xPercent > 0) {
-      xPercent = -100;
-    }
-    gsap.set(headerText1.current, { xPercent: xPercent });
-    gsap.set(headerText2.current, { xPercent: xPercent });
-    xPercent += 0.04 * direction;
-    requestAnimationFrame(animation);
-  };
-
   return (
-    <section id="events" className="py-20 px-12 overflow-hidden bg-bridal-health">
-      <div className="slider-container">
-        <div ref={slider} className="slider">
-          <h2 ref={headerText1} className="text-[144px] uppercase ">
-            <span>Tours</span>
-            <Image src={flower} alt="spinning_flower" />
-            <span>Events</span>
-            <Image src={flower} alt="spinning_flower" />
-            <span>Memories</span>
-          </h2>
-          <h2 ref={headerText2} className="text-[144px] uppercase ">
-            <span>Tours</span>
-            <Image src={flower} alt="spinning_flower" />
-            <span>Events</span>
-            <Image src={flower} alt="spinning_flower" />
-            <span>Memories</span>
-          </h2>
-        </div>
+    <section
+      id="events"
+      className="p-4 pb-16 lg:py-16 lg:px-12 overflow-hidden bg-bridal-health"
+    >
+      <div className="relative">
+        <h2
+          ref={headerText1}
+          className="text-[11dvw] font-semibold absolute uppercase "
+        >
+          Tours /
+        </h2>
+        <h2
+          ref={headerText2}
+          className="text-[11dvw] font-semibold absolute right-0 uppercase"
+        >
+          Events
+        </h2>
       </div>
-      <div className="flex flex-col mt-60">
+      <div className="flex flex-col mt-28 lg:mt-80">
         <ul>
           {events.map((event, index) => (
             <EventCard

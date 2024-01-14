@@ -21,13 +21,13 @@ function MusicCard({ name, year, url, img }: MusicCardProps) {
     <a
       href={url}
       target="_blank"
-      className="w-full h-[520px] bg-[#FBF5EF] rounded-md flex justify-center items-center relative"
+      className="w-full h-[450px] lg:h-[520px] bg-[#FBF5EF] rounded-md flex justify-center items-center relative"
     >
       <div className="relative">
-        <div className="absolute z-[2] w-[300px] h-[300px] rounded-md object-center object-cover overflow-hidden flex items-center justify-center transition-all duration-500 album-cover">
-          <Image src={img} height={300} width={300} alt="song_name" />
+        <div className="absolute z-[2] w-[250px] h-[250px] lg:w-[300px]  lg:h-[300px] rounded-md object-center object-cover overflow-hidden flex items-center justify-center transition-all duration-500 album-cover">
+          <Image src={img} height={300} width={300} alt={name} />
         </div>
-        <div className="w-[300px] h-[300px] rounded-full object-center object-cover overflow-hidden flex items-center justify-center transition-all duration-500 album-cover-round">
+        <div className="w-[250px] h-[250px] lg:w-[300px]  lg:h-[300px] rounded-full object-center object-cover overflow-hidden flex items-center justify-center transition-all duration-500 album-cover-round">
           <Image
             src={img}
             height={300}
@@ -82,16 +82,16 @@ function Music() {
   };
 
   return (
-    <section id="music" className="py-20 px-12 bg-bridal-health">
+    <section id="music" className="px-4 py-20 lg:py-20 lg:px-12 bg-bridal-health">
       <div className="slider-container">
         <div ref={slider} className="slider">
-          <h2 ref={headerText1} className="text-[144px] uppercase">
+          <h2 ref={headerText1} className="text-6xl lg:text-[144px] uppercase">
             <span className="whitespace-nowrap">New Music</span>
             <Image src={circleIcon} alt="circle icon" />
             <span className="whitespace-nowrap">New Releases</span>
             <Image src={circleIcon} alt="circle icon" />
           </h2>
-          <h2 ref={headerText2} className="text-[144px] uppercase">
+          <h2 ref={headerText2} className="text-6xl lg:text-[144px] uppercase">
             <span className="whitespace-nowrap">New Music</span>
             <Image src={circleIcon} alt="circle icon" />
             <span className="whitespace-nowrap">New Releases</span>
@@ -99,7 +99,7 @@ function Music() {
           </h2>
         </div>
       </div>
-      <div className="flex mt-80 justify-between gap-8">
+      <div className="flex flex-col lg:flex-row mt-32 lg:mt-80 justify-between gap-8">
         {songs.map((song, index) => (
           <MusicCard
             key={index}

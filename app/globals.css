@@ -11,13 +11,16 @@
 
 html,
 body {
-  font-family: "helvetica Neue";
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
 section {
   position: relative;
   z-index: 10;
+}
+h1 {
+  font-size: clamp(48px, 6dvw, 144px);
 }
 .menu-closed {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -71,4 +74,13 @@ section {
 .slider h2:nth-of-type(2) {
   position: absolute;
   left: 114%;
+}
+
+@media screen and (max-width: 768px) {
+  .slider h2 {
+    gap: 1rem;
+  }
+  .slider h2:nth-of-type(2) {
+    left: 116%;
+  }
 }

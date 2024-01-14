@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -14,37 +13,37 @@ function Hero() {
   return (
     <section id="hero" className="h-[100dvh] w-full">
       <video
-        src="/assets/HeroBackground.mp4"
+        src="/assets/set1.mp4"
         autoPlay
         loop
         muted
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover pointer-events-none"
       />
-      <div className="flex flex-col absolute w-full h-full top-0 items-center justify-center gap-6">
+      <div className="flex flex-col absolute w-full h-full top-0 items-center justify-center gap-4 lg:gap-6">
         <div className="mask">
-          <h1 className="text-bridal-health uppercase text-8xl font-bold name">
+          <h1 className="text-bridal-health uppercase font-bold name leading-[80%]">
             Westend
           </h1>
         </div>
         <div className="flex gap-8">
           <div className="mask">
-            <p className="text-bridal-health uppercase tracking-wider description">
+            <p className="text-sm lg:text-base text-bridal-health uppercase tracking-wider description">
               DJ + Music Producer
             </p>
           </div>
-          <div className="mask">
-            <p className="text-bridal-health uppercase tracking-wider description">
+          <div className="mask hidden lg:flex">
+            <p className="lg:text-base text-bridal-health uppercase tracking-wider description">
               2016 - Present
             </p>
           </div>
-          <div className="mask">
-            <p className="text-bridal-health uppercase tracking-wider description">
+          <div className="mask hidden lg:flex">
+            <p className="lg:text-base text-bridal-health uppercase tracking-wider description">
               New York, New York
             </p>
           </div>
         </div>
       </div>
-      <div className="flex justify-between w-full px-12 py-8 absolute bottom-0">
+      <div className="flex justify-between w-full p-4 lg:px-12 lg:py-8 absolute bottom-0">
         <p className="text-bridal-health uppercase font-semibold tracking-wider">
           Scroll
         </p>

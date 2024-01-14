@@ -99,8 +99,9 @@ function Awards() {
           src="/assets/westendInterview.mp4"
           autoPlay
           loop
+          playsInline
           muted
-          className="w-full h-[200px] lg:w-[590px] lg:h-[330px] object-cover rounded lg:rounded-md"
+          className="w-full h-[200px] lg:w-[590px] lg:h-[330px] object-cover rounded lg:rounded-md outline-0"
         />
         <div className="flex flex-col">
           <div className="mask">

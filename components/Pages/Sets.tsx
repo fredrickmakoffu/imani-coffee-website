@@ -123,7 +123,8 @@ function Sets() {
         autoPlay
         loop
         muted
-        className="w-full h-full object-cover object-center pointer-events-none"
+        playsInline
+        className="w-full h-full object-cover object-center pointer-events-none outline-0"
       >
         <source src={sets[currentVideoIndex].video} type="video/mp4" />
       </video>

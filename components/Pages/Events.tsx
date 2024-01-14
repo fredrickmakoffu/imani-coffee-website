@@ -79,7 +79,7 @@ function Events() {
   return (
     <section
       id="events"
-      className="p-4 pb-16 lg:py-16 lg:px-12 overflow-hidden bg-bridal-health"
+      className="p-4 lg:py-16 lg:px-12 overflow-hidden bg-bridal-health"
     >
       <div className="relative">
         <h2

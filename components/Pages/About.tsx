@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
@@ -12,30 +13,44 @@ import flowerIcon from "@/public/assets/flowerSwiss.png";
 import tubularIcon from "@/public/assets/tubularIcon.png";
 
 function About() {
+  const headerRef1 = useRef(null);
+  const headerRef2 = useRef(null);
+  const headerRef3 = useRef(null);
+  const headerRef31 = useRef(null);
+
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(".h21", {
+    gsap.from(headerRef1.current, {
       scrollTrigger: {
-        trigger: ".h21",
+        trigger: headerRef1.current,
         start: "top 100%",
         end: "top 80%",
         scrub: true,
       },
       y: "100%",
     });
-    gsap.from(".h22", {
+    gsap.from(headerRef2.current, {
       scrollTrigger: {
-        trigger: ".h22",
+        trigger: headerRef2.current,
         start: "top 100%",
         end: "top 70%",
         scrub: true,
       },
       y: "100%",
     });
-    gsap.from(".h23", {
+    gsap.from(headerRef3.current, {
       scrollTrigger: {
-        trigger: ".h23",
+        trigger: headerRef3.current,
+        start: "top 100%",
+        end: "top 60%",
+        scrub: true,
+      },
+      y: "100%",
+    });
+    gsap.from(headerRef31.current, {
+      scrollTrigger: {
+        trigger: headerRef31.current,
         start: "top 100%",
         end: "top 60%",
         scrub: true,
@@ -60,10 +75,15 @@ function About() {
       className="min-h-[100dvh] bg-trace-ash text-bridal-health flex flex-col justify-center px-4 py-32 lg:px-12 lg:py-40 relative"
     >
       <div className="mask">
-        <h2 className="text-[8.5dvw] leading-[1] uppercase h21">Concrete</h2>
+        <h2 ref={headerRef1} className="text-[8.5dvw] leading-[1] uppercase">
+          Concrete
+        </h2>
       </div>
       <div className="mask">
-        <h2 className="text-[8.5dvw] leading-[1] uppercase ml-[18%] h22">
+        <h2
+          ref={headerRef2}
+          className="text-[8.5dvw] leading-[1] uppercase ml-[18%]"
+        >
           Foundati<span className="hidden">o</span>
           <span className="lg:w-[96px] lg:h-[96px]">
             <Image
@@ -81,7 +101,9 @@ function About() {
         </h2>
       </div>
       <div className="mask ml-[45%] lg:hidden flex">
-        <h2 className="text-[8.5dvw] leading-[1] uppercase">For Music</h2>
+        <h2 ref={headerRef31} className="text-[8.5dvw] leading-[1] uppercase">
+          For Music
+        </h2>
       </div>
       <div className="lg:ml-[18%] flex flex-col lg:flex-row gap-8">
         <div className="w-full h-[250px] lg:w-[1100px] lg:h-[300px] mt-4 overflow-hidden flex justify-center items-center rounded">
@@ -89,7 +111,10 @@ function About() {
         </div>
         <div className="flex flex-col gap-8">
           <div className="mask hidden lg:flex">
-            <h2 className="text-[8.5dvw] leading-[1] uppercase h23">
+            <h2
+              ref={headerRef3}
+              className="text-[8.5dvw] leading-[1] uppercase"
+            >
               For Music
             </h2>
           </div>

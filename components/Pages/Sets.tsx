@@ -42,7 +42,9 @@ function Sets() {
         <div className="flex flex-col">
           <div className="flex justify-between px-12 ">
             <div className="flex flex-col gap-8">
-              <p className="hidden lg:flex w-[400px]">{sets[currentVideoIndex].description}</p>
+              <p className="hidden lg:flex w-[400px]">
+                {sets[currentVideoIndex].description}
+              </p>
               <a
                 href={sets[currentVideoIndex].url}
                 target="_blank"
@@ -118,12 +120,13 @@ function Sets() {
         </div>
       </div>
       <video
-        src={sets[currentVideoIndex].video}
         autoPlay
         loop
         muted
         className="w-full h-full object-cover object-center pointer-events-none"
-      />
+      >
+        <source src={sets[currentVideoIndex].video} type="video/mp4" />
+      </video>
     </section>
   );
 }

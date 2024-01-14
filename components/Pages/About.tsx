@@ -98,7 +98,7 @@ function About() {
               New Yorker Westend bursted into the tech house scene in 2016,
               bringina new era of produers keen on changing the musical
               landscape of house and techno. Since his debut, each year that
-              passes is a ‘career-defining' one. He makes the most of everything
+              passes is a career-defining one. He makes the most of everything
               that comes his way, showcasing his versatility and passion in
               anything he does.
             </p>

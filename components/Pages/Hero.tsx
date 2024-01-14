@@ -11,7 +11,7 @@ function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="h-[100dvh] w-full">
+    <section id="hero" className="h-[100dvh] w-full bg-trace-ash">
       <video
         src="/assets/set1.mp4"
         autoPlay

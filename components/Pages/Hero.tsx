@@ -17,6 +17,7 @@ function Hero() {
         autoPlay
         loop
         muted
+        playsInline
         className="w-full h-full object-cover pointer-events-none"
       />
       <div className="flex flex-col absolute w-full h-full top-0 items-center justify-center gap-4 lg:gap-6">

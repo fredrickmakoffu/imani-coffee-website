@@ -121,7 +121,7 @@ function About() {
           <div className="flex flex-col gap-8 ml-2 ">
             <p className="text-base w-full lg:w-[70%] bio">
               New Yorker Westend bursted into the tech house scene in 2016,
-              bringina new era of produers keen on changing the musical
+              bringing in a new era of produers keen on changing the musical
               landscape of house and techno. Since his debut, each year that
               passes is a career-defining one. He makes the most of everything
               that comes his way, showcasing his versatility and passion in

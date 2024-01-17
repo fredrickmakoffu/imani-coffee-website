@@ -1,0 +1,39 @@
+{
+  "id": "song_card",
+  "label": "Song Card",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
+      },
+      "year": {
+        "type": "Text",
+        "config": {
+          "label": "Year",
+          "placeholder": ""
+        }
+      },
+      "cover_art": {
+        "type": "Image",
+        "config": {
+          "label": "Cover Art",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

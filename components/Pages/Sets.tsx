@@ -27,96 +27,47 @@ function Sets() {
       id="sets"
       className="h-[80dvh] lg:h-[100dvh] bg-trace-ash text-bridal-health relative"
     >
-      <div className="h-full flex flex-col justify-between w-full p-4 lg:p-12 absolute">
-        <div className="absolute left-[50%] translate-x-[-50%] flex gap-4 items-center">
+      <div className="h-full w-full flex flex-col justify-between p-8 absolute">
+        <div className="flex w-full justify-center gap-4 items-center">
           <p className="uppercase text-md tracking-wide">Live</p>
           <Image src={gridIcon} alt="photo_frame" height={20} width={20} />
           <p className="uppercase text-md tracking-wide">Sets</p>
         </div>
 
-        <div className="flex justify-between items-start">
-          <Image src={frame1} alt="photo_frame" height={48} width={48} />
-          <Image src={frame2} alt="photo_frame" height={48} width={48} />
-        </div>
-
-        <div className="flex flex-col">
-          <div className="flex justify-between px-12 ">
-            <div className="flex flex-col gap-8">
-              <p className="hidden lg:flex w-[400px]">
-                {sets[currentVideoIndex].description}
+        <div className="flex justify-between w-full">
+          <div className="flex flex-col gap-12">
+            <div>
+              <label
+                htmlFor="location"
+                className="uppercase text-sm tracking-wide"
+              >
+                Location
+              </label>
+              <p className="uppercase tracking-wide">
+                {sets[currentVideoIndex].location}
               </p>
-              <a
-                href={sets[currentVideoIndex].url}
-                target="_blank"
-                className="text-[11px] tracking-wide uppercase underline"
-              >
-                Watch on Youtube
-              </a>
             </div>
-            <div className="flex flex-col gap-3 w-[20%] items-end">
-              <button
-                className={`text-[11px] tracking-wide uppercase underline ${
-                  currentVideoIndex === 0
-                    ? "text-bridal-health "
-                    : "text-swiss-coffee"
-                }`}
-                onClick={() => setCurrentVideoIndex(0)}
-              >
-                Hard Rock
-              </button>
-              <button
-                className={`text-[11px] tracking-wide uppercase underline ${
-                  currentVideoIndex === 1
-                    ? "text-bridal-health "
-                    : "text-swiss-coffee"
-                }`}
-                onClick={() => setCurrentVideoIndex(1)}
-              >
-                Outside Lands
-              </button>
-              <button
-                className={`text-[11px] tracking-wide uppercase underline ${
-                  currentVideoIndex === 2
-                    ? "text-bridal-health "
-                    : "text-swiss-coffee"
-                }`}
-                onClick={() => setCurrentVideoIndex(2)}
-              >
-                Rayo Verde
-              </button>
-              <button
-                className={`text-[11px] tracking-wide uppercase underline ${
-                  currentVideoIndex === 3
-                    ? "text-bridal-health "
-                    : "text-swiss-coffee"
-                }`}
-                onClick={() => setCurrentVideoIndex(3)}
-              >
-                Superior Ingredients
-              </button>
+            <div className="flex gap-4">
+              {sets.map((set, index) => (
+                <button
+                  key={index}
+                  className={`text-[11px] tracking-wide uppercase underline ${
+                    currentVideoIndex === index
+                      ? "text-bridal-health "
+                      : "text-swiss-coffee"
+                  }`}
+                  onClick={() => setCurrentVideoIndex(index)}
+                >
+                  {set.name}
+                </button>
+              ))}
             </div>
           </div>
-
-          <div className="flex justify-between items-end">
-            <Image src={frame4} alt="photo_frame" height={48} width={48} />
-            <Image src={frame3} alt="photo_frame" height={48} width={48} />
+          <div className="flex flex-col gap-12">
+            <p className="w-[35%]">{sets[currentVideoIndex].description}</p>
+            
           </div>
-        </div>
 
-        <div className="absolute left-[50%] translate-x-[-50%] bottom-12 flex gap-4 items-center">
-          <p className="uppercase text-md tracking-wide">
-            {sets[currentVideoIndex].name}
-          </p>
-          <Image
-            src={flowerIcon}
-            alt="photo_frame"
-            className=""
-            height={20}
-            width={20}
-          />
-          <p className="uppercase text-md tracking-wide">
-            {sets[currentVideoIndex].location}
-          </p>
         </div>
       </div>
       <video
@@ -124,10 +75,9 @@ function Sets() {
         loop
         muted
         playsInline
+        src={sets[currentVideoIndex].video}
         className="w-full h-full object-cover object-center pointer-events-none outline-0"
-      >
-        <source src={sets[currentVideoIndex].video} type="video/mp4" />
-      </video>
+      />
     </section>
   );
 }

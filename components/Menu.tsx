@@ -50,9 +50,9 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
       }`}
     >
       <div className="menu-nav flex justify-between w-full">
-        <p className="uppercase tracking-wider">Westend</p>
+        <p className="uppercase tracking-wide">Westend</p>
         <button
-          className="uppercase tracking-wider"
+          className="uppercase tracking-wide"
           onClick={() => setMenuToggle(false)}
         >
           Close

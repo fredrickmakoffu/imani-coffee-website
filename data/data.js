@@ -146,3 +146,20 @@ export const events = [
     url: "https://www.itsthewestend.com/home#upcoming",
   },
 ];
+
+export const products = [
+  {
+    type: "project file",
+    name: "Tech House Project File 1",
+    description:
+      "Includes the Ableton project file and samples stemming from a one-hour track production session. This composition incorporates vocals from Splice, along with elements such as drums, bass, synths, automation, FX techniques, and a well-crafted track arrangement.",
+    price: 10,
+  },
+  {
+    type: "project file",
+    name: "Tech House Project File 2",
+    description:
+      "Includes the Ableton project file and samples stemming from a one-hour track production session. This composition incorporates vocals from Splice, along with elements such as drums, bass, synths, automation, FX techniques, and a well-crafted track arrangement.",
+    price: 10,
+  },
+];

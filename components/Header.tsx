@@ -13,13 +13,13 @@ export default function Header() {
       <div className="flex justify-between w-full p-4 lg:px-12 lg:py-8 fixed top-0 z-20">
         <Link
           href="/"
-          className="uppercase text-bridal-health mix-blend-color-burn tracking-wider"
+          className="uppercase text-bridal-health mix-blend-color-burn tracking-wide"
         >
           Westend
         </Link>
         <nav>
           <button
-            className="uppercase text-bridal-health mix-blend-color-burn tracking-wider"
+            className="uppercase text-bridal-health mix-blend-color-burn tracking-wide"
             onClick={() => setMenuToggle((prev) => !prev)}
           >
             Menu

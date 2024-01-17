@@ -6,8 +6,8 @@ export default function Home() {
       <Hero />
       <About />
       <Music />
-      <Sets />
-      <Events />
+      {/* <Sets /> */}
+      {/* <Events /> */}
       <Awards />
       <Shop />
     </main>

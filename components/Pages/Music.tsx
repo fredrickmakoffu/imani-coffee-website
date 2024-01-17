@@ -53,53 +53,64 @@ function Music() {
   let direction = -1;
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // gsap.registerPlugin(ScrollTrigger);
     requestAnimationFrame(animation);
 
-    gsap.to(slider.current, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: 0,
-        end: window.innerHeight,
-        scrub: 0.25,
-        onUpdate: (e) => (direction = e.direction * -1),
-      },
-      x: "-=300px",
-    });
+    // gsap.to(slider.current, {
+    //   scrollTrigger: {
+    //     trigger: document.documentElement,
+    //     start: 0,
+    //     end: window.innerHeight,
+    //     scrub: 0.25,
+    //     onUpdate: (e) => (direction = e.direction * -1),
+    //   },
+    //   x: "-=300px",
+    // });
   }, []);
 
   const animation = () => {
-    if (xPercent <= -114) {
+    if (xPercent <= -100) {
       xPercent = 0;
     }
-    if (xPercent > 0) {
-      xPercent = -100;
-    }
+    // if (xPercent > 0) {
+    //   xPercent = -100;
+    // }
     gsap.set(headerText1.current, { xPercent: xPercent });
     gsap.set(headerText2.current, { xPercent: xPercent });
-    xPercent += 0.04 * direction;
+    xPercent += 0.05 * direction;
     requestAnimationFrame(animation);
   };
 
   return (
-    <section id="music" className="px-4 py-20 lg:py-20 lg:px-12 bg-bridal-health">
+    <section
+      id="music"
+      className="px-4 py-20 lg:py-20 lg:px-12 bg-bridal-health"
+    >
       <div className="slider-container">
         <div ref={slider} className="slider">
-          <h2 ref={headerText1} className="text-6xl lg:text-[144px] uppercase">
+          <h2 ref={headerText1} className="text-6xl lg:text-[144px] uppercase ">
             <span className="whitespace-nowrap">New Music</span>
-            <Image src={circleIcon} alt="circle icon" />
+            <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
+              <Image src={circleIcon} alt="circle icon" fill />
+            </div>
             <span className="whitespace-nowrap">New Releases</span>
-            <Image src={circleIcon} alt="circle icon" />
+            <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
+              <Image src={circleIcon} alt="circle icon" fill />
+            </div>
           </h2>
           <h2 ref={headerText2} className="text-6xl lg:text-[144px] uppercase">
             <span className="whitespace-nowrap">New Music</span>
-            <Image src={circleIcon} alt="circle icon" />
+            <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
+              <Image src={circleIcon} alt="circle icon" fill />
+            </div>
             <span className="whitespace-nowrap">New Releases</span>
-            <Image src={circleIcon} alt="circle icon" />
+            <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
+              <Image src={circleIcon} alt="circle icon" fill />
+            </div>
           </h2>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row mt-32 lg:mt-80 justify-between gap-8">
+      <div className="flex flex-col lg:flex-row mt-32 lg:mt-72 justify-between gap-8">
         {songs.map((song, index) => (
           <MusicCard
             key={index}

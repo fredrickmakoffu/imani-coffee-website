@@ -2,12 +2,16 @@
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
 function Hero() {
+  const ref1 = useRef(null);
+
   useGSAP(() => {
     let tl = gsap.timeline();
-    tl.from(".name", { opacity: 0, scale: 0.8 });
-    tl.from(".description", { y: 100, stagger: 0.2, ease: "power3" });
+    tl.delay(0.5);
+    tl.from(ref1.current, { y: 100, ease: "power3", duration: 1 });
+    tl.from(".description", { opacity: 0, scale: 0.9, stagger: 0.3 });
   }, []);
 
   return (
@@ -23,9 +27,14 @@ function Hero() {
       <div className="h-[100dvh] absolute top-0 w-full transition-all duration-500">
         <div className="h-full flex flex-col items-center justify-center gap-4 lg:gap-6">
           <div className="mask">
-            <h1 className="text-bridal-health uppercase font-bold name leading-[80%]">
-              Westend
-            </h1>
+            <div className="mask">
+              <h1
+                ref={ref1}
+                className="text-bridal-health uppercase font-bold  leading-[80%]"
+              >
+                Westend
+              </h1>
+            </div>
           </div>
           <div className="flex gap-8">
             <div className="mask">

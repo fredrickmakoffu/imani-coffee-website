@@ -1,7 +1,7 @@
 export const songs = [
   {
     name: "Rhythm Machine",
-    year: 2023,
+    year: 2024,
     url: "https://open.spotify.com/track/7qhYyXBbL12mPyj93PyUBb?si=58e8d5071f1044ba",
     img: "/assets/rhythmMachine.png",
   },
@@ -163,13 +163,15 @@ export const products = [
     name: "Tech House Project File 1",
     description:
       "Includes the Ableton project file and samples stemming from a one-hour track production session. This composition incorporates vocals from Splice, along with elements such as drums, bass, synths, automation, FX techniques, and a well-crafted track arrangement.",
-    price: 10,
+    price: 15,
+    url: "https://marketplace.tunebat.com/products/track-in-1-hour",
   },
   {
     type: "project file",
     name: "Tech House Project File 2",
     description:
       "Includes the Ableton project file and samples stemming from a one-hour track production session. This composition incorporates vocals from Splice, along with elements such as drums, bass, synths, automation, FX techniques, and a well-crafted track arrangement.",
-    price: 10,
+    price: 15,
+    url: "https://marketplace.tunebat.com/products/track-in-1-hour-pt-2",
   },
 ];

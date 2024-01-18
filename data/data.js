@@ -61,7 +61,7 @@ export const publications = [
     url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
   },
   {
-    name: "New York Times: Hottest Song at the Club’",
+    name: "New York Times: Hottest Song at the Club",
     year: 2023,
     url: "https://www.nytimes.com/2023/01/28/style/white-lotus-song-club-dance-theme-music.html ",
   },

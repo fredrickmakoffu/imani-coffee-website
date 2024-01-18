@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Menu, Header, Footer } from "@/components";
+import { Header, Footer } from "@/components";
 import LenisContext from "@/context/LenisContext";
 
 export const metadata: Metadata = {
@@ -17,7 +17,6 @@ export default function RootLayout({
     <LenisContext>
       <html lang="en">
         <body className="bg-bridal-health text-trace-ash">
-          {/* <Menu /> */}
           <Header />
           {children}
           <Footer />

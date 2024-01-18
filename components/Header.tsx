@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 import { Menu } from ".";
 
@@ -10,22 +10,19 @@ export default function Header() {
 
   return (
     <div id="header">
-      <div className="flex justify-between w-full p-4 lg:px-12 lg:py-8 fixed top-0 z-20">
-        <Link
-          href="/"
-          className="uppercase text-bridal-health mix-blend-color-burn tracking-wide"
-        >
-          Westend
-        </Link>
-        <nav>
-          <button
-            className="uppercase text-bridal-health mix-blend-color-burn tracking-wide"
-            onClick={() => setMenuToggle((prev) => !prev)}
-          >
-            Menu
-          </button>
-        </nav>
-      </div>
+      <Link
+        href="/"
+        className="uppercase text-bridal-health mix-blend-difference m-4 lg:mt-8 lg:ml-12 fixed top-0 z-20 tracking-wide"
+      >
+        Westend
+      </Link>
+
+      <button
+        className="uppercase text-bridal-health mix-blend-difference m-4 lg:mt-8 lg:mr-12 fixed right-0 top-0 z-20 tracking-wide"
+        onClick={() => setMenuToggle((prev) => !prev)}
+      >
+        Menu
+      </button>
 
       <Menu menuToggle={menuToggle} setMenuToggle={setMenuToggle} />
     </div>

@@ -25,59 +25,75 @@ function Sets() {
   return (
     <section
       id="sets"
-      className="h-[80dvh] lg:h-[100dvh] bg-trace-ash text-bridal-health relative"
+      className="h-[80vh] lg:h-[100dvh] bg-trace-ash text-bridal-health relative"
     >
-      <div className="h-full w-full flex flex-col justify-between p-8 absolute">
-        <div className="flex w-full justify-center gap-4 items-center">
-          <p className="uppercase text-md tracking-wide">Live</p>
-          <Image src={gridIcon} alt="photo_frame" height={20} width={20} />
-          <p className="uppercase text-md tracking-wide">Sets</p>
-        </div>
-
-        <div className="flex justify-between w-full">
-          <div className="flex flex-col gap-12">
-            <div>
-              <label
-                htmlFor="location"
-                className="uppercase text-sm tracking-wide"
-              >
-                Location
-              </label>
-              <p className="uppercase tracking-wide">
-                {sets[currentVideoIndex].location}
-              </p>
-            </div>
-            <div className="flex gap-4">
-              {sets.map((set, index) => (
-                <button
-                  key={index}
-                  className={`text-[11px] tracking-wide uppercase underline ${
-                    currentVideoIndex === index
-                      ? "text-bridal-health "
-                      : "text-swiss-coffee"
-                  }`}
-                  onClick={() => setCurrentVideoIndex(index)}
-                >
-                  {set.name}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-col gap-12">
-            <p className="w-[35%]">{sets[currentVideoIndex].description}</p>
-            
-          </div>
-
-        </div>
-      </div>
       <video
         autoPlay
         loop
         muted
         playsInline
         src={sets[currentVideoIndex].video}
-        className="w-full h-full object-cover object-center pointer-events-none outline-0"
+        className="w-full h-full object-cover object-center pointer-events-none outline-0 absolute"
       />
+      <div className="flex flex-col w-full h-full justify-between p-4 pb-8 lg:p-8 lg:pb-16 absolute">
+        <div className="flex w-full justify-center gap-4 items-center">
+          <p className="uppercase text-md tracking-wide">Live</p>
+          <Image src={gridIcon} alt="photo_frame" height={20} width={20} />
+          <p className="uppercase text-md tracking-wide">Sets</p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row justify-between lg:items-end">
+          <div className="flex flex-col gap-20">
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col">
+                <label
+                  htmlFor="location"
+                  className="uppercase text-xs lg:text-sm tracking-wide"
+                >
+                  Location
+                </label>
+                <p className="uppercase text-sm lg:text-base tracking-wide">
+                  {sets[currentVideoIndex].location}
+                </p>
+              </div>
+              <a
+                href={sets[currentVideoIndex].url}
+                target="_blank"
+                className="lg:hidden text-[10px] tracking-wide uppercase inline underline w-[120px]"
+              >
+                Watch on YouTube
+              </a>
+            </div>
+            <div className="flex flex-col gap-4 relative">
+              <p className="hidden lg:flex w-[500px]">
+                {sets[currentVideoIndex].description}
+              </p>
+              <a
+                href={sets[currentVideoIndex].url}
+                target="_blank"
+                className="hidden lg:flex text-[11px] tracking-wide uppercase underline w-[120px]"
+              >
+                Watch on YouTube
+              </a>
+            </div>
+          </div>
+          <div className="flex gap-6 flex-wrap">
+            {sets.map((set, index) => (
+              <button
+                key={index}
+                className={`text-[11px] tracking-wide uppercase underline ${
+                  currentVideoIndex === index
+                    ? "text-bridal-health "
+                    : "text-swiss-coffee"
+                }`}
+                onClick={() => setCurrentVideoIndex(index)}
+              >
+                {set.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

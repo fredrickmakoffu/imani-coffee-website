@@ -73,7 +73,7 @@ function Footer() {
                   href="https://www.youtube.com/@itsthewestend"
                   target="_blank"
                 >
-                  Youtube
+                  YouTube
                 </a>
                 <HiMiniArrowUpRight color={"#FFFBF6"} />
               </li>

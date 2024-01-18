@@ -30,7 +30,7 @@ function Hero() {
             <div className="mask">
               <h1
                 ref={ref1}
-                className="text-bridal-health uppercase font-bold  leading-[80%]"
+                className="h1 text-bridal-health uppercase font-bold  leading-[80%]"
               >
                 Westend
               </h1>

@@ -2,11 +2,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-import frame1 from "@/public/assets/frame1.png";
-import frame2 from "@/public/assets/frame2.png";
-import frame3 from "@/public/assets/frame3.png";
-import frame4 from "@/public/assets/frame4.png";
-import flowerIcon from "@/public/assets/flowerIcon.png";
 import gridIcon from "@/public/assets/gridIcon.png";
 
 import { sets } from "@/data/data";

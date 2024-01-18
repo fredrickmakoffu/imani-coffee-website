@@ -136,11 +136,8 @@ function Footer() {
         <div className="flex w-full justify-between font-light tracking-wider mb-6 ">
           <p className="hidden lg:flex">New York – New York</p>
           <div className="flex gap-4 lg:gap-16">
-            <a
-              className="hidden lg:flex"
-              href="mailto: itsthewestend@gmail.com"
-            >
-              itsthewestend@gmail.com
+            <a className="hidden lg:flex" href="mailto: westend@ayita.com">
+              westend@ayita.com
             </a>
             <a
               href="https://www.trackstack.app/inbox/TRACEAMOUNTS"

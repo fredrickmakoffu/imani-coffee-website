@@ -19,8 +19,11 @@ section {
   position: relative;
   z-index: 10;
 }
-h1 {
+.h1 {
   font-size: clamp(48px, 6dvw, 144px);
+}
+.super-size {
+  font-size: clamp(92px, 18vw, 348px);
 }
 .menu-closed {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -28,7 +31,6 @@ h1 {
 .menu-open {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
-
 .mask {
   overflow: hidden;
 }

@@ -61,6 +61,11 @@ export const publications = [
     url: "https://grayarea.co/magazine/pushing-beyond-tech-house-how-westend-continues-to-evolve",
   },
   {
+    name: "New York Times: Hottest Song at the Club’",
+    year: 2023,
+    url: "https://www.nytimes.com/2023/01/28/style/white-lotus-song-club-dance-theme-music.html ",
+  },
+  {
     name: "Westend Drops Tech House Heater ‘Dive In’",
     year: 2023,
     url: "https://www.forbes.com/sites/lisakocay/2023/09/29/westend-drops-tech-house-heater-dive-in/?sh=51a30e7112e2",
@@ -82,6 +87,11 @@ export const awards = [
     name: "Beatport Insider 2023",
     year: 2023,
     url: "https://www.beatportal.com/news/beatport-insider-2023-top-selling-tracks-artists-and-labels-of-the-year/",
+  },
+  {
+    name: "1001 Tracklists: Top 101 Producers",
+    year: 2023,
+    url: "https://www.instagram.com/p/Cyd3QLWxkEP/?img_index=1",
   },
   {
     name: "Beatport Number 1 with “Let Me Take You”",

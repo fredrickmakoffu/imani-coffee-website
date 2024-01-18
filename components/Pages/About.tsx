@@ -129,7 +129,7 @@ function About() {
             </p>
             <Link
               href="#music"
-              className="text-[11px] tracking-wide uppercase underline w-auto bio"
+              className="text-[11px] tracking-wide uppercase underline w-auto bio max-w-fit"
             >
               Explore Releases
             </Link>

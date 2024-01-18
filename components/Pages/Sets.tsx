@@ -32,6 +32,7 @@ function Sets() {
         loop
         muted
         playsInline
+        preload="auto"
         src={sets[currentVideoIndex].video}
         className="w-full h-full object-cover object-center pointer-events-none outline-0 absolute"
       />

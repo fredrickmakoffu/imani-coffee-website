@@ -48,9 +48,11 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
       className={`flex flex-col gap-12 bg-trace-ash text-bridal-health p-4 lg:px-12 lg:py-8 z-50 fixed w-full transition-all duration-700 ${
         menuToggle ? "menu-open" : "menu-closed"
       }`}
-    > 
+    >
       <div className="menu-nav flex justify-between w-full">
-        <p className="uppercase tracking-wide">Westend</p>
+        <Link href={"/"} className="uppercase tracking-wide">
+          Westend
+        </Link>
         <button
           className="uppercase tracking-wide"
           onClick={() => setMenuToggle(false)}

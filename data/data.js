@@ -160,7 +160,7 @@ export const events = [
 export const products = [
   {
     type: "project file",
-    name: "Tech House Project File 1",
+    name: "Track in 1 Hour",
     description:
       "Includes the Ableton project file and samples stemming from a one-hour track production session. This composition incorporates vocals from Splice, along with elements such as drums, bass, synths, automation, FX techniques, and a well-crafted track arrangement.",
     price: 15,
@@ -168,10 +168,34 @@ export const products = [
   },
   {
     type: "project file",
-    name: "Tech House Project File 2",
+    name: "Track in 1 Hour - Pt 2",
     description:
       "Includes the Ableton project file and samples stemming from a one-hour track production session. This composition incorporates vocals from Splice, along with elements such as drums, bass, synths, automation, FX techniques, and a well-crafted track arrangement.",
     price: 15,
     url: "https://marketplace.tunebat.com/products/track-in-1-hour-pt-2",
+  },
+  {
+    type: "project file",
+    name: "Running",
+    description:
+      "Includes the Ableton project file and samples stemming from a recently released progressive-house track 'Running.'",
+    price: 40,
+    url: "https://marketplace.tunebat.com/products/running-4q",
+  },
+  {
+    type: "project file",
+    name: "Get This Party Started",
+    description:
+      "Includes the Ableton project file and samples stemming from hit tech-house track 'Get This Party Started.'",
+    price: 40,
+    url: "https://marketplace.tunebat.com/products/get-this-party-started-xw",
+  },
+  {
+    type: "project file",
+    name: "Lollipop",
+    description:
+      "Includes the Ableton project file and samples stemming from hit tech-house track 'Lollipop.'",
+    price: 30,
+    url: "https://marketplace.tunebat.com/products/lollipop-89",
   },
 ];

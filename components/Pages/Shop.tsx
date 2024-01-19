@@ -8,13 +8,14 @@ type ProductCardProps = {
     name: string;
     description: string;
     price: number;
+    url: string;
   };
 };
 
 function ProductCard({ product }: ProductCardProps) {
   return (
     <a
-      href="https://www.itsthewestend.com/"
+      href={product.url}
       target="_blank"
       className="flex flex-col p-4 bg-[#FBF5EF] w-full lg:w-[430px] lg:h-[350px] gap-6 cursor-pointer transition-all duration-300 hover:scale-105 rounded-md"
     >

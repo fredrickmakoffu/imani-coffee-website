@@ -22,6 +22,7 @@ function Hero() {
         loop
         muted
         playsInline
+        preload="auto"
         className="w-full h-screen object-cover pointer-events-none outline-0"
       />
       <div className="h-[100dvh] absolute top-0 w-full transition-all duration-500">

@@ -50,7 +50,11 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
       }`}
     >
       <div className="menu-nav flex justify-between w-full">
-        <Link href={"/"} className="uppercase tracking-wide">
+        <Link
+          href={"/"}
+          className="uppercase tracking-wide"
+          onClick={() => setMenuToggle(false)}
+        >
           Westend
         </Link>
         <button

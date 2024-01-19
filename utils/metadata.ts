@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export function constructMetaData({
   title = "itsthewestend",
   description = "DJ & EDM Producer",
-  image = "/assets/westendMenu.jpg",
+  image = "/assets/ogImage.png",
   icons = "/favicon.ico",
   noIndex = false,
 }: {

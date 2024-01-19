@@ -36,7 +36,7 @@ function ProductCard({ product }: ProductCardProps) {
           <p className="text-sm">{product.description}</p>
         </div>
         <div className="flex justify-between w-full items-center">
-          <p>$15.00</p>
+          <p>${product.price}.00</p>
           <HiMiniArrowUpRight color={"#0F0F0F"} size={24} />
         </div>
       </div>

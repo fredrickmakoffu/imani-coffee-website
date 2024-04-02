@@ -2,8 +2,9 @@ import "./globals.css";
 import { Header, Footer } from "@/components";
 import { constructMetaData } from "@/utils/metadata";
 import LenisContext from "@/context/LenisContext";
+import { createClient } from "@/prismicio";
 
-export const metadata = constructMetaData()
+export const metadata = constructMetaData();
 
 export default function RootLayout({
   children,

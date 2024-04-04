@@ -140,7 +140,7 @@ function Footer() {
               westend@ayita.com
             </a>
             <a
-              href="https://www.trackstack.app/inbox/TRACEAMOUNTS"
+              href="https://tstack.app/traceamounts"
               target="_blank"
             >
               Demos

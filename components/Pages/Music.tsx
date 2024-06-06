@@ -84,7 +84,7 @@ async function Music() {
   return (
     <section
       id="music"
-      className="px-4 py-20 lg:py-20 lg:px-12 bg-bridal-health"
+      className="px-4 py-20 lg:py-32 lg:px-12 bg-bridal-health"
     >
       <div className="slider-container">
         <div ref={slider} className="slider">

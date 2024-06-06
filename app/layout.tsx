@@ -2,7 +2,7 @@ import "./globals.css";
 import { Header, Footer } from "@/components";
 import { constructMetaData } from "@/utils/metadata";
 import LenisContext from "@/context/LenisContext";
-import { createClient } from "@/prismicio";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = constructMetaData();
 
@@ -18,6 +18,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Analytics />
         </body>
       </html>
     </LenisContext>

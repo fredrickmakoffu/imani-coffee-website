@@ -21,29 +21,19 @@ type EventCardProps = {
 
 function EventCard({ date, venue, location, url }: EventCardProps) {
   return (
-    <li className="event-card py-4 lg:py-8 border-b-trace-ash border-b-[1px] w-full transition-all duration-300 hover:bg-swiss-coffee hover:px-4 relative">
-      <a href={url} target="_blank" className="flex items-center">
-        <p className="text-sm lg:text-xl uppercase w-[20%]">{date}</p>
-        <div className="flex justify-between items-center w-full">
-          <p className="text-sm lg:text-xl uppercase">{venue}</p>
-          <p className="text-sm lg:text-xl uppercase">{location}</p>
-          <div className="event-img absolute w-[340px] h-[380px] object-cover object-center ml-[45%] transition-all duration-300 cursor-pointer hidden z-10">
-            <Image
-              src={eventImg}
-              alt={venue}
-              fill
-              className="hidden lg:flex rounded-md"
-            />
-          </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-sm lg:text-xl uppercase hidden lg:flex">
-              Tickets
-            </p>
-            <HiMiniArrowUpRight color={"#0F0F0F"} size={28} />
-          </div>
-        </div>
-      </a>
-    </li>
+    <a
+      href={url}
+      target="_blank"
+      className="flex items-center event-card py-4 lg:py-8 border-b-trace-ash border-b-[1px] w-full transition-all duration-300 hover:bg-swiss-coffee hover:px-4 relative"
+    >
+      <p className="text-sm lg:text-xl uppercase w-2/12">{date}</p>
+      <p className="text-sm lg:text-xl uppercase w-5/12">{venue}</p>
+      <p className="text-sm lg:text-xl uppercase w-4/12">{location}</p>
+      <div className="flex gap-2 items-center">
+        <p className="text-sm lg:text-xl uppercase hidden lg:flex">Tickets</p>
+        <HiMiniArrowUpRight color={"#0F0F0F"} size={28} />
+      </div>
+    </a>
   );
 }
 

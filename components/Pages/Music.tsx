@@ -4,10 +4,10 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { songs } from "@/data/data";
+
 import Image from "next/image";
 import circleIcon from "@/public/assets/circleIcon.png";
-
-import { songs } from "@/data/data";
 
 type MusicCardProps = {
   name: string;
@@ -45,7 +45,7 @@ function MusicCard({ name, year, url, img }: MusicCardProps) {
   );
 }
 
-function Music() {
+async function Music() {
   const headerText1 = useRef(null);
   const headerText2 = useRef(null);
   const slider = useRef(null);
@@ -84,7 +84,7 @@ function Music() {
   return (
     <section
       id="music"
-      className="px-4 py-20 lg:py-20 lg:px-12 bg-bridal-health"
+      className="px-4 py-20 lg:py-32 lg:px-12 bg-bridal-health"
     >
       <div className="slider-container">
         <div ref={slider} className="slider">

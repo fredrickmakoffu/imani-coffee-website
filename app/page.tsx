@@ -1,13 +1,13 @@
 import { Hero, About, Music, Sets, Events, Awards, Shop } from "@/components";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="scroll-smooth">
       <Hero />
       <About />
       <Music />
       <Sets />
-      {/* <Events /> */}
+      <Events />
       <Awards />
       <Shop />
     </main>

@@ -106,7 +106,7 @@ function Awards() {
         <div className="flex flex-col">
           <div className="mask">
             <h2 ref={headerText1} className="uppercase text-3xl lg:text-6xl">
-              Making Lasting Impacts
+              Making Waves
             </h2>
           </div>
           <div className="mask">
@@ -116,7 +116,7 @@ function Awards() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row gap-8 w-full">
+      <div className="flex flex-col lg:flex-row gap-8 w-full mt-8">
         <div className="flex flex-col gap-2 lg:gap-6 w-full lg:w-[50%]">
           <h4 className="text-xl lg:text-5xl">Publications</h4>
           <ul className="flex flex-col">

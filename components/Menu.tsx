@@ -201,14 +201,11 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
             <a className="hidden lg:flex" href="mailto: westend@ayita.com">
               westend@ayita.com
             </a>
-            <a
-              href="https://tstack.app/traceamounts"
-              target="_blank"
-            >
+            <a href="https://tstack.app/traceamounts" target="_blank">
               Demos
             </a>
-            <Link href="/imprint" onClick={() => setMenuToggle(false)}>
-              Imprint
+            <Link href="/contact" onClick={() => setMenuToggle(false)}>
+              Contact
             </Link>
           </div>
         </div>

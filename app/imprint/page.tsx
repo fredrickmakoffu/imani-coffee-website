@@ -18,10 +18,13 @@ function Page() {
   });
 
   return (
-    <section id="imprint" className="px-12 py-24 bg-bridal-health text-trace-ash">
+    <section
+      id="contact"
+      className="px-12 py-24 bg-bridal-health text-trace-ash"
+    >
       <div className="mask">
         <h1 ref={headerRef} className="super-size font-medium">
-          Imprint
+          Contact
         </h1>
       </div>
       <div className="flex flex-col gap-8 mt-20 lg:mt-28 ml-20">

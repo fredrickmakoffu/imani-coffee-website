@@ -74,7 +74,7 @@ function Events() {
       <div className="relative">
         <h2
           ref={headerText1}
-          className="text-[11dvw] font-semibold absolute uppercase "
+          className="text-[11dvw] font-semibold absolute uppercase"
         >
           Tours /
         </h2>
@@ -85,7 +85,7 @@ function Events() {
           Events
         </h2>
       </div>
-      <div className="flex flex-col mt-28 lg:mt-80">
+      <div className="flex flex-col pt-[20vw]">
         <ul>
           {events.map((event, index) => (
             <EventCard

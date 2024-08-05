@@ -106,9 +106,16 @@ function About() {
         </h2>
       </div>
       <div className="lg:ml-[18%] flex flex-col lg:flex-row gap-8">
-        <div className="w-full h-[250px] lg:w-[1100px] lg:h-[300px] mt-4 overflow-hidden flex justify-center items-center rounded">
-          <Image src={aboutImg} height={300} width={1100} alt="Tyler Morris" />
+        <div className="relative w-full h-60 lg:w-[1100px] lg:h-[300px] mt-4 rounded overflow-hidden">
+          <Image
+            src={aboutImg}
+            alt="Westend Live"
+            fill
+            objectFit="cover"
+            objectPosition="top"
+          />
         </div>
+
         <div className="flex flex-col gap-8">
           <div className="mask hidden lg:flex">
             <h2

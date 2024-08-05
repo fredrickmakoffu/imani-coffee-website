@@ -21,20 +21,16 @@ function MusicCard({ name, year, url, img }: MusicCardProps) {
     <a
       href={url}
       target="_blank"
-      className="w-full h-[450px] lg:h-[520px] bg-[#FBF5EF] rounded-md flex justify-center items-center relative"
+      className="w-full h-[450px] lg:h-[33vw] bg-[#FBF5EF] rounded-md flex justify-center items-center relative"
     >
       <div className="relative">
-        <div className="absolute z-[2] w-[250px] h-[250px] lg:w-[300px]  lg:h-[300px] rounded-md object-center object-cover overflow-hidden flex items-center justify-center transition-all duration-500 album-cover">
-          <Image src={img} height={300} width={300} alt={name} />
+        <div className="absolute z-[2] transition-all duration-500 album-cover">
+          <div className="relative w-[250px] h-[250px] lg:w-[17vw] lg:h-[17vw] object-center object-cover overflow-hidden flex items-center justify-center">
+            <Image src={img} fill alt="song_name" />
+          </div>
         </div>
-        <div className="w-[250px] h-[250px] lg:w-[300px]  lg:h-[300px] rounded-full object-center object-cover overflow-hidden flex items-center justify-center transition-all duration-500 album-cover-round">
-          <Image
-            src={img}
-            height={300}
-            width={300}
-            alt="song_name"
-            className="spin"
-          />
+        <div className="relative w-[250px] h-[250px] lg:w-[17vw] lg:h-[17vw] rounded-full object-center object-cover overflow-hidden flex items-center justify-center transition-all duration-500 album-cover-round">
+          <Image src={img} fill alt="song_name" className="spin" />
         </div>
       </div>
       <div className="flex justify-between p-4 w-full absolute bottom-0">

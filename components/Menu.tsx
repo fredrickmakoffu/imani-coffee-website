@@ -65,8 +65,14 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
         </button>
       </div>
       <div className="flex flex-col-reverse gap-12 lg:gap-0 lg:flex-row w-full justify-between">
-        <div className="w-[90%] h-[200px] lg:w-[500px] lg:h-[400px] rounded-md object-cover object-center overflow-hidden flex items-center justify-center">
-          <Image src={menuImg} height={400} width={500} alt="Westend Live" />
+        <div className="relative w-full h-60 lg:w-[20vw] lg:h-[20vw] max-w-[700px] max-h-700px] rounded overflow-hidden">
+          <Image
+            src={menuImg}
+            alt="Westend Live"
+            fill
+            objectFit="cover"
+            objectPosition="top"
+          />
         </div>
         <div className="flex justify-between lg:flex-start lg:gap-12">
           <div className="flex flex-col gap-4 text-base lg:text-2xl">

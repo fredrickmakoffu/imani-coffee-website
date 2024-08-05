@@ -84,20 +84,7 @@ function About() {
           ref={headerRef2}
           className="text-[8.5dvw] leading-[1] uppercase ml-[18%]"
         >
-          Foundati<span className="hidden">o</span>
-          <span className="lg:w-[96px] lg:h-[96px]">
-            <Image
-              src={circleIcon}
-              height={96}
-              width={96}
-              priority
-              arria-hidden="true"
-              alt="O icon"
-              className="hidden lg:inline -translate-y-3 h22"
-            />
-            <span className="inline lg:hidden">O</span>
-          </span>
-          n
+          Foundation
         </h2>
       </div>
       <div className="mask ml-[45%] lg:hidden flex">

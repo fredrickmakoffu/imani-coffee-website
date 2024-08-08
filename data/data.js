@@ -2,7 +2,7 @@ export const songs = [
   {
     name: "Sit Down",
     year: 2024,
-    url: "https://open.spotify.com/track/4xTFiSi0CmH8hrkMeMGca4?si=3c6f5ed14fd3445e",
+    url: "https://open.spotify.com/track/7eFOkLB2xgBjcBBru0BD8o?si=66f52658aa974925",
     img: "/assets/sitDown.png",
   },
   {

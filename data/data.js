@@ -1,5 +1,11 @@
 export const songs = [
   {
+    name: "Sit Down",
+    year: 2024,
+    url: "https://open.spotify.com/track/4xTFiSi0CmH8hrkMeMGca4?si=3c6f5ed14fd3445e",
+    img: "/assets/sitDown.png",
+  },
+  {
     name: "EYAH (You'll Be Alright)",
     year: 2024,
     url: "https://open.spotify.com/track/2TE1Pr3iaDJdWvGSfMm3TS?si=1ac72d3912ce47d6",
@@ -10,12 +16,6 @@ export const songs = [
     year: 2024,
     url: "https://open.spotify.com/track/7qhYyXBbL12mPyj93PyUBb?si=58e8d5071f1044ba",
     img: "/assets/rhythmMachine.png",
-  },
-  {
-    name: "Dirty Blonde",
-    year: 2023,
-    url: "https://open.spotify.com/track/4xTFiSi0CmH8hrkMeMGca4?si=3c6f5ed14fd3445e",
-    img: "/assets/dirtyBlonde.png",
   },
 ];
 

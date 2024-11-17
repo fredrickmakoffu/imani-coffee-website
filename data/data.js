@@ -25,7 +25,7 @@ export const sets = [
     location: "San Diego",
     description:
       "My two hour DJ set from a lovely summer sunday in sunny San Diego. Starting in the evening sun and finishing with a lively night.",
-    video: "/assets/set1.mp4",
+    video: "/assets/set1.webm",
     url: "https://www.youtube.com/watch?v=C5w3veGcSIk&t=402s&pp=ygUQd2VzdGVuZCBicm9va2x5bg%3D%3D",
   },
   {
@@ -33,7 +33,7 @@ export const sets = [
     location: "San Francisco",
     description:
       "Short but sweet set in Golden Gate Park. The crowd had me hyped up.",
-    video: "/assets/set2.mp4",
+    video: "/assets/set2.webm",
     url: "https://www.youtube.com/watch?v=N1hLMBw_wpI&t=2171s",
   },
   {
@@ -41,7 +41,7 @@ export const sets = [
     location: "Costa Rica",
     description:
       "I have been coming to this beautiful town on the tip of the Nicoya Peninsula in Costa Rica for 3 years. This year I finally got the chances to film a DJ set from our incredible beachside villa in Playa Hermosa, Santa Teresa. I hope you get to experience some of the magic of this beautiful place.",
-    video: "/assets/set3.mp4",
+    video: "/assets/set3.webm",
     url: "https://www.youtube.com/watch?v=zX-sD_lnmKg&t=302s",
   },
   {
@@ -49,7 +49,7 @@ export const sets = [
     location: "New York",
     description:
       "This is the full live set from my first ever headline in my hometown New York City. It felt like the biggest full circle moment of my career playing too with all my best friends and family surrounding me.",
-    video: "/assets/set4.mp4",
+    video: "/assets/set4.webm",
     url: "https://youtu.be/ncMhjnSjcNM?si=FqG_-59PS1-5oxAk",
   },
 ];

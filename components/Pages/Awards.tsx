@@ -96,7 +96,7 @@ function Awards() {
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
         <video
           ref={video}
-          src="/assets/westendInterview.mp4"
+          src="/assets/westendInterview.webm"
           autoPlay
           loop
           playsInline

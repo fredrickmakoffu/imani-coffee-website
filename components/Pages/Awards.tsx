@@ -94,15 +94,15 @@ function Awards() {
         <span>+ Awards</span>
       </h3>
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
-        <video
-          ref={video}
-          src="/assets/westendInterview.mp4"
-          autoPlay
-          loop
-          playsInline
-          muted
-          className="w-full h-[200px] lg:w-[590px] lg:h-[330px] object-cover rounded lg:rounded-md outline-0"
-        />
+        <div className="relative w-full h-[200px] lg:w-[590px] lg:h-[330px] overflow-hidden rounded lg:rounded-md">
+          <iframe
+            ref={video}
+            src={`https://player.vimeo.com/video/1060391184?h=b1b63f3bfa&autoplay=1&loop=1&background=1&muted=1&controls=0`}
+            className="absolute inset-0 w-full h-full"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+          />
+        </div>
         <div className="flex flex-col">
           <div className="mask">
             <h2 ref={headerText1} className="uppercase text-3xl lg:text-6xl">

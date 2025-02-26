@@ -15,17 +15,34 @@ function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="bg-trace-ash">
-      <video
-        src="/assets/set1.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="w-full h-screen object-cover pointer-events-none outline-0"
-      />
-      <div className="h-[100dvh] absolute top-0 w-full transition-all duration-500">
+    <section id="hero" className="bg-trace-ash w-full h-screen overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div
+          style={{
+            padding: "56.25% 0 0 0",
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            top: 0,
+            left: 0,
+          }}
+        >
+          <iframe
+            src="https://player.vimeo.com/video/1060386998?autoplay=1&loop=1&background=1&muted=1&controls=0&transparent=1"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: "none",
+            }}
+            allow="autoplay; fullscreen"
+            title="Background video"
+          />
+        </div>
+      </div>
+      <div className="h-[100dvh] relative w-full transition-all duration-500">
         <div className="h-full flex flex-col items-center justify-center gap-4 lg:gap-6">
           <div className="mask">
             <div className="mask">

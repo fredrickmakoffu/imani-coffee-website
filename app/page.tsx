@@ -5,8 +5,8 @@ export default async function Home() {
     <main className="scroll-smooth">
       <Hero />
       <About />
-      <Music />
-      <Sets />
+      {/* <Music />
+      <Sets /> */}
       <Events />
       <Awards />
       <Shop />

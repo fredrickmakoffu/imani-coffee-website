@@ -63,17 +63,16 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
         </button>
       </div>
       <div className="flex flex-col-reverse gap-12 lg:gap-0 lg:flex-row w-full justify-between">
-        <div className="relative w-full h-60 lg:w-[20vw] lg:h-[20vw] max-w-[700px] max-h-700px] rounded overflow-hidden">
+        <div className="relative w-full h-60 lg:w-[30vw] lg:h-[20vw] max-w-[700px] max-h-[700px] rounded-lg overflow-hidden">
           <Image
             src="/images/westend-profile.jpg"
             alt="Westend Live"
             fill
-            objectFit="cover"
-            objectPosition="top"
+            className="object-cover object-center"
           />
         </div>
         <div className="flex justify-between lg:flex-start lg:gap-12">
-          <div className="flex flex-col gap-4 text-base lg:text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-xl">
             <p className="text-swiss-coffee">Sitemap</p>
             <nav>
               <ul className="flex flex-col gap-2">
@@ -95,18 +94,18 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
                   </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
-                <li className="flex gap-2 items-center">
+                {/* <li className="flex gap-2 items-center">
                   <Link href="/#sets" onClick={() => setMenuToggle(false)}>
                     Sets
                   </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
-                <li className="flex gap-2 items-center">
+                </li> */}
+                {/* <li className="flex gap-2 items-center">
                   <Link href="/#events" onClick={() => setMenuToggle(false)}>
                     Events
                   </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
+                </li> */}
                 <li className="flex gap-2 items-center">
                   <Link href="/#awards" onClick={() => setMenuToggle(false)}>
                     Awards
@@ -122,7 +121,7 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
               </ul>
             </nav>
           </div>
-          <div className="flex flex-col gap-4 text-base lg:text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-xl">
             <p className="text-swiss-coffee">Connect</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">
@@ -169,7 +168,7 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
               </li>
             </ul>
           </div>
-          <div className="flex flex-col gap-4 text-base lg:text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-xl">
             <p className="text-swiss-coffee">Platforms</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">

@@ -84,21 +84,21 @@ async function Music() {
       <div className="slider-container">
         <div ref={slider} className="slider">
           <h2 ref={headerText1} className="text-6xl lg:text-[144px] uppercase ">
-            <span className="whitespace-nowrap">New Music</span>
+            <span className="whitespace-nowrap font-medium tracking-tight">New Music</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
               <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
-            <span className="whitespace-nowrap">New Releases</span>
+            <span className="whitespace-nowrap font-medium tracking-tight">New Releases</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
               <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
           </h2>
           <h2 ref={headerText2} className="text-6xl lg:text-[144px] uppercase">
-            <span className="whitespace-nowrap">New Music</span>
+            <span className="whitespace-nowrap font-medium tracking-tight">New Music</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
               <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
-            <span className="whitespace-nowrap">New Releases</span>
+            <span className="whitespace-nowrap font-medium tracking-tight">New Releases</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
               <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>

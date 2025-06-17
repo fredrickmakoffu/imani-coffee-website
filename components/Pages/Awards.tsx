@@ -105,12 +105,12 @@ function Awards() {
         />
         <div className="flex flex-col">
           <div className="mask">
-            <h2 ref={headerText1} className="uppercase text-3xl lg:text-6xl">
+            <h2 ref={headerText1} className="uppercase text-3xl lg:text-6xl font-medium tracking-tight">
               Making Waves
             </h2>
           </div>
           <div className="mask">
-            <h2 ref={headerText2} className="uppercase text-3xl lg:text-6xl">
+            <h2 ref={headerText2} className="uppercase text-3xl lg:text-6xl font-medium tracking-tight">
               In The Industry
             </h2>
           </div>

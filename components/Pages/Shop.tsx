@@ -50,7 +50,7 @@ function Shop() {
       id="shop"
       className="px-4 py-16 lg:py-[128px] lg:px-12 bg-bridal-health mb-[100dvh]"
     >
-      <h2 className="text-xl lg:text-4xl uppercase">Shop Westend</h2>
+      <h2 className="text-xl lg:text-4xl uppercase font-medium tracking-tight">Shop Westend</h2>
       <div className="flex gap-8 flex-wrap mt-8 lg:mt-16">
         {products.map((product, index) => (
           <ProductCard key={index} product={product} />

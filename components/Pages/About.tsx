@@ -69,20 +69,20 @@ function About() {
       className="min-h-[100dvh] bg-trace-ash text-bridal-health flex flex-col justify-center px-4 py-32 lg:px-12 lg:py-40 relative"
     >
       <div className="mask">
-        <h2 ref={headerRef1} className="text-[8.5dvw] leading-[1] uppercase">
+        <h2 ref={headerRef1} className="text-[8.5dvw] leading-[1] uppercase font-medium tracking-tight">
           Concrete
         </h2>
       </div>
       <div className="mask">
         <h2
           ref={headerRef2}
-          className="text-[8.5dvw] leading-[1] uppercase ml-[18%]"
+          className="text-[8.5dvw] leading-[1] uppercase font-medium tracking-tight ml-[18%]"
         >
           Foundation
         </h2>
       </div>
       <div className="mask ml-[45%] lg:hidden flex">
-        <h2 ref={headerRef31} className="text-[8.5dvw] leading-[1] uppercase">
+        <h2 ref={headerRef31} className="text-[8.5dvw] leading-[1] uppercase font-medium tracking-tight">
           For Music
         </h2>
       </div>
@@ -100,7 +100,7 @@ function About() {
           <div className="mask hidden lg:flex">
             <h2
               ref={headerRef3}
-              className="text-[8.5dvw] leading-[1] uppercase"
+              className="text-[8.5dvw] leading-[1] uppercase font-medium tracking-tight"
             >
               For Music
             </h2>

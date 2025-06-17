@@ -11,7 +11,7 @@ function Hero() {
     let tl = gsap.timeline();
     tl.delay(0.5);
     tl.from(ref1.current, { y: 100, ease: "power3", duration: 1 });
-    tl.from(".description", { opacity: 0, scale: 0.9, stagger: 0.3 });
+    tl.from(".description", { opacity: 0, scale: 0.9, stagger: 0.1 }, "<0.5");
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import { Hero, About, Music, Sets, Events, Awards, Shop } from "@/components";
+import { Hero, About, Music, Events, Awards, Shop } from "@/components";
 
 export default async function Home() {
   return (

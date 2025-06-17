@@ -6,7 +6,7 @@ export default async function Home() {
       <Hero />
       <About />
       <Music />
-      <Sets />
+      {/* <Sets /> */}
       <Events />
       <Awards />
       <Shop />

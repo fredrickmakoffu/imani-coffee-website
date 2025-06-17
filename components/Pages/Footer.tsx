@@ -5,14 +5,14 @@ function Footer() {
   return (
     <footer
       id="footer"
-      className="min-h-[100dvh] max-w-full flex flex-col justify-between bg-trace-ash text-bridal-health p-4 lg:px-12 lg:pt-28 fixed bottom-0 z-[1]"
+      className="min-h-[100dvh] w-full flex flex-col justify-between bg-trace-ash text-bridal-health p-4 lg:px-12 lg:pt-28 fixed bottom-0 z-[1]"
     >
       <div className="flex gap-8 lg:gap-0 flex-col-reverse lg:flex-row w-full justify-between mt-20 lg:mt-0">
         <div className="flex gap-12">
-          <div className="flex flex-col gap-4 text-base lg:text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-xl">
             <p className="text-swiss-coffee">Sitemap</p>
             <nav>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-2 lg:flex-wrap lg:h-[200px]">
                 <li className="flex gap-2 items-center">
                   <Link href="#home">Home</Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
@@ -25,14 +25,14 @@ function Footer() {
                   <Link href="#Music">Music</Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
-                <li className="flex gap-2 items-center">
+                {/* <li className="flex gap-2 items-center">
                   <Link href="#sets">Sets</Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
-                <li className="flex gap-2 items-center">
+                </li> */}
+                {/* <li className="flex gap-2 items-center">
                   <Link href="#events">Events</Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
+                </li> */}
                 <li className="flex gap-2 items-center">
                   <Link href="#awards">Awards</Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />
@@ -44,7 +44,7 @@ function Footer() {
               </ul>
             </nav>
           </div>
-          <div className="flex flex-col gap-4 text-base lg:text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-xl">
             <p className="text-swiss-coffee">Connect</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">
@@ -94,7 +94,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className="flex flex-col gap-4 text-base lg:text-2xl">
+          <div className="flex flex-col gap-4 text-base lg:text-xl">
             <p className="text-swiss-coffee">Platforms</p>
             <ul className="flex flex-col gap-2">
               <li className="flex gap-2 items-center">
@@ -121,16 +121,16 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <Link href="#home" className="text-base lg:text-2xl">
+        <Link href="#home" className="text-base lg:text-xl">
           Back To Top
         </Link>
       </div>
       <div className="flex flex-col gap-8">
         <label
           htmlFor="westend"
-          className="text-[24.5dvw] leading-[80%] pointer-events-none"
+          className="text-[26.2dvw] leading-[80%] pointer-events-none font-medium tracking-tighter"
         >
-          Westend
+          westend
         </label>
         <div className="w-full border border-b-bridal-health"></div>
         <div className="flex w-full justify-between font-light tracking-wider mb-6 ">

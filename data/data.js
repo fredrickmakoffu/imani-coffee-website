@@ -1,21 +1,21 @@
 export const songs = [
   {
-    name: "Sit Down",
-    year: 2024,
-    url: "https://open.spotify.com/track/7eFOkLB2xgBjcBBru0BD8o?si=66f52658aa974925",
-    img: "/assets/sitDown.png",
+    name: "Drum Death",
+    year: 2025,
+    url: "https://open.spotify.com/album/4vqrNHTMoTgrN4DBH5b81t?si=1yHrFtQSS-KheYU8cizUNg",
+    img: "/images/drum-death.jpg",
   },
   {
-    name: "EYAH (You'll Be Alright)",
-    year: 2024,
-    url: "https://open.spotify.com/track/2TE1Pr3iaDJdWvGSfMm3TS?si=1ac72d3912ce47d6",
-    img: "/assets/eyah.png",
+    name: "Freaky Time",
+    year: 2025,
+    url: "https://open.spotify.com/album/1b8zXU6utma1zM55jIMsGo?si=igqP7JatSXyh7icLGfzfpQ",
+    img: "/images/freaky-time.jpg",
   },
   {
-    name: "Rhythm Machine",
-    year: 2024,
-    url: "https://open.spotify.com/track/7qhYyXBbL12mPyj93PyUBb?si=58e8d5071f1044ba",
-    img: "/assets/rhythmMachine.png",
+    name: "Love Spell",
+    year: 2025,
+    url: "https://open.spotify.com/album/7CF7PF1YvnPkuziTrWvfQW?si=LAVK3XSzQtS9hhuA27_6jw",
+    img: "/images/love-spell.jpg",
   },
 ];
 

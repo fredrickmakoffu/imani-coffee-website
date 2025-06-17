@@ -6,12 +6,6 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
-import circleIcon from "@/public/assets/circleIconWhite.png";
-import aboutImg from "@/public/assets/westendMenu.jpg";
-import urchinIcon from "@/public/assets/urchinIcon.png";
-import flowerIcon from "@/public/assets/flowerSwiss.png";
-import tubularIcon from "@/public/assets/tubularIcon.png";
-
 function About() {
   const headerRef1 = useRef(null);
   const headerRef2 = useRef(null);
@@ -93,13 +87,12 @@ function About() {
         </h2>
       </div>
       <div className="lg:ml-[18%] flex flex-col lg:flex-row gap-8">
-        <div className="relative w-full h-60 lg:w-[1100px] lg:h-[300px] mt-4 rounded overflow-hidden">
+        <div className="relative w-full h-60 lg:w-[1100px] lg:h-[300px] mt-4 rounded-lg overflow-hidden">
           <Image
-            src={aboutImg}
+            src="/images/westend-profile.jpg"
             alt="Westend Live"
             fill
-            objectFit="cover"
-            objectPosition="top"
+            className="object-center object-cover"
           />
         </div>
 
@@ -121,6 +114,7 @@ function About() {
               that comes his way, showcasing his versatility and passion in
               anything he does.
             </p>
+
             <Link
               href="#music"
               className="text-[11px] tracking-wide uppercase underline w-auto bio max-w-fit"
@@ -132,7 +126,7 @@ function About() {
       </div>
 
       <Image
-        src={urchinIcon}
+        src="/icons/urchinIcon.png"
         alt="Urchin Icon"
         width={96}
         height={96}
@@ -140,7 +134,7 @@ function About() {
       />
 
       <Image
-        src={tubularIcon}
+        src="/icons/tubularIcon.png"
         alt="Tubular Icon"
         width={96}
         height={96}
@@ -148,7 +142,7 @@ function About() {
       />
 
       <Image
-        src={flowerIcon}
+        src="/icons/flowerSwiss.png"
         alt="flower Icon"
         width={96}
         height={96}

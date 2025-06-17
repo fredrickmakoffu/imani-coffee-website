@@ -1,13 +1,12 @@
 "use client";
+
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import { songs } from "@/data/data";
 
-import Image from "next/image";
-import circleIcon from "@/public/assets/circleIcon.png";
 
 type MusicCardProps = {
   name: string;
@@ -21,11 +20,11 @@ function MusicCard({ name, year, url, img }: MusicCardProps) {
     <a
       href={url}
       target="_blank"
-      className="w-full h-[450px] lg:h-[33vw] bg-[#FBF5EF] rounded-md flex justify-center items-center relative"
+      className="w-full h-[450px] lg:h-[33vw] bg-[#FBF5EF] rounded-lg flex justify-center items-center relative"
     >
       <div className="relative">
         <div className="absolute z-[2] transition-all duration-500 album-cover">
-          <div className="relative w-[250px] h-[250px] lg:w-[17vw] lg:h-[17vw] object-center object-cover overflow-hidden flex items-center justify-center">
+          <div className="relative w-[250px] h-[250px] lg:w-[17vw] lg:h-[17vw] rounded-md object-center object-cover overflow-hidden flex items-center justify-center">
             <Image src={img} fill alt="song_name" />
           </div>
         </div>
@@ -87,21 +86,21 @@ async function Music() {
           <h2 ref={headerText1} className="text-6xl lg:text-[144px] uppercase ">
             <span className="whitespace-nowrap">New Music</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
-              <Image src={circleIcon} alt="circle icon" fill />
+              <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
             <span className="whitespace-nowrap">New Releases</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
-              <Image src={circleIcon} alt="circle icon" fill />
+              <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
           </h2>
           <h2 ref={headerText2} className="text-6xl lg:text-[144px] uppercase">
             <span className="whitespace-nowrap">New Music</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
-              <Image src={circleIcon} alt="circle icon" fill />
+              <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
             <span className="whitespace-nowrap">New Releases</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
-              <Image src={circleIcon} alt="circle icon" fill />
+              <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
           </h2>
         </div>

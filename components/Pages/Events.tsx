@@ -3,12 +3,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import Image from "next/image";
-
 import { HiMiniArrowUpRight } from "react-icons/hi2";
-import flower from "@/public/assets/flower.png";
-import eventImg from "@/public/assets/showImage.png";
+
 
 import { events } from "@/data/data";
 

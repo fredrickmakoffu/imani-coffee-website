@@ -7,7 +7,7 @@ export default async function Home() {
       <About />
       <Music />
       {/* <Sets /> */}
-      <Events />
+      {/* <Events /> */}
       <Awards />
       <Shop />
     </main>

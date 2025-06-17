@@ -2,8 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-import menuImg from "@/public/assets/westendMenu.jpg";
 import { HiMiniArrowRight, HiMiniArrowUpRight } from "react-icons/hi2";
 
 type MenuProps = {
@@ -67,7 +65,7 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
       <div className="flex flex-col-reverse gap-12 lg:gap-0 lg:flex-row w-full justify-between">
         <div className="relative w-full h-60 lg:w-[20vw] lg:h-[20vw] max-w-[700px] max-h-700px] rounded overflow-hidden">
           <Image
-            src={menuImg}
+            src="/images/westend-profile.jpg"
             alt="Westend Live"
             fill
             objectFit="cover"

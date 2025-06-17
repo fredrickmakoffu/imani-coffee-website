@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Header, Footer } from "@/components";
 import { constructMetaData } from "@/utils/metadata";
-import LenisContext from "@/context/LenisContext";
+import { ReactLenis } from "lenis/react";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <LenisContext>
+    <ReactLenis root>
       <html lang="en">
         <body className="bg-bridal-health text-trace-ash">
           <Header />
@@ -48,6 +48,6 @@ export default function RootLayout({
           </noscript>
         </body>
       </html>
-    </LenisContext>
+    </ReactLenis>
   );
 }

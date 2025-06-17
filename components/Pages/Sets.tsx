@@ -1,9 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-
-import gridIcon from "@/public/assets/gridIcon.png";
-
 import { sets } from "@/data/data";
 
 function Sets() {
@@ -34,7 +31,7 @@ function Sets() {
       <div className="flex flex-col w-full h-full justify-between p-4 pb-8 lg:p-8 lg:pb-16 absolute">
         <div className="flex w-full justify-center gap-4 items-center">
           <p className="uppercase text-md tracking-wide">Live</p>
-          <Image src={gridIcon} alt="photo_frame" height={20} width={20} />
+          <Image src="/icons/gridIcon.png" alt="photo_frame" height={20} width={20} />
           <p className="uppercase text-md tracking-wide">Sets</p>
         </div>
 

@@ -17,7 +17,7 @@ function Hero() {
   return (
     <section id="hero" className="bg-trace-ash">
       <video
-        src="/assets/set1.webm"
+        src="/videos/hero-video-compressed.mp4"
         autoPlay
         loop
         muted

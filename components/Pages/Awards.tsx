@@ -92,7 +92,7 @@ function Awards() {
       <h3 className="text-xl lg:text-4xl uppercase">
         <span>Recognition</span>
         <br />
-        <span>+ Distinction</span>
+        <span className="ml-8">+ Distinction</span>
       </h3>
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
         <video

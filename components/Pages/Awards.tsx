@@ -33,6 +33,7 @@ function AwardCard({ name, year, url }: AwardCardProps) {
   });
   return (
     <a
+      ref={award}
       href={url}
       target="_blank"
       className="flex w-full py-4 justify-between items-center font-light tracking-wide cursor-pointer border-b-bridal-health border-b-[1px] transition-all duration-500 hover:px-4"

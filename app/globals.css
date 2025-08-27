@@ -1,3 +1,4 @@
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,500,600,700,2&f[]=general-sans@200,300,400,500,600,700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,8 +12,12 @@
 
 html,
 body {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'General Sans', Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .h1 {
+  font-family: 'Gambetta', serif;
 }
 
 section {

@@ -40,7 +40,7 @@ function MusicCard({ name, year, url, img }: MusicCardProps) {
   );
 }
 
-async function Music() {
+function Music() {
   const headerText1 = useRef(null);
   const headerText2 = useRef(null);
   const slider = useRef(null);

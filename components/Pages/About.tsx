@@ -89,7 +89,7 @@ function About() {
       <div className="lg:ml-[18%] flex flex-col lg:flex-row gap-8">
         <div className="relative w-full h-60 lg:w-[1100px] lg:h-[300px] mt-4 rounded-lg overflow-hidden">
           <Image
-            src="/images/westend-profile.jpg"
+            src="/images/coffee-1.jpg"
             alt="Imani Coffee Team"
             fill
             className="object-center object-cover"

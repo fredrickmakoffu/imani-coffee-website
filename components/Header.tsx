@@ -10,13 +10,6 @@ export default function Header() {
 
   return (
     <div id="header">
-      <Link
-        href="/"
-        className="uppercase text-bridal-health mix-blend-difference m-4 lg:mt-8 lg:ml-12 fixed top-0 z-20 tracking-wide"
-      >
-        Westend
-      </Link>
-
       <button
         className="uppercase text-bridal-health mix-blend-difference m-4 lg:mt-8 lg:mr-12 fixed right-0 top-0 z-20 tracking-wide"
         onClick={() => setMenuToggle((prev) => !prev)}

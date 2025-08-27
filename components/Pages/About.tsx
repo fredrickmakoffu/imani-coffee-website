@@ -107,7 +107,15 @@ function About() {
           </div>
           <div className="flex flex-col gap-8 ml-2 ">
             <p className="text-base w-full lg:w-[70%] bio">
-              At Imani Coffee, our diverse team shares a passion for uncovering rare and overlooked coffee gems. We take a different path—one led by quality, distinction, rarity, and character. Guided by nature's precision and a reverence for craft, we honor every step of the journey from origin to roast, celebrating uniqueness in every cup.
+              At Imani Coffee, our diverse team shares a passion for uncovering rare and overlooked coffee gems.
+            </p>
+
+            <p className="text-base w-full lg:w-[70%] bio">
+              We take a different path—one led by quality, distinction, rarity, and character. 
+            </p>
+
+            <p className="text-base w-full lg:w-[70%] bio">
+              Guided by nature's precision and a reverence for craft, we honor every step of the journey from origin to roast, celebrating uniqueness in every cup.
             </p>
 
             <Link

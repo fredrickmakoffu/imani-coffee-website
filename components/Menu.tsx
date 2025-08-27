@@ -66,7 +66,7 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
         <div className="relative w-full h-60 lg:w-[30vw] lg:h-[20vw] max-w-[700px] max-h-[700px] rounded-lg overflow-hidden">
           <Image
             src="/images/coffee-1.jpg"
-            alt="Westend Live"
+            alt="Coffee"
             fill
             className="object-cover object-center"
           />

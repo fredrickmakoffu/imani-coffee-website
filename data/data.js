@@ -1,22 +1,22 @@
 export const songs = [
   {
-    name: "Drum Death",
-    year: 2025,
-    url: "https://open.spotify.com/album/4vqrNHTMoTgrN4DBH5b81t?si=1yHrFtQSS-KheYU8cizUNg",
-    img: "/images/drum-death.jpg",
+    name: "Ethiopian Yirgacheffe",
+    year: 2023,
+    url: "https://example.com/rare-coffees/ethiopian-yirgacheffe",
+    img: "/images/coffee-1.jpg",
   },
   {
-    name: "Freaky Time",
-    year: 2025,
-    url: "https://open.spotify.com/album/1b8zXU6utma1zM55jIMsGo?si=igqP7JatSXyh7icLGfzfpQ",
-    img: "/images/freaky-time.jpg",
-  },
+    name: "Ethiopian Yirgacheffe",
+    year: 2023,
+    url: "https://example.com/rare-coffees/ethiopian-yirgacheffe",
+    img: "/images/coffee-2.jpg",
+  },  
   {
-    name: "Love Spell",
-    year: 2025,
-    url: "https://open.spotify.com/album/7CF7PF1YvnPkuziTrWvfQW?si=LAVK3XSzQtS9hhuA27_6jw",
-    img: "/images/love-spell.jpg",
-  },
+    name: "Ethiopian Yirgacheffe",
+    year: 2023,
+    url: "https://example.com/rare-coffees/ethiopian-yirgacheffe",
+    img: "/images/coffee-1.jpg",
+  },  
 ];
 
 export const sets = [

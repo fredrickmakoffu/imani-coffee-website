@@ -12,8 +12,8 @@ const config: Config = {
       colors: {
         "bridal-health": "#F5F1ED",
         "swiss-coffee": "#E8D5C4",
-        "cod-gray": "#4A3728",
-        "trace-ash": "#4A3728",
+        "cod-gray": "#8B6F47",
+        "trace-ash": "#001514",
       },
     },
   },

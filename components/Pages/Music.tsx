@@ -25,11 +25,11 @@ function MusicCard({ name, year, url, img }: MusicCardProps) {
       <div className="relative">
         <div className="absolute z-[2] transition-all duration-500 album-cover">
           <div className="relative w-[250px] h-[250px] lg:w-[17vw] lg:h-[17vw] rounded-md object-center object-cover overflow-hidden flex items-center justify-center">
-            <Image src={img} fill alt="song_name" />
+            <Image src={img} fill alt="coffee_image" />
           </div>
         </div>
         <div className="relative w-[250px] h-[250px] lg:w-[17vw] lg:h-[17vw] rounded-full object-center object-cover overflow-hidden flex items-center justify-center transition-all duration-500 album-cover-round">
-          <Image src={img} fill alt="song_name" className="spin" />
+          <Image src={img} fill alt="coffee_image" className="spin" />
         </div>
       </div>
       <div className="flex justify-between p-4 w-full absolute bottom-0">
@@ -78,27 +78,27 @@ async function Music() {
 
   return (
     <section
-      id="music"
+      id="coffee-discovery"
       className="px-4 py-20 lg:py-32 lg:px-12 bg-bridal-health"
     >
       <div className="slider-container">
         <div ref={slider} className="slider">
           <h2 ref={headerText1} className="text-6xl lg:text-[144px] uppercase ">
-            <span className="whitespace-nowrap font-medium tracking-tight">New Music</span>
+            <span className="whitespace-nowrap font-medium tracking-tight">Rare Finds</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
               <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
-            <span className="whitespace-nowrap font-medium tracking-tight">New Releases</span>
+            <span className="whitespace-nowrap font-medium tracking-tight">Distinct Coffees</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
               <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
           </h2>
           <h2 ref={headerText2} className="text-6xl lg:text-[144px] uppercase">
-            <span className="whitespace-nowrap font-medium tracking-tight">New Music</span>
+            <span className="whitespace-nowrap font-medium tracking-tight">Rare Finds</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
               <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>
-            <span className="whitespace-nowrap font-medium tracking-tight">New Releases</span>
+            <span className="whitespace-nowrap font-medium tracking-tight">Distinct Coffees</span>
             <div className="h-[58px] w-[58px] lg:h-[120px] lg:w-[120px] relative flex items-center justify-center mx-1 lg:mx-8 spin">
               <Image src="/icons/circleIcon.png" alt="circle icon" fill />
             </div>

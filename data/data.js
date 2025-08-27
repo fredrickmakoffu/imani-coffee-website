@@ -195,43 +195,51 @@ export const events = [
 
 export const products = [
   {
-    type: "project file",
-    name: "Track in 1 Hour",
+    type: "coffee",
+    name: "Ethiopia Guji Uraga",
     description:
-      "Includes the Ableton project file and samples stemming from a one-hour track production session. This composition incorporates vocals from Splice, along with elements such as drums, bass, synths, automation, FX techniques, and a well-crafted track arrangement.",
-    price: 15,
-    url: "https://marketplace.tunebat.com/products/track-in-1-hour",
+      "Floral, stone fruit, honey. A rare gem from the highlands, celebrated for its balance and character.",
+    price: 28,
+    url: "#",
   },
   {
-    type: "project file",
-    name: "Track in 1 Hour - Pt 2",
+    type: "coffee",
+    name: "Colombia Pink Bourbon",
     description:
-      "Includes the Ableton project file and samples stemming from a one-hour track production session. This composition incorporates vocals from Splice, along with elements such as drums, bass, synths, automation, FX techniques, and a well-crafted track arrangement.",
-    price: 15,
-    url: "https://marketplace.tunebat.com/products/track-in-1-hour-pt-2",
+      "Vivid acidity, raspberry, and a mindful finish. Distinctive and bright, for those who taste beyond the numbers.",
+    price: 32,
+    url: "#",
   },
   {
-    type: "project file",
-    name: "Running",
+    type: "coffee",
+    name: "Kenya Kirinyaga",
     description:
-      "Includes the Ableton project file and samples stemming from a recently released progressive-house track 'Running.'",
-    price: 40,
-    url: "https://marketplace.tunebat.com/products/running-4q",
-  },
-  {
-    type: "project file",
-    name: "Get This Party Started",
-    description:
-      "Includes the Ableton project file and samples stemming from hit tech-house track 'Get This Party Started.'",
-    price: 40,
-    url: "https://marketplace.tunebat.com/products/get-this-party-started-xw",
-  },
-  {
-    type: "project file",
-    name: "Lollipop",
-    description:
-      "Includes the Ableton project file and samples stemming from hit tech-house track 'Lollipop.'",
+      "Blackcurrant, citrus, and deep character. Overlooked but unforgettable, with a journey in every cup.",
     price: 30,
-    url: "https://marketplace.tunebat.com/products/lollipop-89",
+    url: "#",
+  },
+  {
+    type: "coffee",
+    name: "Burundi Ngozi",
+    description:
+      "Balanced, tea-like, with a gentle sweetness. Precision and integrity in every roast.",
+    price: 27,
+    url: "#",
+  },
+  {
+    type: "merch",
+    name: "Imani Coffee Tote Bag",
+    description:
+      "Minimal, sturdy, and nature-inspired. Carry your rare finds in style.",
+    price: 18,
+    url: "#",
+  },
+  {
+    type: "merch",
+    name: "Space Colony Mug",
+    description:
+      "Elegant ceramic mug featuring our signature type. For mindful mornings and rare brews.",
+    price: 22,
+    url: "#",
   },
 ];

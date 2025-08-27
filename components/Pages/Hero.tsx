@@ -33,24 +33,24 @@ function Hero() {
                 ref={ref1}
                 className="h1 text-bridal-health uppercase font-bold  leading-[80%]"
               >
-                Westend
+                Imani Coffee
               </h1>
             </div>
           </div>
           <div className="flex gap-8">
             <div className="mask">
               <p className="text-sm lg:text-base text-bridal-health uppercase tracking-wider description">
-                DJ + Music Producer
+                Rare, Distinct, Coffee
               </p>
             </div>
             <div className="mask hidden lg:flex">
               <p className="lg:text-base text-bridal-health uppercase tracking-wider description">
-                2016 - Present
+                Honoring the Overlooked
               </p>
             </div>
             <div className="mask hidden lg:flex">
               <p className="lg:text-base text-bridal-health uppercase tracking-wider description">
-                New York, New York
+                Guided by Nature's Precision
               </p>
             </div>
           </div>
@@ -63,7 +63,7 @@ function Hero() {
             To
           </p>
           <p className="text-bridal-health uppercase font-semibold tracking-wider">
-            Discover
+            Discover Uniqueness
           </p>
         </div>
       </div>

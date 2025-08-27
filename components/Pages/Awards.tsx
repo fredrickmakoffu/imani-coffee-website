@@ -89,9 +89,9 @@ function Awards() {
       className="bg-trace-ash text-bridal-health px-4 py-16 lg:py-[128px] lg:px-12 flex flex-col gap-8"
     >
       <h3 className="text-xl lg:text-4xl uppercase">
-        <span>Recognitions</span>
+        <span>Recognition</span>
         <br />
-        <span>+ Awards</span>
+        <span>+ Distinction</span>
       </h3>
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
         <video
@@ -106,19 +106,19 @@ function Awards() {
         <div className="flex flex-col">
           <div className="mask">
             <h2 ref={headerText1} className="uppercase text-3xl lg:text-6xl font-medium tracking-tight">
-              Making Waves
+              Celebrating Craft
             </h2>
           </div>
           <div className="mask">
             <h2 ref={headerText2} className="uppercase text-3xl lg:text-6xl font-medium tracking-tight">
-              In The Industry
+              Honoring Integrity
             </h2>
           </div>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-8 w-full mt-8">
         <div className="flex flex-col gap-2 lg:gap-6 w-full lg:w-[50%]">
-          <h4 className="text-xl lg:text-5xl">Publications</h4>
+          <h4 className="text-xl lg:text-5xl">Mentions</h4>
           <ul className="flex flex-col">
             {publications.map((item, index) => (
               <AwardCard
@@ -131,7 +131,7 @@ function Awards() {
           </ul>
         </div>
         <div className="flex flex-col gap-2 lg:gap-6 w-full lg:w-[50%]">
-          <h4 className="text-xl lg:text-5xl">Awards</h4>
+          <h4 className="text-xl lg:text-5xl">Distinctions</h4>
           <ul className="flex flex-col">
             {awards.map((item, index) => (
               <AwardCard

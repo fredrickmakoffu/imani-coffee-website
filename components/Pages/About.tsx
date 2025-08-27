@@ -70,7 +70,7 @@ function About() {
     >
       <div className="mask">
         <h2 ref={headerRef1} className="text-[8.5dvw] leading-[1] uppercase font-medium tracking-tight">
-          Concrete
+          Rooted
         </h2>
       </div>
       <div className="mask">
@@ -78,19 +78,19 @@ function About() {
           ref={headerRef2}
           className="text-[8.5dvw] leading-[1] uppercase font-medium tracking-tight ml-[18%]"
         >
-          Foundation
+          In Character
         </h2>
       </div>
       <div className="mask ml-[45%] lg:hidden flex">
         <h2 ref={headerRef31} className="text-[8.5dvw] leading-[1] uppercase font-medium tracking-tight">
-          For Music
+          For Coffee
         </h2>
       </div>
       <div className="lg:ml-[18%] flex flex-col lg:flex-row gap-8">
         <div className="relative w-full h-60 lg:w-[1100px] lg:h-[300px] mt-4 rounded-lg overflow-hidden">
           <Image
             src="/images/westend-profile.jpg"
-            alt="Westend Live"
+            alt="Imani Coffee Team"
             fill
             className="object-center object-cover"
           />
@@ -102,24 +102,19 @@ function About() {
               ref={headerRef3}
               className="text-[8.5dvw] leading-[1] uppercase font-medium tracking-tight"
             >
-              For Music
+              For Coffee
             </h2>
           </div>
           <div className="flex flex-col gap-8 ml-2 ">
             <p className="text-base w-full lg:w-[70%] bio">
-              New Yorker Westend bursted into the tech house scene in 2016,
-              bringing in a new era of produers keen on changing the musical
-              landscape of house and techno. Since his debut, each year that
-              passes is a career-defining one. He makes the most of everything
-              that comes his way, showcasing his versatility and passion in
-              anything he does.
+              At Imani Coffee, our diverse team shares a passion for uncovering rare and overlooked coffee gems. We take a different path—one led by quality, distinction, rarity, and character. Guided by nature's precision and a reverence for craft, we honor every step of the journey from origin to roast, celebrating uniqueness in every cup.
             </p>
 
             <Link
-              href="#music"
+              href="#shop"
               className="text-[11px] tracking-wide uppercase underline w-auto bio max-w-fit"
             >
-              Explore Releases
+              Discover Our Coffees
             </Link>
           </div>
         </div>

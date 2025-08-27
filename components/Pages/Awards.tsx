@@ -28,7 +28,7 @@ function AwardCard({ name, year, url }: AwardCardProps) {
         end: "top 70%",
         scrub: 0.25,
       },
-      background: "white",
+      background: "#232323", // fade from a lighter dark
     });
   });
   return (

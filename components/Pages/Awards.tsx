@@ -94,7 +94,7 @@ function Awards() {
         <br />
         <span>+ Distinction</span>
       </h3>
-      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
         <video
           ref={video}
           src="/videos/interview-video-compressed.mp4"
@@ -104,16 +104,21 @@ function Awards() {
           muted
           className="w-full h-[200px] lg:w-[590px] lg:h-[330px] object-cover rounded lg:rounded-md outline-0"
         />
-        <div className="flex flex-col">
+        <div className="flex flex-col justify-center items-start gap-2 lg:gap-4 max-w-2xl px-2">
           <div className="mask">
-            <h2 ref={headerText1} className="uppercase text-3xl lg:text-6xl font-medium tracking-tight">
-              Celebrating Craft
+            <h2 ref={headerText1} className="text-2xl lg:text-5xl font-medium tracking-tight mb-2" style={{ fontFamily: 'Gambetta, serif' }}>
+              Drawn from Nature's Precision
             </h2>
           </div>
           <div className="mask">
-            <h2 ref={headerText2} className="uppercase text-3xl lg:text-6xl font-medium tracking-tight">
-              Honoring Integrity
-            </h2>
+            <p ref={headerText2} className="text-lg lg:text-2xl font-light tracking-tight mb-2" style={{ fontFamily: 'General Sans, sans-serif' }}>
+              We honor the overlooked, celebrate character, and elevate every step from origin to cup. Our journey is guided by mindful sourcing, thoughtful roasting, and a quiet dedication to detail, balance, and integrity.
+            </p>
+          </div>
+          <div className="mask">
+            <p className="text-base lg:text-lg font-light text-bridal-health/80" style={{ fontFamily: 'General Sans, sans-serif' }}>
+              Redefining value, celebrating uniqueness, and inviting you to taste beyond the numbers.
+            </p>
           </div>
         </div>
       </div>

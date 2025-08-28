@@ -148,7 +148,7 @@ function Awards() {
         <div className="flex flex-col justify-center items-start gap-2 lg:gap-4 max-w-2xl px-2">
           <div className="mask">
             <h2 ref={headerText1} className="text-2xl lg:text-5xl font-medium tracking-tight mb-2" style={{ fontFamily: 'Gambetta, serif' }}>
-              Drawn from Nature's Precision
+              Drawn from Nature&apos;s Precision
             </h2>
           </div>
           <div className="mask">

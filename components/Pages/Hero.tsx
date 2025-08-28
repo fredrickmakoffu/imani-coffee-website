@@ -33,7 +33,8 @@ function Hero() {
                 ref={ref1}
                 className="h1 text-bridal-health uppercase font-bold  leading-[80%]"
               >
-                Imani Coffee
+                  Imani Coffee
+                  Imani&apos;s Coffee
               </h1>
             </div>
           </div>
@@ -50,7 +51,7 @@ function Hero() {
             </div>
             <div className="mask hidden lg:flex">
               <p className="lg:text-base text-bridal-health uppercase tracking-wider description">
-                Guided by Nature's Precision
+                Guided by Nature&apos;s Precision
               </p>
             </div>
           </div>

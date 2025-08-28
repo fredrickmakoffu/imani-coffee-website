@@ -1,4 +1,5 @@
 import "./globals.css";
+import Image from "next/image";
 import { Header, Footer } from "@/components";
 import { constructMetaData } from "@/utils/metadata";
 import { ReactLenis } from "lenis/react";
@@ -39,11 +40,14 @@ export default function RootLayout({
             }}
           />
           <noscript>
-            <img
-              height="1"
-              width="1"
+            <Image
+              height={1}
+              width={1}
               style={{ display: "none" }}
               src="https://www.facebook.com/tr?id=518018723905148&ev=PageView&noscript=1"
+              alt="Facebook Pixel tracking"
+              unoptimized
+              priority
             />
           </noscript>
         </body>

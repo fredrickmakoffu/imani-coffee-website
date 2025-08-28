@@ -115,7 +115,7 @@ function About() {
             </p>
 
             <p className="text-base w-full lg:w-[70%] bio">
-              Guided by nature's precision and a reverence for craft, we honor every step of the journey from origin to roast, celebrating uniqueness in every cup.
+              Guided by nature&apos;s precision and a reverence for craft, we honor every step of the journey from origin to roast, celebrating uniqueness in every cup.
             </p>
 
             <Link

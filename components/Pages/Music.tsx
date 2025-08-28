@@ -22,7 +22,7 @@ function MusicCard({ name, year, url, img, description }: MusicCardProps) {
     <a
       href={url}
       target="_blank"
-      className="w-full h-[500px] lg:h-[36vw] bg-[#FBF5EF] rounded-lg flex flex-col justify-between items-center relative shadow-md hover:shadow-xl transition-shadow duration-300"
+      className="w-full h-[400px] lg:h-[28vw] bg-[#FBF5EF] rounded-lg flex flex-col justify-between items-center relative shadow-md hover:shadow-xl transition-shadow duration-300"
       style={{ textDecoration: 'none' }}
     >
       <div className="relative flex-1 flex flex-col items-center justify-center w-full">
@@ -90,6 +90,7 @@ function Music() {
     requestAnimationFrame(animation);
   };
 
+
   return (
     <section
       id="coffee-discovery"
@@ -119,7 +120,7 @@ function Music() {
           </h2>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row mt-32 lg:mt-72 justify-between gap-8">
+      <div className="flex flex-col lg:flex-row mt-32 lg:mt-72 justify-between gap-6">
         {songs.map((song, index) => (
           <MusicCard
             key={index}

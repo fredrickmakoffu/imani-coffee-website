@@ -138,7 +138,7 @@ function Awards() {
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
         <video
           ref={video}
-          src="/videos/interview-video-compressed.mp4"
+          src="/videos/hero-video-compressed.mp4"
           autoPlay
           loop
           playsInline

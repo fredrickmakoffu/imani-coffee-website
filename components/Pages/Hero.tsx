@@ -33,7 +33,6 @@ function Hero() {
                 ref={ref1}
                 className="h1 text-bridal-health uppercase font-bold  leading-[80%]"
               >
-                  Imani Coffee
                   Imani&apos;s Coffee
               </h1>
             </div>

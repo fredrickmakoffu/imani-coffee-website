@@ -7,7 +7,35 @@ import { useRef } from "react";
 
 import { HiMiniArrowUpRight } from "react-icons/hi2";
 
-import { publications, awards } from "@/data/data";
+import { awards } from "@/data/data";
+// Dummy articles about rare coffees and reviews
+const articles = [
+  {
+    name: "Uncovering the Hidden Gems: Imani Coffee's Rare Selections Reviewed",
+    year: 2025,
+    url: "#",
+  },
+  {
+    name: "Why Rarity Matters: A Visit to Imani Coffee",
+    year: 2025,
+    url: "#",
+  },
+  {
+    name: "Beyond the Score Sheet: The Character of Imani's Coffees",
+    year: 2024,
+    url: "#",
+  },
+  {
+    name: "A Mindful Cup: Experiencing Uniqueness at Imani Coffee",
+    year: 2024,
+    url: "#",
+  },
+  {
+    name: "Nature's Precision in Every Brew: Imani Coffee Reviewed",
+    year: 2023,
+    url: "#",
+  },
+];
 
 type AwardCardProps = {
   name: string;
@@ -126,7 +154,7 @@ function Awards() {
         <div className="flex flex-col gap-2 lg:gap-6 w-full lg:w-[50%]">
           <h4 className="text-xl lg:text-5xl">Mentions</h4>
           <ul className="flex flex-col">
-            {publications.map((item, index) => (
+            {articles.map((item, index) => (
               <AwardCard
                 key={index}
                 name={item.name}

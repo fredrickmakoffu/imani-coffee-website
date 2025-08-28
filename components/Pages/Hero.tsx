@@ -50,7 +50,7 @@ function Hero() {
             </div>
             <div className="mask hidden lg:flex">
               <p className="lg:text-base text-bridal-health uppercase tracking-wider description">
-                Guided by Nature\'s Precision
+                Guided by Nature's Precision
               </p>
             </div>
           </div>

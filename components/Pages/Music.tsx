@@ -8,21 +8,24 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { songs } from "@/data/data";
 
 
+
 type MusicCardProps = {
   name: string;
   year: number;
   url: string;
   img: any;
+  description: string;
 };
 
-function MusicCard({ name, year, url, img }: MusicCardProps) {
+function MusicCard({ name, year, url, img, description }: MusicCardProps) {
   return (
     <a
       href={url}
       target="_blank"
-      className="w-full h-[450px] lg:h-[33vw] bg-[#FBF5EF] rounded-lg flex justify-center items-center relative"
+      className="w-full h-[500px] lg:h-[36vw] bg-[#FBF5EF] rounded-lg flex flex-col justify-between items-center relative shadow-md hover:shadow-xl transition-shadow duration-300"
+      style={{ textDecoration: 'none' }}
     >
-      <div className="relative">
+      <div className="relative flex-1 flex flex-col items-center justify-center w-full">
         <div className="absolute z-[2] transition-all duration-500 album-cover">
           <div className="relative w-[250px] h-[250px] lg:w-[17vw] lg:h-[17vw] rounded-md object-center object-cover overflow-hidden flex items-center justify-center">
             <Image src={img} fill alt="coffee_image" />
@@ -32,13 +35,17 @@ function MusicCard({ name, year, url, img }: MusicCardProps) {
           <Image src={img} fill alt="coffee_image" className="spin" />
         </div>
       </div>
-      <div className="flex justify-between p-4 w-full absolute bottom-0">
-        <p className="text-sm uppercase">{name}</p>
-        <p className="text-sm uppercase">{year}</p>
+      <div className="flex flex-col justify-end w-full p-4 gap-2 bg-[#FBF5EF]/80 rounded-b-lg">
+        <div className="flex justify-between items-center w-full">
+          <p className="text-base font-semibold uppercase tracking-tight text-trace-ash">{name}</p>
+          <p className="text-xs font-light uppercase text-trace-ash/60">{year}</p>
+        </div>
+        <p className="text-sm font-light text-trace-ash/80 italic" style={{ fontFamily: 'General Sans, sans-serif' }}>{description}</p>
       </div>
     </a>
   );
 }
+
 
 function Music() {
   const headerText1 = useRef(null);
@@ -46,6 +53,13 @@ function Music() {
   const slider = useRef(null);
   let xPercent = 0;
   let direction = -1;
+
+  // Dummy descriptions for each coffee (match order of songs array)
+  const descriptions = [
+    "A rare heirloom from the Guji highlands, this coffee is handpicked and sun-dried, revealing floral aromatics and a honeyed finish. Celebrated for its balance and character.",
+    "Pink Bourbon from Colombia, grown at high altitude, offers vivid acidity and raspberry notes. A mindful cup for those who taste beyond the numbers.",
+    "Kirinyaga's volcanic soil yields blackcurrant and citrus in every sip. Overlooked by many, unforgettable to those who seek depth and distinction."
+  ];
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -113,6 +127,7 @@ function Music() {
             year={song.year}
             url={song.url}
             img={song.img}
+            description={descriptions[index] || "A rare coffee with a story waiting to be discovered."}
           />
         ))}
       </div>

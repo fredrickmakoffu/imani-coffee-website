@@ -29,57 +29,28 @@ function Page() {
       </div>
       <div className="flex flex-col gap-8 mt-20 lg:mt-28 ml-20">
         <div className="flex flex-col gap-1">
-          <p className="uppercase text-sm font-medium">Managing Director:</p>
-          <a className="text-base max-w-fit" href="mailto: westend@ayita.com">
-            Michael Carella
+          <p className="uppercase text-sm font-medium">General Inquiries:</p>
+          <a className="text-base max-w-fit" href="mailto: hello@imanicoffee.com">
+            hello@imanicoffee.com
           </a>
         </div>
         <div className="flex flex-col gap-1">
-          <p className="uppercase text-sm font-medium">Contact:</p>
-          <a className="text-base max-w-fit" href="tel:4253274614">
-            Tel: (424) 237-4614
+          <p className="uppercase text-sm font-medium">Phone:</p>
+          <a className="text-base max-w-fit" href="tel:1234567890">
+            0100 000 000
           </a>
         </div>
         <div className="flex flex-col gap-1">
-          <p className="uppercase text-sm font-medium">
-            Mail For Business Inquiries:
-          </p>
-          <a className="text-base max-w-fit" href="mailto: westend@ayita.com">
-            westend@ayita.com
-          </a>
+          <p className="uppercase text-sm font-medium">Visit Us:</p>
+          <span className="text-base max-w-fit">
+            123 Origin Lane, Nairobi, Kenya
+          </span>
         </div>
         <div className="flex flex-col gap-1">
-          <p className="uppercase text-sm font-medium">
-            Mail For Booking And Events:
-          </p>
-          <a
-            className="text-base max-w-fit"
-            href="mailto: lhandelsman@teamwass.com"
-          >
-            lhandelsman@teamwass.com
-          </a>
-        </div>
-        <div className="flex flex-col gap-1">
-          <p className="uppercase text-sm font-medium">Inbox For Demos:</p>
-          <a
-            className="text-base max-w-fit"
-            href="https://tstack.app/traceamounts"
-            target="_blank"
-          >
-            https://tstack.app/traceamounts
-          </a>
-        </div>
-        <div className="flex flex-col gap-1">
-          <p className="uppercase text-sm font-medium">
-            Design And Development:
-          </p>
-          <a
-            className="text-base max-w-fit"
-            href="https://www.spinnin.studio/"
-            target="_blank"
-          >
-            SPINNIN Studio
-          </a>
+          <p className="uppercase text-sm font-medium">Hours:</p>
+          <span className="text-base max-w-fit">
+            Mon–Sat: 7am – 6pm<br />Sun: 8am – 4pm
+          </span>
         </div>
       </div>
     </section>

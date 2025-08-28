@@ -7,7 +7,6 @@ import { useRef } from "react";
 
 import { HiMiniArrowUpRight } from "react-icons/hi2";
 
-import { awards } from "@/data/data";
 // Dummy articles about rare coffees and reviews
 const articles = [
   {
@@ -35,6 +34,20 @@ const articles = [
     year: 2023,
     url: "#",
   },
+];
+
+// Dummy distinctions about the coffee shop and its owners
+const distinctions = [
+  {
+    name: "2025 National Coffee House of the Year – Celebrating Community & Craft",
+    year: 2025,
+    url: "#",
+  },
+  {
+    name: "Imani's Founders Named to '30 Under 30' in Coffee Innovation",
+    year: 2024,
+    url: "#",
+  }
 ];
 
 type AwardCardProps = {
@@ -167,7 +180,7 @@ function Awards() {
         <div className="flex flex-col gap-2 lg:gap-6 w-full lg:w-[50%]">
           <h4 className="text-xl lg:text-5xl">Distinctions</h4>
           <ul className="flex flex-col">
-            {awards.map((item, index) => (
+            {distinctions.map((item, index) => (
               <AwardCard
                 key={index}
                 name={item.name}

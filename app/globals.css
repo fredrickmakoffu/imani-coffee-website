@@ -3,6 +3,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 245 241 237;
+    --foreground: 0 21 20;
+    --card: 245 241 237;
+    --card-foreground: 0 21 20;
+    --popover: 245 241 237;
+    --popover-foreground: 0 21 20;
+    --primary: 0 21 20;
+    --primary-foreground: 245 241 237;
+    --secondary: 232 213 196;
+    --secondary-foreground: 0 21 20;
+    --muted: 232 213 196;
+    --muted-foreground: 139 111 71;
+    --accent: 232 213 196;
+    --accent-foreground: 0 21 20;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 0 21 20;
+    --radius: 0.5rem;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+}
+
 /* CSS RESET */
 * {
   margin: 0;

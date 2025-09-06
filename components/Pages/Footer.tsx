@@ -1,38 +1,70 @@
+"use client";
+
 import Link from "next/link";
 import { HiMiniArrowRight, HiMiniArrowUpRight } from "react-icons/hi2";
+import { usePathname } from "next/navigation";
 
 function Footer() {
+  const pathname = usePathname();
+  const isShopPage = pathname === "/shop";
+  const isHomePage = pathname === "/";
+
   return (
     <footer
       id="footer"
-      className="min-h-[100dvh] w-full flex flex-col justify-between bg-trace-ash text-bridal-health p-4 lg:px-12 lg:pt-28 fixed bottom-0 z-[1]"
+      className={`min-h-[100dvh] flex flex-col justify-between bg-trace-ash text-bridal-health p-4 lg:px-12 lg:pt-28 fixed bottom-0 z-[1] ${
+        isShopPage 
+          ? "m-4 lg:m-8 rounded-[17px] w-auto relative" 
+          : "w-full fixed"
+      }`}
     >
       <div className="flex gap-8 lg:gap-0 flex-col-reverse lg:flex-row w-full justify-between mt-20 lg:mt-0">
         <div className="flex gap-12">
           <div className="flex flex-col gap-4 text-base lg:text-xl">
-            <p className="text-swiss-coffee">Menu</p>
+            <p className="text-swiss-coffee">Menus</p>
             <nav>
               <ul className="flex flex-col gap-2 lg:flex-wrap lg:h-[200px]">
-                <li className="flex gap-2 items-center">
-                  <Link href="#home">Home</Link>
-                  <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
-                <li className="flex gap-2 items-center">
-                  <Link href="#about">About</Link>
-                  <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
-                <li className="flex gap-2 items-center">
-                  <Link href="#coffee-discovery">Coffees</Link>
-                  <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
-                <li className="flex gap-2 items-center">
-                  <Link href="#favorites">Favorites</Link>
-                  <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
-                <li className="flex gap-2 items-center">
-                  <Link href="#shop">Shop</Link>
-                  <HiMiniArrowRight color={"#FFFBF6"} />
-                </li>
+                {isHomePage ? (
+                  // Full menu for home page
+                  <>
+                    <li className="flex gap-2 items-center">
+                      <Link href="#home">Home</Link>
+                      <HiMiniArrowRight color={"#FFFBF6"} />
+                    </li>
+                    <li className="flex gap-2 items-center">
+                      <Link href="#about">About</Link>
+                      <HiMiniArrowRight color={"#FFFBF6"} />
+                    </li>
+                    <li className="flex gap-2 items-center">
+                      <Link href="#coffee-discovery">Coffees</Link>
+                      <HiMiniArrowRight color={"#FFFBF6"} />
+                    </li>
+                    <li className="flex gap-2 items-center">
+                      <Link href="#favorites">Favorites</Link>
+                      <HiMiniArrowRight color={"#FFFBF6"} />
+                    </li>
+                    <li className="flex gap-2 items-center">
+                      <Link href="/shop">Shop</Link>
+                      <HiMiniArrowRight color={"#FFFBF6"} />
+                    </li>
+                  </>
+                ) : (
+                  // Simplified menu for other pages
+                  <>
+                    <li className="flex gap-2 items-center">
+                      <Link href="/">Home</Link>
+                      <HiMiniArrowRight color={"#FFFBF6"} />
+                    </li>
+                    <li className="flex gap-2 items-center">
+                      <Link href="/shop">Shop</Link>
+                      <HiMiniArrowRight color={"#FFFBF6"} />
+                    </li>
+                    <li className="flex gap-2 items-center">
+                      <Link href="/contact">Contact</Link>
+                      <HiMiniArrowRight color={"#FFFBF6"} />
+                    </li>
+                  </>
+                )}
               </ul>
             </nav>
           </div>
@@ -75,9 +107,15 @@ function Footer() {
             {/* No platforms for coffee brand */}
           </div>
         </div>
-        <Link href="#home" className="text-base lg:text-xl">
-          Back To Top
-        </Link>
+        {isHomePage ? (
+          <Link href="#home" className="text-base lg:text-xl">
+            Back To Top
+          </Link>
+        ) : (
+          <Link href="/" className="text-base lg:text-xl">
+            Back To Home
+          </Link>
+        )}
       </div>
       <div className="flex flex-col gap-8">
         <label

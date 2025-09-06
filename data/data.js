@@ -194,52 +194,241 @@ export const events = [
 ];
 
 export const products = [
+  // Coffee Products
   {
+    id: 1,
     type: "coffee",
     name: "Ethiopia Guji Uraga",
-    description:
-      "Floral, stone fruit, honey. A rare gem from the highlands, celebrated for its balance and character.",
+    description: "Floral, stone fruit, honey. A rare gem from the highlands, celebrated for its balance and character.",
     price: 28,
+    rating: 4.8,
+    reviews: 24,
+    origin: "Ethiopia",
+    process: "Natural",
+    roast: "Light-Medium",
     url: "#",
+    image: "/images/coffee-1.jpg"
   },
   {
+    id: 2,
     type: "coffee",
     name: "Colombia Pink Bourbon",
-    description:
-      "Vivid acidity, raspberry, and a mindful finish. Distinctive and bright, for those who taste beyond the numbers.",
+    description: "Vivid acidity, raspberry, and a mindful finish. Distinctive and bright, for those who taste beyond the numbers.",
     price: 32,
+    rating: 4.9,
+    reviews: 18,
+    origin: "Colombia",
+    process: "Washed",
+    roast: "Light",
     url: "#",
+    image: "/images/coffee-2.jpg"
   },
   {
+    id: 3,
     type: "coffee",
     name: "Kenya Kirinyaga",
-    description:
-      "Blackcurrant, citrus, and deep character. Overlooked but unforgettable, with a journey in every cup.",
+    description: "Blackcurrant, citrus, and deep character. Overlooked but unforgettable, with a journey in every cup.",
     price: 30,
+    rating: 4.7,
+    reviews: 31,
+    origin: "Kenya",
+    process: "Washed",
+    roast: "Medium",
     url: "#",
+    image: "/images/coffee-1.jpg"
   },
   {
+    id: 4,
     type: "coffee",
     name: "Burundi Ngozi",
-    description:
-      "Balanced, tea-like, with a gentle sweetness. Precision and integrity in every roast.",
+    description: "Balanced, tea-like, with a gentle sweetness. Precision and integrity in every roast.",
     price: 27,
+    rating: 4.6,
+    reviews: 22,
+    origin: "Burundi",
+    process: "Natural",
+    roast: "Light-Medium",
     url: "#",
+    image: "/images/coffee-2.jpg"
   },
   {
+    id: 5,
+    type: "coffee",
+    name: "Panama Geisha Estate",
+    description: "Jasmine, bergamot, and tropical fruit. An extraordinary coffee that redefined excellence in the cup.",
+    price: 85,
+    rating: 5.0,
+    reviews: 8,
+    origin: "Panama",
+    process: "Washed",
+    roast: "Light",
+    url: "#",
+    image: "/images/coffee-1.jpg"
+  },
+  {
+    id: 6,
+    type: "coffee",
+    name: "Guatemala Huehuetenango",
+    description: "Chocolate, caramel, and orange zest. A harmonious balance from the volcanic highlands.",
+    price: 26,
+    rating: 4.5,
+    reviews: 45,
+    origin: "Guatemala",
+    process: "Washed",
+    roast: "Medium",
+    url: "#",
+    image: "/images/coffee-2.jpg"
+  },
+  {
+    id: 7,
+    type: "coffee",
+    name: "Yemen Mocha Matari",
+    description: "Wine-like complexity, dried fruit, and ancient terroir. A coffee with thousands of years of history.",
+    price: 55,
+    rating: 4.8,
+    reviews: 12,
+    origin: "Yemen",
+    process: "Natural",
+    roast: "Medium-Dark",
+    url: "#",
+    image: "/images/coffee-1.jpg"
+  },
+  {
+    id: 8,
+    type: "coffee",
+    name: "Jamaica Blue Mountain",
+    description: "Smooth, mild, and perfectly balanced. The gold standard of Caribbean coffee excellence.",
+    price: 75,
+    rating: 4.7,
+    reviews: 19,
+    origin: "Jamaica",
+    process: "Washed",
+    roast: "Medium",
+    url: "#",
+    image: "/images/coffee-2.jpg"
+  },
+  {
+    id: 9,
+    type: "coffee",
+    name: "Costa Rica Tarrazú",
+    description: "Bright acidity, clean cup, and nutty sweetness. A consistent favorite from the Central Valley.",
+    price: 24,
+    rating: 4.4,
+    reviews: 67,
+    origin: "Costa Rica",
+    process: "Honey",
+    roast: "Medium",
+    url: "#",
+    image: "/images/coffee-1.jpg"
+  },
+  {
+    id: 10,
+    type: "coffee",
+    name: "Rwanda Bourbon",
+    description: "Red apple, caramel, and floral notes. A testament to Rwanda's coffee renaissance.",
+    price: 29,
+    rating: 4.6,
+    reviews: 33,
+    origin: "Rwanda",
+    process: "Washed",
+    roast: "Light-Medium",
+    url: "#",
+    image: "/images/coffee-2.jpg"
+  },
+  {
+    id: 11,
+    type: "coffee",
+    name: "Brazil Fazenda Santa Ines",
+    description: "Chocolate, hazelnut, and brown sugar. A pulped natural process that brings out Brazil's best.",
+    price: 22,
+    rating: 4.3,
+    reviews: 89,
+    origin: "Brazil",
+    process: "Pulped Natural",
+    roast: "Medium-Dark",
+    url: "#",
+    image: "/images/coffee-1.jpg"
+  },
+  {
+    id: 12,
+    type: "coffee",
+    name: "El Salvador Pacamara",
+    description: "Unique varietal with wine-like complexity, berry notes, and exceptional body.",
+    price: 34,
+    rating: 4.7,
+    reviews: 15,
+    origin: "El Salvador",
+    process: "Natural",
+    roast: "Light",
+    url: "#",
+    image: "/images/coffee-2.jpg"
+  },
+  
+  // Merchandise
+  {
+    id: 13,
     type: "merch",
     name: "Imani Coffee Tote Bag",
-    description:
-      "Minimal, sturdy, and nature-inspired. Carry your rare finds in style.",
+    description: "Minimal, sturdy, and nature-inspired. Carry your rare finds in style.",
     price: 18,
+    rating: 4.5,
+    reviews: 156,
     url: "#",
+    image: "/images/coffee-1.jpg"
   },
   {
+    id: 14,
     type: "merch",
-    name: "Space Colony Mug",
-    description:
-      "Elegant ceramic mug featuring our signature type. For mindful mornings and rare brews.",
-    price: 22,
+    name: "Ceramic Pour Over Dripper",
+    description: "Elegant ceramic dripper featuring our signature design. For mindful mornings and rare brews.",
+    price: 35,
+    rating: 4.8,
+    reviews: 78,
     url: "#",
+    image: "/images/coffee-2.jpg"
   },
+  {
+    id: 15,
+    type: "merch",
+    name: "Imani Coffee Mug",
+    description: "Handcrafted ceramic mug with our logo. Perfect for savoring your daily cup.",
+    price: 22,
+    rating: 4.6,
+    reviews: 203,
+    url: "#",
+    image: "/images/coffee-1.jpg"
+  },
+  {
+    id: 16,
+    type: "merch",
+    name: "Coffee Grinder - Manual",
+    description: "Premium manual grinder for the perfect cup. Consistent grind, exceptional control.",
+    price: 85,
+    rating: 4.9,
+    reviews: 45,
+    url: "#",
+    image: "/images/coffee-2.jpg"
+  },
+  {
+    id: 17,
+    type: "merch",
+    name: "Imani T-Shirt",
+    description: "Organic cotton t-shirt with our minimalist logo. Comfortable and sustainable.",
+    price: 28,
+    rating: 4.4,
+    reviews: 92,
+    url: "#",
+    image: "/images/coffee-1.jpg"
+  },
+  {
+    id: 18,
+    type: "merch",
+    name: "Glass Coffee Carafe",
+    description: "Borosilicate glass carafe for brewing and serving. Heat-resistant and elegant.",
+    price: 42,
+    rating: 4.7,
+    reviews: 67,
+    url: "#",
+    image: "/images/coffee-2.jpg"
+  }
 ];

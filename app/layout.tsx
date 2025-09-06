@@ -1,12 +1,14 @@
 import "./globals.css";
 import Image from "next/image";
-import { Header, Footer } from "@/components";
-import { constructMetaData } from "@/utils/metadata";
+import Header from "@/components/Header";
+import Footer from "@/components/Pages/Footer";
+import { constructMetaData, viewport } from "@/utils/metadata";
 import { ReactLenis } from "lenis/react";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 export const metadata = constructMetaData();
+export { viewport };
 
 export default function RootLayout({
   children,

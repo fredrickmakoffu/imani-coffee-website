@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 
 export function constructMetaData({
   title = "Imani Coffee",
@@ -33,8 +33,7 @@ export function constructMetaData({
       creator: "@imani.coffee",
     },
     icons,
-  metadataBase: new URL("https://imani.coffee"),
-  themeColor: "#FFFBF6",
+    metadataBase: new URL("https://imani.coffee"),
     ...(noIndex && {
       robots: {
         index: false,
@@ -42,4 +41,8 @@ export function constructMetaData({
       },
     }),
   };
+}
+
+export const viewport: Viewport = {
+  themeColor: "#FFFBF6",
 }

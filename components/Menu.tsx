@@ -101,7 +101,7 @@ function Menu({ menuToggle, setMenuToggle }: MenuProps) {
                   <HiMiniArrowRight color={"#FFFBF6"} />
                 </li>
                 <li className="flex gap-2 items-center">
-                  <Link href="/#shop" onClick={() => setMenuToggle(false)}>
+                  <Link href="/shop" onClick={() => setMenuToggle(false)}>
                     Shop
                   </Link>
                   <HiMiniArrowRight color={"#FFFBF6"} />

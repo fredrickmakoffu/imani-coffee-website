@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { Menu } from ".";
+import Menu from "./Menu";
 
 export default function Header() {
   const [menuToggle, setMenuToggle] = useState(false);

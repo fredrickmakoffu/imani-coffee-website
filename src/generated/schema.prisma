@@ -1,0 +1,238 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Import all schema files
+// Note: Prisma doesn't support file imports yet, so we need to copy content manually
+// Keep individual files for organization, and copy content here when needed
+
+// Users & Authentication
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  isSuperuser  Boolean   @default(false)
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  lastLoginAt  DateTime?
+
+  // Relationships
+  roleId String
+  role   Role   @relation(fields: [roleId], references: [id])
+
+  // Created entities
+  categoriesCreated     Category[]             @relation("CategoryCreatedBy")
+  productsCreated       Product[]              @relation("ProductCreatedBy")
+  productsUpdated       Product[]              @relation("ProductUpdatedBy")
+  productImagesCreated  ProductImage[]         @relation("ProductImageCreatedBy")
+  inventoryTransactions InventoryTransaction[] @relation("InventoryTransactionCreatedBy")
+  thresholdAlerts       ThresholdAlert[]       @relation("ThresholdAlertCreatedBy")
+  sessions              Session[]
+
+  @@map("users")
+}
+
+model Role {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  users           User[]
+  rolePermissions RolePermission[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id          String @id @default(uuid())
+  name        String @unique
+  description String
+  module      String // e.g., "products", "inventory", "users", "categories"
+  action      String // e.g., "create", "read", "update", "delete", "manage"
+
+  // Relationships
+  rolePermissions RolePermission[]
+
+  @@map("permissions")
+}
+
+model RolePermission {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  // Relationships
+  roleId       String
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permissionId String
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@map("role_permissions")
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  token        String   @unique
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  lastAccessAt DateTime @default(now())
+  ipAddress    String?
+  userAgent    String?
+
+  // Relationships
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// Product Management
+model Category {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  slug        String   @unique
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Self-referencing for hierarchy
+  parentCategoryId String?
+  parentCategory   Category?  @relation("CategoryHierarchy", fields: [parentCategoryId], references: [id])
+  childCategories  Category[] @relation("CategoryHierarchy")
+
+  // Relationships
+  createdById String
+  createdBy   User      @relation("CategoryCreatedBy", fields: [createdById], references: [id])
+  products    Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  price       Decimal  @db.Decimal(10, 2)
+  sku         String   @unique
+  origin      String? // for coffee products
+  process     String? // for coffee products
+  roast       String? // for coffee products
+  isActive    Boolean  @default(true)
+  metadata    Json? // flexible field for additional product data
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  createdById String
+  createdBy   User     @relation("ProductCreatedBy", fields: [createdById], references: [id])
+  updatedById String
+  updatedBy   User     @relation("ProductUpdatedBy", fields: [updatedById], references: [id])
+
+  images        ProductImage[]
+  inventoryItem InventoryItem?
+
+  @@map("products")
+}
+
+model ProductImage {
+  id        String   @id @default(uuid())
+  imageUrl  String
+  altText   String?
+  isPrimary Boolean  @default(false)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  productId   String
+  product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdById String
+  createdBy   User    @relation("ProductImageCreatedBy", fields: [createdById], references: [id])
+
+  @@map("product_images")
+}
+
+// Inventory Management
+model InventoryItem {
+  id               String    @id @default(uuid())
+  quantity         Int
+  reservedQuantity Int       @default(0)
+  cost             Decimal?  @db.Decimal(10, 2)
+  supplier         String?
+  lastStockDate    DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  // Relationships
+  productId             String                 @unique
+  product               Product                @relation(fields: [productId], references: [id], onDelete: Cascade)
+  inventoryTransactions InventoryTransaction[]
+
+  @@map("inventory_items")
+}
+
+model InventoryTransaction {
+  id               String   @id @default(uuid())
+  type             String // "STOCK_IN", "STOCK_OUT", "ADJUSTMENT", "SALE", "RETURN"
+  quantity         Int // positive for additions, negative for reductions
+  previousQuantity Int
+  newQuantity      Int
+  reason           String
+  reference        String? // order ID, supplier invoice, etc.
+  notes            String?
+  createdAt        DateTime @default(now())
+
+  // Relationships
+  inventoryItemId String
+  inventoryItem   InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+  createdById     String
+  createdBy       User          @relation("InventoryTransactionCreatedBy", fields: [createdById], references: [id])
+
+  @@map("inventory_transactions")
+}
+
+// Flexible Threshold & Alert System
+model ThresholdAlert {
+  id                 String   @id @default(uuid())
+  entityType         String // "product", "category", "user", "sales", etc.
+  entityId           String // ID of the entity being monitored
+  alertType          String // "inventory_low", "inventory_critical", "sales_target", etc.
+  priority           String // "LOW", "MEDIUM", "HIGH", "CRITICAL"
+  thresholdValue     Decimal  @db.Decimal(10, 2)
+  comparisonOperator String // "LESS_THAN", "GREATER_THAN", "EQUALS", "LESS_THAN_OR_EQUAL"
+  actionValue        Decimal? @db.Decimal(10, 2)
+  title              String
+  description        String?
+  isActive           Boolean  @default(true)
+  metadata           Json?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  // Relationships
+  createdById String
+  createdBy   User   @relation("ThresholdAlertCreatedBy", fields: [createdById], references: [id])
+
+  @@map("threshold_alerts")
+}

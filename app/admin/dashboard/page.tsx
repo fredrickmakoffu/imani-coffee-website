@@ -108,6 +108,40 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('users');
   const [users, setUsers] = useState<any[]>([]);
   const [usersLoading, setUsersLoading] = useState(false);
+
+      // Products CRUD state (must be before any usage)
+  const [products, setProducts] = useState<any[]>([]);
+  const [productsLoading, setProductsLoading] = useState(false);
+  const [showAddProductModal, setShowAddProductModal] = useState(false);
+  const [addProductLoading, setAddProductLoading] = useState(false);
+  const [showEditProductModal, setShowEditProductModal] = useState(false);
+  const [editProductLoading, setEditProductLoading] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [showDeleteProductModal, setShowDeleteProductModal] = useState(false);
+  const [deleteProductLoading, setDeleteProductLoading] = useState(false);
+  const [productToDelete, setProductToDelete] = useState<any>(null);
+  const [productPage, setProductPage] = useState(0);
+  const productPageSize = 10;
+  const productTotalPages = Math.ceil(products.length / productPageSize);
+  // Categories for product form
+  const [categories, setCategories] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (activeTab === 'products') {
+      setProductsLoading(true);
+      fetch('/api/admin/products')
+        .then(res => res.json())
+        .then(data => {
+          setProducts(Array.isArray(data) ? data : []);
+          setProductsLoading(false);
+        })
+        .catch(() => setProductsLoading(false));
+      // Fetch categories for product form from backend
+      fetch('/api/admin/categories')
+        .then(res => res.json())
+        .then(data => setCategories(Array.isArray(data) ? data : []));
+    }
+  }, [activeTab]);
   
     // Permission actions state
   const [permissionActions, setPermissionActions] = useState<string[]>([]);
@@ -1413,8 +1447,343 @@ export default function Dashboard() {
         )}
         {activeTab === 'products' && (
           <div>
-            <h2 className="text-xl font-bold mb-4">Products</h2>
-            <div className="text-gray-600">Product management coming soon...</div>
+            <div className="flex items-center mb-0">
+              <div>
+                <h2 className="text-xl font-bold">Products</h2>
+                <p className="text-gray-600 mb-4">Manage your coffee and merchandise products for the storefront.</p>
+              </div>
+              <button
+                className="px-3 py-2 rounded text-gray-600 bg-blue-200 hover:bg-blue-100 flex items-center gap-2 ml-auto"
+                onClick={() => setShowAddProductModal(true)}
+                title="Add Product"
+              >
+                <span className="text-lg">+</span> Add Product
+              </button>
+            </div>
+            {productsLoading ? (
+              <div className="text-gray-500">Loading products...</div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="px-4 py-2 text-left border-b">Name</th>
+                      <th className="px-4 py-2 text-left border-b">Category</th>
+                      <th className="px-4 py-2 text-left border-b">Price</th>
+                      <th className="px-4 py-2 text-left border-b">SKU</th>
+                      <th className="px-4 py-2 text-left border-b">Active</th>
+                      <th className="px-4 py-2 text-left border-b">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {products.slice(productPage * productPageSize, (productPage + 1) * productPageSize).map(product => (
+                      <tr key={product.id} className="bg-white hover:bg-gray-50">
+                        <td className="px-4 py-2 border-b">{product.name}</td>
+                        <td className="px-4 py-2 border-b">{product.category?.name || '-'}</td>
+                        <td className="px-4 py-2 border-b">${product.price}</td>
+                        <td className="px-4 py-2 border-b">{product.sku}</td>
+                        <td className="px-4 py-2 border-b">
+                          <span className={product.isActive
+                            ? 'bg-green-200 px-3 py-2 rounded text-green-600 text-[14px]'
+                            : 'bg-red-200 px-3 py-2 rounded text-red-600 text-[14px]'}>
+                            {product.isActive ? 'Active' : 'Inactive'}
+                          </span>
+                        </td>
+                        <td className="px-4 py-2 border-b flex gap-2">
+                          <button
+                            className="text-gray-600 bg-blue-200 hover:bg-blue-100 px-3 py-2 rounded flex text-[14px]"
+                            title="Edit"
+                            onClick={() => { setSelectedProduct(product); setShowEditProductModal(true); }}
+                          >
+                            <Edit3Icon className="h-3 w-3 mr-1 mt-1" /> Edit
+                          </button>
+                          <button
+                            className="text-gray-600 bg-red-200 hover:bg-red-100 px-3 py-2 rounded flex text-[14px]"
+                            title="Delete"
+                            onClick={() => { setProductToDelete(product); setShowDeleteProductModal(true); }}
+                          >
+                            <Trash2 className="h-3 w-3 mr-1 mt-1" /> Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="flex justify-between items-center mt-4">
+                  <button
+                    className="px-2 py-1 rounded bg-gray-200 text-gray-700"
+                    disabled={productPage === 0}
+                    onClick={() => setProductPage(p => Math.max(0, p - 1))}
+                  >Prev</button>
+                  <span>Page {productPage + 1} of {productTotalPages || 1}</span>
+                  <button
+                    className="px-2 py-1 rounded bg-gray-200 text-gray-700"
+                    disabled={productPage >= productTotalPages - 1}
+                    onClick={() => setProductPage(p => Math.min(productTotalPages - 1, p + 1))}
+                  >Next</button>
+                </div>
+              </div>
+            )}
+
+            {/* Add Product Modal */}
+            {showAddProductModal && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+                  <button
+                    className="absolute top-2 right-2 text-gray-400 hover:text-gray-700"
+                    onClick={() => setShowAddProductModal(false)}
+                    title="Close"
+                  >
+                    <XCircle className="h-5 w-5 text-gray-400 hover:text-gray-700" />
+                  </button>
+                  <h3 className="text-lg font-bold mb-4">Add Product</h3>
+                  <form
+                    className="flex flex-col gap-4"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      setAddProductLoading(true);
+                      const formData = new FormData(e.currentTarget);
+                      const newProduct = {
+                        name: formData.get('name'),
+                        description: formData.get('description'),
+                        price: parseFloat(formData.get('price') as string),
+                        sku: formData.get('sku'),
+                        categoryId: formData.get('categoryId'),
+                        isActive: formData.get('isActive') === 'on',
+                      };
+                      try {
+                        const token = localStorage.getItem('token');
+                        const res = await fetch('/api/admin/products', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                          },
+                          body: JSON.stringify(newProduct),
+                        });
+                        if (res.ok) {
+                          const productData = await res.json();
+                          setProducts(products => [...products, productData]);
+                        }
+                      } catch (err) {}
+                      setAddProductLoading(false);
+                      setShowAddProductModal(false);
+                    }}
+                  >
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Name</span>
+                      <input name="name" className="border rounded px-3 py-2" required />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Description</span>
+                      <input name="description" className="border rounded px-3 py-2" required />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Price</span>
+                      <input name="price" type="number" step="0.01" className="border rounded px-3 py-2" required />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">SKU</span>
+                      <input name="sku" className="border rounded px-3 py-2" required />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Category</span>
+                      <select name="categoryId" className="border rounded px-3 py-2" required>
+                        <option value="">Select category</option>
+                        {categories.map((cat: any) => (
+                          <option key={cat.id} value={cat.id}>{cat.name}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" name="isActive" defaultChecked />
+                      <span className="font-medium">Active</span>
+                    </label>
+                    <div className="flex gap-2 justify-end mt-4">
+                      <button
+                        type="button"
+                        className="px-4 py-2 rounded bg-gray-200 text-gray-700"
+                        onClick={() => setShowAddProductModal(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className={`px-4 py-2 rounded bg-blue-600 text-white font-semibold flex items-center justify-center ${addProductLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                        disabled={addProductLoading}
+                      >
+                        {addProductLoading ? (
+                          <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                          </svg>
+                        ) : null}
+                        {addProductLoading ? 'Creating...' : 'Create'}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+
+            {/* Edit Product Modal */}
+            {showEditProductModal && selectedProduct && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+                  <button
+                    className="absolute top-2 right-2 text-gray-400 hover:text-gray-700"
+                    onClick={() => { setShowEditProductModal(false); setSelectedProduct(null); }}
+                    title="Close"
+                  >
+                    <XCircle className="h-5 w-5 text-gray-400 hover:text-gray-700" />
+                  </button>
+                  <h3 className="text-lg font-bold mb-4">Edit Product</h3>
+                  <form
+                    className="flex flex-col gap-4"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      setEditProductLoading(true);
+                      const formData = new FormData(e.currentTarget);
+                      const updatedProduct = {
+                        name: formData.get('name'),
+                        description: formData.get('description'),
+                        price: parseFloat(formData.get('price') as string),
+                        sku: formData.get('sku'),
+                        categoryId: formData.get('categoryId'),
+                        isActive: formData.get('isActive') === 'on',
+                      };
+                      try {
+                        const token = localStorage.getItem('token');
+                        const res = await fetch(`/api/admin/products/${selectedProduct.id}`, {
+                          method: 'PUT',
+                          headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                          },
+                          body: JSON.stringify(updatedProduct),
+                        });
+                        if (res.ok) {
+                          const productData = await res.json();
+                          setProducts(products => products.map(p => p.id === selectedProduct.id ? productData : p));
+                        }
+                      } catch (err) {}
+                      setEditProductLoading(false);
+                      setShowEditProductModal(false);
+                      setSelectedProduct(null);
+                    }}
+                  >
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Name</span>
+                      <input name="name" className="border rounded px-3 py-2" defaultValue={selectedProduct.name} required />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Description</span>
+                      <input name="description" className="border rounded px-3 py-2" defaultValue={selectedProduct.description} required />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Price</span>
+                      <input name="price" type="number" step="0.01" className="border rounded px-3 py-2" defaultValue={selectedProduct.price} required />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">SKU</span>
+                      <input name="sku" className="border rounded px-3 py-2" defaultValue={selectedProduct.sku} required />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Category</span>
+                      <select name="categoryId" className="border rounded px-3 py-2" defaultValue={selectedProduct.categoryId} required>
+                        <option value="">Select category</option>
+                        {categories.map((cat: any) => (
+                          <option key={cat.id} value={cat.id}>{cat.name}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" name="isActive" defaultChecked={selectedProduct.isActive} />
+                      <span className="font-medium">Active</span>
+                    </label>
+                    <div className="flex gap-2 justify-end mt-4">
+                      <button
+                        type="button"
+                        className="px-4 py-2 rounded bg-gray-200 text-gray-700"
+                        onClick={() => { setShowEditProductModal(false); setSelectedProduct(null); }}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className={`px-4 py-2 rounded bg-blue-600 text-white font-semibold flex items-center justify-center ${editProductLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                        disabled={editProductLoading}
+                      >
+                        {editProductLoading ? (
+                          <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                          </svg>
+                        ) : null}
+                        {editProductLoading ? 'Updating...' : 'Update'}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+
+            {/* Delete Product Modal */}
+            {showDeleteProductModal && productToDelete && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+                  <button
+                    className="absolute top-2 right-2 text-gray-400 hover:text-gray-700"
+                    onClick={() => { setShowDeleteProductModal(false); setProductToDelete(null); }}
+                    title="Close"
+                  >
+                    <XCircle className="h-5 w-5 text-gray-400 hover:text-gray-700" />
+                  </button>
+                  <h3 className="text-lg font-bold mb-4">Delete Product</h3>
+                  <div className="mb-4">Are you sure you want to delete <span className="font-semibold">{productToDelete.name}</span>?</div>
+                  <div className="flex gap-2 justify-end mt-4">
+                    <button
+                      type="button"
+                      className="px-4 py-2 rounded bg-gray-200 text-gray-700"
+                      onClick={() => { setShowDeleteProductModal(false); setProductToDelete(null); }}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      className={`px-4 py-2 rounded bg-red-600 text-white font-semibold flex items-center justify-center ${deleteProductLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                      disabled={deleteProductLoading}
+                      onClick={async () => {
+                        setDeleteProductLoading(true);
+                        try {
+                          const token = localStorage.getItem('token');
+                          const res = await fetch(`/api/admin/products/${productToDelete.id}`, {
+                            method: 'DELETE',
+                            headers: {
+                              Authorization: `Bearer ${token}`,
+                            },
+                          });
+                          if (res.ok) {
+                            setProducts(products => products.filter(p => p.id !== productToDelete.id));
+                          }
+                        } catch (err) {}
+                        setDeleteProductLoading(false);
+                        setShowDeleteProductModal(false);
+                        setProductToDelete(null);
+                      }}
+                    >
+                      {deleteProductLoading ? (
+                        <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                        </svg>
+                      ) : null}
+                      {deleteProductLoading ? 'Deleting...' : 'Delete'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
         {activeTab === 'inventory' && (
@@ -1426,5 +1795,4 @@ export default function Dashboard() {
       </main>
     </div>
   );
-  // ...existing code...
 }

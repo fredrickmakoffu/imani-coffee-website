@@ -1,5 +1,12 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import { products as dummyProducts } from '../data/data.js'
+// Enum-based categories for seeding
+const defaultCategories = [
+  { label: 'Coffee', value: 'coffee' },
+  { label: 'Equipment', value: 'equipment' },
+  { label: 'Merchandise', value: 'merchandise' },
+];
 
 const prisma = new PrismaClient()
 
@@ -92,83 +99,6 @@ const defaultRoles = [
   }
 ]
 
-// Default categories for coffee shop
-const defaultCategories = [
-  {
-    name: 'Coffee',
-    description: 'All coffee products including beans and grounds',
-    slug: 'coffee',
-    sortOrder: 1
-  },
-  {
-    name: 'Equipment',
-    description: 'Coffee brewing equipment and accessories',
-    slug: 'equipment',
-    sortOrder: 2
-  },
-  {
-    name: 'Merchandise',
-    description: 'Branded merchandise and accessories',
-    slug: 'merchandise',
-    sortOrder: 3
-  }
-]
-
-// Subcategories
-const defaultSubcategories = [
-  // Coffee subcategories
-  {
-    name: 'Single Origin',
-    description: 'Coffee from a single farm or region',
-    slug: 'single-origin',
-    parentSlug: 'coffee',
-    sortOrder: 1
-  },
-  {
-    name: 'Blends',
-    description: 'Carefully crafted coffee blends',
-    slug: 'blends',
-    parentSlug: 'coffee',
-    sortOrder: 2
-  },
-  {
-    name: 'Decaf',
-    description: 'Decaffeinated coffee options',
-    slug: 'decaf',
-    parentSlug: 'coffee',
-    sortOrder: 3
-  },
-  // Equipment subcategories
-  {
-    name: 'Grinders',
-    description: 'Coffee grinders and mills',
-    slug: 'grinders',
-    parentSlug: 'equipment',
-    sortOrder: 1
-  },
-  {
-    name: 'Brewing Tools',
-    description: 'Pour over drippers, French presses, and brewing accessories',
-    slug: 'brewing-tools',
-    parentSlug: 'equipment',
-    sortOrder: 2
-  },
-  // Merchandise subcategories
-  {
-    name: 'Apparel',
-    description: 'T-shirts, hoodies, and branded clothing',
-    slug: 'apparel',
-    parentSlug: 'merchandise',
-    sortOrder: 1
-  },
-  {
-    name: 'Mugs & Cups',
-    description: 'Coffee mugs, cups, and drinkware',
-    slug: 'mugs-cups',
-    parentSlug: 'merchandise',
-    sortOrder: 2
-  }
-]
 
 async function seed() {
   try {
@@ -281,41 +211,58 @@ async function seed() {
       console.log(`✅ Created viewer: ${viewer.email}`);
     }
 
-    // Create default categories
-    console.log('📁 Creating categories...')
-    for (const categoryData of defaultCategories) {
+    // Seed categories from enum
+    console.log('📁 Seeding categories from enum...')
+    for (const cat of defaultCategories) {
       await prisma.category.upsert({
-        where: { slug: categoryData.slug },
+        where: { slug: cat.value },
         update: {},
         create: {
-          ...categoryData,
+          name: cat.label,
+          description: `${cat.label} products`,
+          slug: cat.value,
+          sortOrder: 1,
           createdById: superuser.id
         }
-      })
+      });
     }
 
-    // Create subcategories
-    for (const subcategoryData of defaultSubcategories) {
-      const parentCategory = await prisma.category.findUnique({
-        where: { slug: subcategoryData.parentSlug }
-      })
+    // Subcategory seeding removed; only seeding main categories from enum
+    console.log(`✅ Created ${defaultCategories.length} categories`)
 
-      if (parentCategory) {
-        await prisma.category.upsert({
-          where: { slug: subcategoryData.slug },
-          update: {},
-          create: {
-            name: subcategoryData.name,
-            description: subcategoryData.description,
-            slug: subcategoryData.slug,
-            sortOrder: subcategoryData.sortOrder,
-            parentCategoryId: parentCategory.id,
-            createdById: superuser.id
+    // Seed products from shop dummy data
+    console.log('🛒 Seeding products from shop dummy data...')
+    for (const prod of dummyProducts) {
+      // Find category by type
+      let categorySlug = prod.type === 'coffee' ? 'coffee' : (prod.type === 'merch' ? 'merchandise' : 'equipment');
+      const category = await prisma.category.findUnique({ where: { slug: categorySlug } });
+      if (!category) continue;
+      // Upsert product
+      await prisma.product.upsert({
+        where: { sku: prod.name.replace(/\s+/g, '-').toLowerCase() },
+        update: {},
+        create: {
+          name: prod.name,
+          description: prod.description,
+          price: prod.price,
+          sku: prod.name.replace(/\s+/g, '-').toLowerCase(),
+          origin: prod.origin || null,
+          process: prod.process || null,
+          roast: prod.roast || null,
+          isActive: true,
+          categoryId: category.id,
+          createdById: superuser.id,
+          updatedById: superuser.id,
+          metadata: {
+            rating: prod.rating,
+            reviews: prod.reviews,
+            image: prod.image,
+            url: prod.url
           }
-        })
-      }
+        }
+      });
     }
-    console.log(`✅ Created ${defaultCategories.length + defaultSubcategories.length} categories`)
+    console.log(`✅ Seeded ${dummyProducts.length} products from shop dummy data`)
 
     console.log('🎉 Database seeding completed successfully!')
     console.log('')
@@ -323,7 +270,7 @@ async function seed() {
     console.log(`   👤 Superuser: admin@imanicoffee.com (password: admin123)`)
     console.log(`   📋 Permissions: ${defaultPermissions.length}`)
     console.log(`   👥 Roles: ${defaultRoles.length}`)
-    console.log(`   📁 Categories: ${defaultCategories.length + defaultSubcategories.length}`)
+  console.log(`   📁 Categories: ${defaultCategories.length}`)
     console.log('')
     console.log('🔐 Login credentials:')
     console.log('   Email: admin@imanicoffee.com')

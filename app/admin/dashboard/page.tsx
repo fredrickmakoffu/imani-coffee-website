@@ -6,6 +6,27 @@ import { useRouter } from 'next/navigation';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 
 export default function Dashboard() {
+  // Pagination state for assigned permissions in Manage Permissions modal
+  const [assignedPermPage, setAssignedPermPage] = useState(0);
+  // Manage Permissions modal state for roles
+  const [showManagePermissionsModal, setShowManagePermissionsModal] = useState(false);
+
+  // Ensure permissions are loaded when opening Manage Permissions modal
+  useEffect(() => {
+    if (showManagePermissionsModal && permissions.length === 0 && !permissionsLoading) {
+      setPermissionsLoading(true);
+      fetch('/api/admin/permissions')
+        .then(res => res.json())
+        .then(data => {
+          setPermissions(Array.isArray(data) ? data : []);
+          setPermissionsLoading(false);
+        })
+        .catch(() => setPermissionsLoading(false));
+    }
+  }, [showManagePermissionsModal]);
+  // Pagination state for add permissions modal
+  const [addPermPage, setAddPermPage] = useState(0);
+
   // Loading states for actions
   const [addLoading, setAddLoading] = useState(false);
   const [updateLoading, setUpdateLoading] = useState(false);
@@ -49,6 +70,30 @@ export default function Dashboard() {
   const [showDeletePermissionModal, setShowDeletePermissionModal] = useState(false);
   const [deletePermissionLoading, setDeletePermissionLoading] = useState(false);
   const [permissionToDelete, setPermissionToDelete] = useState<any>(null);
+
+  // Ensure permissions are loaded when opening Manage Permissions modal
+  useEffect(() => {
+    if (showManagePermissionsModal && permissions.length === 0 && !permissionsLoading) {
+      setPermissionsLoading(true);
+      fetch('/api/admin/permissions')
+        .then(res => res.json())
+        .then(data => {
+          setPermissions(Array.isArray(data) ? data : []);
+          setPermissionsLoading(false);
+        })
+        .catch(() => setPermissionsLoading(false));
+    }
+  }, [showManagePermissionsModal]);
+  // State for manage permissions modal tables (must be before any usage)
+  const [showAddPermissionsTable, setShowAddPermissionsTable] = useState(false);
+  // Selected permission IDs for bulk assign/unassign
+  const [selectedUnassignPermissions, setSelectedUnassignPermissions] = useState<string[]>([]);
+  const [selectedAssignPermissions, setSelectedAssignPermissions] = useState<string[]>([]);
+    // Move pagination variables below all useState declarations
+  // Pagination for add permissions modal (must be after permissions and addPermPage are defined)
+  const pageSize = 10;
+  const totalPages = Math.ceil(permissions.length / pageSize);
+  const paginatedPermissions = permissions.slice(addPermPage * pageSize, (addPermPage + 1) * pageSize);
 
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
@@ -845,6 +890,8 @@ export default function Dashboard() {
                   <tr>
                     <th className="px-4 py-2 text-left border-b">Name</th>
                     <th className="px-4 py-2 text-left border-b">Description</th>
+                    <th className="px-4 py-2 text-left border-b"># Permissions</th>
+                    <th className="px-4 py-2 text-left border-b">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -852,7 +899,15 @@ export default function Dashboard() {
                     <tr key={role.id} className="bg-white hover:bg-gray-50">
                       <td className="px-4 py-2 border-b">{role.name}</td>
                       <td className="px-4 py-2 border-b">{role.description}</td>
+                      <td className="px-4 py-2 border-b">{role.permissionsCount} assigned </td>
                       <td className="px-4 py-2 border-b flex gap-2">
+                        <button
+                          className="text-gray-600 bg-purple-200 hover:bg-purple-100 px-3 py-2 rounded flex text-[14px]"
+                          title="Manage Permissions"
+                          onClick={() => { setSelectedRole(role); setShowManagePermissionsModal(true); }}
+                        >
+                          <PenBox className="h-3 w-3 mr-1 mt-1" /> Permissions
+                        </button>
                         <button
                           className="text-gray-600 bg-blue-200 hover:bg-blue-100 px-3 py-2 rounded flex text-[14px]"
                           title="Edit"
@@ -872,6 +927,247 @@ export default function Dashboard() {
                   ))}
                 </tbody>
               </table>
+            )}
+
+            {/* Manage Permissions Modal */}
+            {typeof showManagePermissionsModal !== 'undefined' && showManagePermissionsModal && selectedRole && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl relative">
+                  <button
+                    className="absolute top-2 right-2 text-gray-400 hover:text-gray-700"
+                    onClick={() => { setShowManagePermissionsModal(false); setSelectedRole(null); setShowAddPermissionsTable(false); }}
+                    title="Close"
+                  >
+                    <XCircle className="h-5 w-5 text-gray-400 hover:text-gray-700" />
+                  </button>
+                  <h3 className="text-lg font-bold mb-4">Manage Permissions for {selectedRole.name}</h3>
+                  {/* Toggle between assigned and all permissions tables */}
+                  {!showAddPermissionsTable ? (
+                    <>
+                      {/* Assigned Permissions Pagination State */}
+                      {/* Assigned Permissions Pagination State */}
+                      {/* Pagination variables for assigned permissions */}
+                      {(() => {
+                        const assignedPageSize = 10;
+                        const assignedTotalPages = Math.ceil(selectedRole.permissions.length / assignedPageSize);
+                        const paginatedAssignedPermissions = selectedRole.permissions.slice(
+                          assignedPermPage * assignedPageSize,
+                          (assignedPermPage + 1) * assignedPageSize
+                        );
+                        return (
+                          <>
+                            <div className="mb-4 flex items-center justify-between">
+                              <strong>Assigned Permissions</strong>
+                              <button
+                                className="px-3 py-2 rounded text-gray-600 bg-blue-200 hover:bg-blue-100 flex items-center gap-2"
+                                onClick={() => { setShowAddPermissionsTable(true); setSelectedAssignPermissions([]); }}
+                              >
+                                <span className="text-lg">+</span> Add Permissions
+                              </button>
+                            </div>
+                            <form
+                              onSubmit={async (e) => {
+                                e.preventDefault();
+                                if (selectedUnassignPermissions.length === 0) return;
+                                try {
+                                  const token = localStorage.getItem('token');
+                                  const res = await fetch(`/api/admin/roles/${selectedRole.id}/permissions`, {
+                                    method: 'DELETE',
+                                    headers: {
+                                      'Content-Type': 'application/json',
+                                      Authorization: `Bearer ${token}`,
+                                    },
+                                    body: JSON.stringify({ permissionIds: selectedUnassignPermissions }),
+                                  });
+                                  if (res.ok) {
+                                    setRolesLoading(true);
+                                    fetch('/api/admin/roles')
+                                      .then(res => res.json())
+                                      .then(data => {
+                                        setRoles(Array.isArray(data) ? data : []);
+                                        setRolesLoading(false);
+                                      })
+                                      .catch(() => setRolesLoading(false));
+                                    setSelectedUnassignPermissions([]);
+                                  }
+                                } catch (err) {}
+                              }}
+                            >
+                              <table className="min-w-full border border-gray-300 rounded mb-4">
+                                <thead className="bg-gray-100">
+                                  <tr>
+                                    <th className="px-2 py-2 text-left border-b w-8">
+                                      {/* Bulk select checkbox */}
+                                      <input
+                                        type="checkbox"
+                                        checked={paginatedAssignedPermissions.length > 0 && paginatedAssignedPermissions.every((p: any) => selectedUnassignPermissions.includes(p.id))}
+                                        onChange={e => {
+                                          if (e.target.checked) {
+                                            setSelectedUnassignPermissions(prev => [...prev, ...paginatedAssignedPermissions.filter((p: any) => !prev.includes(p.id)).map((p: any) => p.id)]);
+                                          } else {
+                                            setSelectedUnassignPermissions(prev => prev.filter(id => !paginatedAssignedPermissions.some((p: any) => p.id === id)));
+                                          }
+                                        }}
+                                      />
+                                    </th>
+                                    <th className="px-4 py-2 text-left border-b">Name</th>
+                                    <th className="px-4 py-2 text-left border-b">Module</th>
+                                    <th className="px-4 py-2 text-left border-b">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {paginatedAssignedPermissions.length === 0 ? (
+                                    <tr><td colSpan={4} className="text-gray-500 px-4 py-2">No permissions assigned.</td></tr>
+                                  ) : (
+                                    paginatedAssignedPermissions.map((perm: any) => (
+                                      <tr key={perm.id} className="bg-white hover:bg-gray-50">
+                                        <td className="px-2 py-2 border-b w-8">
+                                          <input
+                                            type="checkbox"
+                                            checked={selectedUnassignPermissions.includes(perm.id)}
+                                            onChange={e => {
+                                              if (e.target.checked) {
+                                                setSelectedUnassignPermissions(prev => [...prev, perm.id]);
+                                              } else {
+                                                setSelectedUnassignPermissions(prev => prev.filter(id => id !== perm.id));
+                                              }
+                                            }}
+                                          />
+                                        </td>
+                                        <td className="px-4 py-2 border-b">{perm.name}</td>
+                                        <td className="px-4 py-2 border-b">{perm.module}</td>
+                                        <td className="px-4 py-2 border-b">{perm.action}</td>
+                                      </tr>
+                                    ))
+                                  )}
+                                </tbody>
+                              </table>
+                              <div className="flex items-center justify-between mb-2">
+                                <div>
+                                  Page {assignedPermPage + 1} of {assignedTotalPages}
+                                </div>
+                                <div className="flex gap-2">
+                                  <button type="button" className="px-2 py-1 rounded bg-gray-200 text-gray-700" disabled={assignedPermPage === 0} onClick={() => setAssignedPermPage(assignedPermPage - 1)}>Prev</button>
+                                  <button type="button" className="px-2 py-1 rounded bg-gray-200 text-gray-700" disabled={assignedPermPage === assignedTotalPages - 1} onClick={() => setAssignedPermPage(assignedPermPage + 1)}>Next</button>
+                                </div>
+                              </div>
+                              <div className="flex gap-2 justify-end mt-2">
+                                <button type="button" className="px-4 py-2 rounded bg-gray-200 text-gray-700" onClick={() => { setShowManagePermissionsModal(false); setSelectedRole(null); setShowAddPermissionsTable(false); }}>Close</button>
+                                <button type="submit" className="px-4 py-2 rounded bg-red-600 text-white font-semibold" disabled={selectedUnassignPermissions.length === 0}>Unassign Selected</button>
+                              </div>
+                            </form>
+                          </>
+                        );
+                      })()}
+                    </>
+                  ) : (
+                    <>
+                      <div className="mb-4 flex items-center justify-between">
+                        <strong>Assign Permissions</strong>
+                        <button
+                          className="px-3 py-2 rounded text-gray-600 bg-gray-200 hover:bg-gray-100 flex items-center gap-2"
+                          onClick={() => setShowAddPermissionsTable(false)}
+                        >
+                          Back
+                        </button>
+                      </div>
+                      {/* Pagination state for add permissions table */}
+                      <form
+                        onSubmit={async (e) => {
+                          e.preventDefault();
+                          if (selectedAssignPermissions.length === 0) return;
+                          try {
+                            const token = localStorage.getItem('token');
+                            const res = await fetch(`/api/admin/roles/${selectedRole.id}/permissions`, {
+                              method: 'POST',
+                              headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: `Bearer ${token}`,
+                              },
+                              body: JSON.stringify({ permissionIds: selectedAssignPermissions }),
+                            });
+                            if (res.ok) {
+                              setRolesLoading(true);
+                              fetch('/api/admin/roles')
+                                .then(res => res.json())
+                                .then(data => {
+                                  setRoles(Array.isArray(data) ? data : []);
+                                  setRolesLoading(false);
+                                })
+                                .catch(() => setRolesLoading(false));
+                              setShowAddPermissionsTable(false);
+                              setSelectedAssignPermissions([]);
+                            }
+                          } catch (err) {}
+                        }}
+                      >
+                        <table className="min-w-full border border-gray-300 rounded mb-4">
+                          <thead className="bg-gray-100">
+                            <tr>
+                              <th className="px-2 py-2 text-left border-b w-8">
+                                {/* Bulk select checkbox for current page */}
+                                <input
+                                  type="checkbox"
+                                  checked={paginatedPermissions.length > 0 && paginatedPermissions.every((p: any) => selectedAssignPermissions.includes(p.id))}
+                                  onChange={e => {
+                                    if (e.target.checked) {
+                                      setSelectedAssignPermissions(prev => [...prev, ...paginatedPermissions.filter(p => !prev.includes(p.id)).map(p => p.id)]);
+                                    } else {
+                                      setSelectedAssignPermissions(prev => prev.filter(id => !paginatedPermissions.some(p => p.id === id)));
+                                    }
+                                  }}
+                                />
+                              </th>
+                              <th className="px-4 py-2 text-left border-b">Name</th>
+                              <th className="px-4 py-2 text-left border-b">Module</th>
+                              <th className="px-4 py-2 text-left border-b">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {paginatedPermissions.length === 0 ? (
+                              <tr><td colSpan={4} className="text-gray-500 px-4 py-2">No permissions available.</td></tr>
+                            ) : (
+                              paginatedPermissions.map((perm: any) => (
+                                <tr key={perm.id} className="bg-white hover:bg-gray-50">
+                                  <td className="px-2 py-2 border-b w-8">
+                                    <input
+                                      type="checkbox"
+                                      checked={selectedAssignPermissions.includes(perm.id)}
+                                      onChange={e => {
+                                        if (e.target.checked) {
+                                          setSelectedAssignPermissions(prev => [...prev, perm.id]);
+                                        } else {
+                                          setSelectedAssignPermissions(prev => prev.filter(id => id !== perm.id));
+                                        }
+                                      }}
+                                    />
+                                  </td>
+                                  <td className="px-4 py-2 border-b">{perm.name}</td>
+                                  <td className="px-4 py-2 border-b">{perm.module}</td>
+                                  <td className="px-4 py-2 border-b">{perm.action}</td>
+                                </tr>
+                              ))
+                            )}
+                          </tbody>
+                        </table>
+                        <div className="flex items-center justify-between mb-2">
+                          <div>
+                            Page {addPermPage + 1} of {totalPages}
+                          </div>
+                          <div className="flex gap-2">
+                            <button type="button" className="px-2 py-1 rounded bg-gray-200 text-gray-700" disabled={addPermPage === 0} onClick={() => setAddPermPage(addPermPage - 1)}>Prev</button>
+                            <button type="button" className="px-2 py-1 rounded bg-gray-200 text-gray-700" disabled={addPermPage === totalPages - 1} onClick={() => setAddPermPage(addPermPage + 1)}>Next</button>
+                          </div>
+                        </div>
+                        <div className="flex gap-2 justify-end mt-8">
+                          <button type="button" className="px-4 py-2 rounded bg-gray-200 text-gray-700" onClick={() => setShowAddPermissionsTable(false)}>Cancel</button>
+                          <button type="submit" className="px-4 py-2 rounded bg-blue-600 text-white font-semibold" disabled={selectedAssignPermissions.length === 0}>Assign Selected</button>
+                        </div>
+                      </form>
+                    </>
+                  )}
+                </div>
+              </div>
             )}
 
             {/* Add Role Modal */}

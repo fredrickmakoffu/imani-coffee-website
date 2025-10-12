@@ -24,9 +24,32 @@ export async function GET() {
   try {
     const roles = await prisma.role.findMany({
       where: { isActive: true },
-      select: { id: true, name: true, description: true },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        rolePermissions: {
+          select: {
+            permission: {
+              select: {
+                id: true,
+                name: true,
+                description: true,
+                module: true,
+                action: true,
+              }
+            }
+          }
+        }
+      },
     });
-    return NextResponse.json(roles);
+    // Add permissionsCount property for each role
+    const rolesWithCount = roles.map(role => ({
+      ...role,
+      permissionsCount: role.rolePermissions.length,
+      permissions: role.rolePermissions.map(rp => rp.permission),
+    }));
+    return NextResponse.json(rolesWithCount);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

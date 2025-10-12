@@ -231,7 +231,9 @@ async function seed() {
     }
 
     const hashedPassword = await bcrypt.hash('admin123', 12)
-    
+    const user1Password = await bcrypt.hash('store123', 12)
+    const user2Password = await bcrypt.hash('viewer123', 12)
+
     const superuser = await prisma.user.upsert({
       where: { email: 'admin@imanicoffee.com' },
       update: {},
@@ -244,6 +246,40 @@ async function seed() {
       }
     })
     console.log(`✅ Created superuser: ${superuser.email}`)
+
+    // Create Store Manager user
+    const storeManagerRole = await prisma.role.findUnique({ where: { name: 'Store Manager' } });
+    if (storeManagerRole) {
+      const storeManager = await prisma.user.upsert({
+        where: { email: 'store@imanicoffee.com' },
+        update: {},
+        create: {
+          email: 'store@imanicoffee.com',
+          passwordHash: user1Password,
+          name: 'Store Manager',
+          isSuperuser: false,
+          roleId: storeManagerRole.id
+        }
+      });
+      console.log(`✅ Created store manager: ${storeManager.email}`);
+    }
+
+    // Create Viewer user
+    const viewerRole = await prisma.role.findUnique({ where: { name: 'Viewer' } });
+    if (viewerRole) {
+      const viewer = await prisma.user.upsert({
+        where: { email: 'viewer@imanicoffee.com' },
+        update: {},
+        create: {
+          email: 'viewer@imanicoffee.com',
+          passwordHash: user2Password,
+          name: 'Viewer User',
+          isSuperuser: false,
+          roleId: viewerRole.id
+        }
+      });
+      console.log(`✅ Created viewer: ${viewer.email}`);
+    }
 
     // Create default categories
     console.log('📁 Creating categories...')

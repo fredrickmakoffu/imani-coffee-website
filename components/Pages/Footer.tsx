@@ -13,9 +13,9 @@ function Footer() {
     <footer
       id="footer"
       className={`min-h-[100dvh] flex flex-col justify-between bg-trace-ash text-bridal-health p-4 lg:px-12 lg:pt-28 fixed bottom-0 z-[1] ${
-        isShopPage 
-          ? "m-4 lg:m-8 rounded-[17px] w-auto relative" 
-          : "w-full fixed"
+        isHomePage 
+          ? "w-full fixed"
+          : "m-4 lg:m-8 rounded-[17px] w-auto relative" 
       }`}
     >
       <div className="flex gap-8 lg:gap-0 flex-col-reverse lg:flex-row w-full justify-between mt-20 lg:mt-0">

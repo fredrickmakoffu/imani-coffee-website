@@ -110,21 +110,32 @@ export default function Dashboard() {
   const [usersLoading, setUsersLoading] = useState(false);
 
       // Products CRUD state (must be before any usage)
-  const [products, setProducts] = useState<any[]>([]);
-  const [productsLoading, setProductsLoading] = useState(false);
-  const [showAddProductModal, setShowAddProductModal] = useState(false);
-  const [addProductLoading, setAddProductLoading] = useState(false);
-  const [showEditProductModal, setShowEditProductModal] = useState(false);
-  const [editProductLoading, setEditProductLoading] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
-  const [showDeleteProductModal, setShowDeleteProductModal] = useState(false);
-  const [deleteProductLoading, setDeleteProductLoading] = useState(false);
-  const [productToDelete, setProductToDelete] = useState<any>(null);
-  const [productPage, setProductPage] = useState(0);
-  const productPageSize = 10;
-  const productTotalPages = Math.ceil(products.length / productPageSize);
-  // Categories for product form
-  const [categories, setCategories] = useState<any[]>([]);
+      const [products, setProducts] = useState<any[]>([]);
+      const [productsLoading, setProductsLoading] = useState(false);
+      const [showAddProductModal, setShowAddProductModal] = useState(false);
+      const [addProductLoading, setAddProductLoading] = useState(false);
+      const [showEditProductModal, setShowEditProductModal] = useState(false);
+      const [editProductLoading, setEditProductLoading] = useState(false);
+      const [selectedProduct, setSelectedProduct] = useState<any>(null);
+      const [showDeleteProductModal, setShowDeleteProductModal] = useState(false);
+      const [deleteProductLoading, setDeleteProductLoading] = useState(false);
+      const [productToDelete, setProductToDelete] = useState<any>(null);
+      const [productPage, setProductPage] = useState(0);
+      const productPageSize = 10;
+      const productTotalPages = Math.ceil(products.length / productPageSize);
+      // Categories for product form
+      const [categories, setCategories] = useState<any[]>([]);
+  // Inventory state
+  const [inventory, setInventory] = useState<any[]>([]);
+  const [inventoryLoading, setInventoryLoading] = useState(false);
+  const [showInventoryModal, setShowInventoryModal] = useState(false);
+  const [inventoryActionLoading, setInventoryActionLoading] = useState(false);
+  const [inventoryProduct, setInventoryProduct] = useState<any>(null);
+  const [inventoryQuantity, setInventoryQuantity] = useState(0);
+  const [inventoryAction, setInventoryAction] = useState<'add'|'remove'>('add');
+  // Inventory movements state
+  const [inventoryMovements, setInventoryMovements] = useState<any[]>([]);
+  const [inventoryMovementsLoading, setInventoryMovementsLoading] = useState(false);
 
   useEffect(() => {
     if (activeTab === 'products') {
@@ -140,6 +151,25 @@ export default function Dashboard() {
       fetch('/api/admin/categories')
         .then(res => res.json())
         .then(data => setCategories(Array.isArray(data) ? data : []));
+      // Fetch inventory for products
+      setInventoryLoading(true);
+      fetch('/api/admin/inventory')
+        .then(res => res.json())
+        .then(data => {
+          setInventory(Array.isArray(data) ? data : []);
+          setInventoryLoading(false);
+        })
+        .catch(() => setInventoryLoading(false));
+    }
+    if (activeTab === 'inventory') {
+      setInventoryMovementsLoading(true);
+      fetch('/api/admin/inventory/movements')
+        .then(res => res.json())
+        .then(data => {
+          setInventoryMovements(Array.isArray(data) ? data : []);
+          setInventoryMovementsLoading(false);
+        })
+        .catch(() => setInventoryMovementsLoading(false));
     }
   }, [activeTab]);
   
@@ -1471,42 +1501,132 @@ export default function Dashboard() {
                       <th className="px-4 py-2 text-left border-b">Category</th>
                       <th className="px-4 py-2 text-left border-b">Price</th>
                       <th className="px-4 py-2 text-left border-b">SKU</th>
+                      <th className="px-4 py-2 text-left border-b">Stock</th>
                       <th className="px-4 py-2 text-left border-b">Active</th>
                       <th className="px-4 py-2 text-left border-b">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {products.slice(productPage * productPageSize, (productPage + 1) * productPageSize).map(product => (
-                      <tr key={product.id} className="bg-white hover:bg-gray-50">
-                        <td className="px-4 py-2 border-b">{product.name}</td>
-                        <td className="px-4 py-2 border-b">{product.category?.name || '-'}</td>
-                        <td className="px-4 py-2 border-b">${product.price}</td>
-                        <td className="px-4 py-2 border-b">{product.sku}</td>
-                        <td className="px-4 py-2 border-b">
-                          <span className={product.isActive
-                            ? 'bg-green-200 px-3 py-2 rounded text-green-600 text-[14px]'
-                            : 'bg-red-200 px-3 py-2 rounded text-red-600 text-[14px]'}>
-                            {product.isActive ? 'Active' : 'Inactive'}
-                          </span>
-                        </td>
-                        <td className="px-4 py-2 border-b flex gap-2">
-                          <button
-                            className="text-gray-600 bg-blue-200 hover:bg-blue-100 px-3 py-2 rounded flex text-[14px]"
-                            title="Edit"
-                            onClick={() => { setSelectedProduct(product); setShowEditProductModal(true); }}
-                          >
-                            <Edit3Icon className="h-3 w-3 mr-1 mt-1" /> Edit
-                          </button>
-                          <button
-                            className="text-gray-600 bg-red-200 hover:bg-red-100 px-3 py-2 rounded flex text-[14px]"
-                            title="Delete"
-                            onClick={() => { setProductToDelete(product); setShowDeleteProductModal(true); }}
-                          >
-                            <Trash2 className="h-3 w-3 mr-1 mt-1" /> Delete
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                    {products.slice(productPage * productPageSize, (productPage + 1) * productPageSize).map(product => {
+                      const inv = inventory.find((i: any) => i.productId === product.id);
+                      return (
+                        <tr key={product.id} className="bg-white hover:bg-gray-50">
+                          <td className="px-4 py-2 border-b">{product.name}</td>
+                          <td className="px-4 py-2 border-b">{product.category?.name || '-'}</td>
+                          <td className="px-4 py-2 border-b">${product.price}</td>
+                          <td className="px-4 py-2 border-b">{product.sku}</td>
+                          <td className="px-4 py-2 border-b">{inv ? inv.quantity : 0}</td>
+                          <td className="px-4 py-2 border-b">
+                            <span className={product.isActive
+                              ? 'bg-green-200 px-3 py-2 rounded text-green-600 text-[14px]'
+                              : 'bg-red-200 px-3 py-2 rounded text-red-600 text-[14px]'}>
+                              {product.isActive ? 'Active' : 'Inactive'}
+                            </span>
+                          </td>
+                          <td className="px-4 py-2 border-b flex gap-2">
+                            <button
+                              className="text-gray-600 bg-blue-200 hover:bg-blue-100 px-3 py-2 rounded flex text-[14px]"
+                              title="Edit"
+                              onClick={() => { setSelectedProduct(product); setShowEditProductModal(true); }}
+                            >
+                              <Edit3Icon className="h-3 w-3 mr-1 mt-1" /> Edit
+                            </button>
+                            <button
+                              className="text-gray-600 bg-red-200 hover:bg-red-100 px-3 py-2 rounded flex text-[14px]"
+                              title="Delete"
+                              onClick={() => { setProductToDelete(product); setShowDeleteProductModal(true); }}
+                            >
+                              <Trash2 className="h-3 w-3 mr-1 mt-1" /> Delete
+                            </button>
+                            <button
+                              className="text-gray-600 bg-yellow-200 hover:bg-yellow-100 px-3 py-2 rounded flex text-[14px]"
+                              title="Manage Stock"
+                              onClick={() => {
+                                setInventoryProduct(product);
+                                setInventoryQuantity(0);
+                                setInventoryAction('add');
+                                setShowInventoryModal(true);
+                              }}
+                            >
+                              <span className="font-bold mr-1">↕</span> Stock
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+            {/* Inventory Modal */}
+            {showInventoryModal && inventoryProduct && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+                  <button
+                    className="absolute top-2 right-2 text-gray-400 hover:text-gray-700"
+                    onClick={() => setShowInventoryModal(false)}
+                    title="Close"
+                  >
+                    <XCircle className="h-5 w-5 text-gray-400 hover:text-gray-700" />
+                  </button>
+                  <h3 className="text-lg font-bold mb-4">Manage Stock for {inventoryProduct.name}</h3>
+                  <form
+                    className="flex flex-col gap-4"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      setInventoryActionLoading(true);
+                      const quantityChange = inventoryAction === 'add' ? inventoryQuantity : -inventoryQuantity;
+                      try {
+                        const res = await fetch('/api/admin/inventory', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ productId: inventoryProduct.id, quantityChange }),
+                        });
+                        if (res.ok) {
+                          const updated = await res.json();
+                          setInventory(inv => {
+                            const idx = inv.findIndex(i => i.productId === inventoryProduct.id);
+                            if (idx !== -1) {
+                              const newInv = [...inv];
+                              newInv[idx] = updated;
+                              return newInv;
+                            } else {
+                              return [...inv, updated];
+                            }
+                          });
+                        }
+                      } catch (err) {}
+                      setInventoryActionLoading(false);
+                      setShowInventoryModal(false);
+                    }}
+                  >
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Action</span>
+                      <select value={inventoryAction} onChange={e => setInventoryAction(e.target.value as 'add'|'remove')} className="border rounded px-3 py-2">
+                        <option value="add">Add Stock</option>
+                        <option value="remove">Remove Stock</option>
+                      </select>
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="font-medium">Quantity</span>
+                      <input type="number" min={1} value={inventoryQuantity} onChange={e => setInventoryQuantity(Number(e.target.value))} className="border rounded px-3 py-2" required />
+                    </label>
+                    <div className="flex gap-2 justify-end mt-4">
+                      <button
+                        type="button"
+                        className="px-4 py-2 rounded bg-gray-200 text-gray-700"
+                        onClick={() => setShowInventoryModal(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className={`px-4 py-2 rounded bg-yellow-600 text-white font-semibold flex items-center justify-center ${inventoryActionLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                        disabled={inventoryActionLoading}
+                      >
+                        {inventoryActionLoading ? 'Processing...' : 'Update Stock'}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
                   </tbody>
                 </table>
                 <div className="flex justify-between items-center mt-4">
@@ -1788,8 +1908,41 @@ export default function Dashboard() {
         )}
         {activeTab === 'inventory' && (
           <div>
-            <h2 className="text-xl font-bold mb-4">Inventory</h2>
-            <div className="text-gray-600">Inventory management coming soon...</div>
+            <h2 className="text-xl font-bold mb-4">Inventory Movements</h2>
+            {inventoryMovementsLoading ? (
+              <div className="text-gray-500">Loading inventory movements...</div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="px-4 py-2 text-left border-b">Date</th>
+                      <th className="px-4 py-2 text-left border-b">Product</th>
+                      <th className="px-4 py-2 text-left border-b">Type</th>
+                      <th className="px-4 py-2 text-left border-b">Quantity</th>
+                      <th className="px-4 py-2 text-left border-b">Previous</th>
+                      <th className="px-4 py-2 text-left border-b">New</th>
+                      <th className="px-4 py-2 text-left border-b">Reason</th>
+                      <th className="px-4 py-2 text-left border-b">User</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {inventoryMovements.map((tx: any) => (
+                      <tr key={tx.id} className="bg-white hover:bg-gray-50">
+                        <td className="px-4 py-2 border-b">{new Date(tx.createdAt).toLocaleString()}</td>
+                        <td className="px-4 py-2 border-b">{tx.inventoryItem?.product?.name || '-'}</td>
+                        <td className="px-4 py-2 border-b">{tx.type}</td>
+                        <td className="px-4 py-2 border-b">{tx.quantity}</td>
+                        <td className="px-4 py-2 border-b">{tx.previousQuantity}</td>
+                        <td className="px-4 py-2 border-b">{tx.newQuantity}</td>
+                        <td className="px-4 py-2 border-b">{tx.reason}</td>
+                        <td className="px-4 py-2 border-b">{tx.createdBy?.name || '-'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         )}
       </main>

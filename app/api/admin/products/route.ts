@@ -11,7 +11,16 @@ export async function GET() {
       },
       orderBy: { createdAt: 'desc' },
     });
-    return NextResponse.json(products);
+    // Optionally, you can shape the response to only include relevant category fields
+    const productsWithCategory = products.map(product => ({
+      ...product,
+      category: product.category ? {
+        id: product.category.id,
+        name: product.category.name,
+        slug: product.category.slug,
+      } : null,
+    }));
+    return NextResponse.json(productsWithCategory);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
